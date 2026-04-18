@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -263,25 +265,8 @@
     </div>
   </div>
 
-  <footer class="f-footer" style="border-top: none; margin-top: -1px; position: relative; z-index: 10; padding-top: 20px;">
-    <div class="f-footer-inner">
-      <div class="f-footer-main">
-        <div class="f-footer-logo">
-          <a href="../index.html">
-            <img src="../assets/img/logo.svg" alt="Hoshino Kanata" style="width: 100%; filter: invert(32%) sepia(10%) saturate(700%) hue-rotate(201deg) brightness(93%) contrast(89%);">
-          </a>
-          <span class="logo-sub">・ HOSHINO KANATA ・</span>
-        </div>
-      </div>
-      <div class="f-footer-bottom">
-        <div class="f-footer-copy">
-          <a href="#">プライバシーポリシー</a>
-          <a href="../guideline.html">ガイドライン</a>
-          <span>© 2022-2026 HOSHINO KANATA.</span>
-        </div>
-      </div>
-    </div>
-  </footer>
+  {% include footer.html %}
+  
 </div>
 
 <div class="modal-overlay" id="iframeModal">
@@ -315,19 +300,6 @@
     document.body.classList.remove('no-scroll'); // スクロールを再開
   }
 </script>
-
-<svg style="position:absolute;width:0;height:0;">
-  <defs>
-    <filter id="goo">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur"/>
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"/>
-    </filter>
-    <filter id="goo2">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"/>
-    </filter>
-  </defs>
-</svg>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="../assets/js/script.js"></script>

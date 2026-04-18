@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -400,95 +402,7 @@
 
 </main>
 
-<div class="footer-wrapper fade">
-  
-  <div class="footer-liquid">
-    <div class="cage">
-      <div class="box">
-        <div class="surface"></div>
-        <div class="drop-one"></div>
-        <div class="drop-two"></div>
-        <div class="ripple l-side"></div>
-        <div class="ripple r-side"></div>
-      </div>
-    </div>
-    <div class="cage two">
-      <div class="box">
-        <div class="surface"></div>
-        <div class="drop-three"></div>
-        <div class="drop-four"></div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="f-footer" style="border-top: none; margin-top: -1px; position: relative; z-index: 10; padding-top: 20px;">
-    <div class="f-footer-inner">
-      <div class="f-footer-main">
-        <div class="f-footer-logo">
-          <a href="index.html">
-            <img src="assets/img/logo.svg" alt="Hoshino Kanata" style="width: 100%; filter: invert(32%) sepia(10%) saturate(700%) hue-rotate(201deg) brightness(93%) contrast(89%);
-">
-          </a>
-          <span class="logo-sub">・ HOSHINO KANATA ・</span>
-        </div>
-        
-        <div class="f-footer-nav">
-          <div class="f-nav-row">
-            <a href="#">HOME</a>
-            <a href="#">NEWS</a>
-            <a href="#">INTRODUCTION</a>
-            <a href="#">CHARACTER</a>
-            <a href="#">MV</a>
-          </div>
-          <div class="f-nav-row">
-            <a href="#">STORY</a>
-            <a href="#">GOODS / EVENT</a>
-            <a href="#">GALLERY</a>
-            <a href="#">SPECIAL</a>
-            <a href="#">SCHEDULE</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="f-footer-bottom">
-        <div class="f-footer-sns">
-          <span class="f-sns-label">公式アカウント</span>
-          <a href="#" class="f-sns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
-          <a href="#" class="f-sns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-          <span class="f-sns-label" style="margin-left: 20px;">グッズ情報</span>
-          <a href="#" class="f-sns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
-        </div>
-        <div class="f-footer-copy">
-          <a href="#">プライバシーポリシー</a>
-          <a href="guideline.html">ガイドライン</a>
-          <span>© 2022-2026 HOSHINO KANATA.</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-</div>
-
-<svg style="position:absolute;width:0;height:0;">
-  <defs>
-    <filter id="goo">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur"/>
-      <feColorMatrix in="blur" mode="matrix"
-        values="1 0 0 0 0
-                0 1 0 0 0
-                0 0 1 0 0
-                0 0 0 19 -9"/>
-    </filter>
-
-    <filter id="goo2">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
-      <feColorMatrix in="blur" mode="matrix"
-        values="1 0 0 0 0
-                0 1 0 0 0
-                0 0 1 0 0
-                0 0 0 19 -9"/>
-    </filter>
-  </defs>
-</svg>
+  {% include footer.html %}
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script src="assets/js/script.js"></script>
