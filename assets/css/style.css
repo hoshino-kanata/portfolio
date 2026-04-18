@@ -2221,15 +2221,28 @@ body.no-scroll { overflow: hidden; }
   #about { padding-top: 0px; }
   .profile-wrapper { flex-direction: column; gap: 30px; padding: 0; }
   .profile-char { width: 100%; }
-  .profile-visual { aspect-ratio: 1/1; min-height: 750px; padding: 0px; }
   .profile-details { gap: 35px; padding: 20px; }
   .diff-btn { font-size: 0.75em; }
 
+  .profile-visual {
+    height: 600px !important; /* 300px〜250pxくらいがスッキリ見えます */
+    min-height: auto !important;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 中の画像が歪まないように調整 */
+  .profile-img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
   .profile-row { flex-direction: column; gap: 8px; }
-  .profile-row { padding-left: 30px; }
+  .profile-row { padding-left: 20px; }
   .name-jp{ font-size: 1.4rem; line-height:1; }
   .name-en{ font-size: 0.7rem; }
-  
   
   .profile-card { flex-direction: row; }
   .profile-card-content { padding: 20px 15px; }
@@ -2244,6 +2257,7 @@ body.no-scroll { overflow: hidden; }
     align-items: center;
     padding-top: 30px;
     overflow: visible;
+    display: none; /* キャラクター消去 */
   }
 
   .speech-bubble {
