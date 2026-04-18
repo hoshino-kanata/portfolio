@@ -2197,8 +2197,9 @@ body.no-scroll { overflow: hidden; }
     font-size: 3.8rem; color: var(--text-main); font-family: var(--font-en-serif);
     margin: 0 0 20px 0; justify-content: center;
   }
-  /* 3. 星の装飾：回転なしの配置にリセット */
+  /* 3. 星の装飾：なし */
   .frame-stars-container {
+    display: none;
     position: absolute; width: 92vw; height: 85vh;
     top: 50%; left: 50%; transform: translate(-50%, -50%);
     pointer-events: none; z-index: 25;
@@ -2349,7 +2350,7 @@ body.no-scroll { overflow: hidden; }
   .title, .guide-intro, .item-desc, .tag-item { font-size: 0.95em; line-height: 2; }
 
   /* --- スマホ用の背面固定イラスト調整 --- */
-  .community-area { padding: 0vw 3vw 3vw; }
+  .community-area { padding: 0vw 0 3vw; }
   .community-area .styled-card { width: 100%; }
   .gc-left { position: absolute; }
   .gc-right { padding-top: 20px; padding-bottom: 0; gap: 40px; }
