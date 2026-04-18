@@ -1,0 +1,430 @@
+/* =========================================
+   Antique Love Letter LP (Scoped & Responsive)
+========================================= */
+
+.vintage-letter-lp {
+  --bg-dark: #161616;
+  --bg-paper: #ffffff;      
+  --env-front: #f4f2ec;     
+  --env-inside: #e8e5de;    
+  
+  --text-dark: #222222;
+  --text-gray: #666666;
+  --text-light: #999999;
+  --border-light: #e5e5e5;
+  
+  --accent-brass: #bda783;
+  
+  --font-serif: 'Playfair Display', 'Noto Serif JP', serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-doulaise: 'Monsieur La Doulaise', cursive;
+  --font-ballet: 'Ballet', cursive;
+  --font-sacramento: 'Sacramento', cursive;
+
+  width: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  overflow: hidden;
+}
+
+.vintage-letter-lp *, 
+.vintage-letter-lp *::before, 
+.vintage-letter-lp *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+
+/* =========================================
+   1. ヒーローセクション（封筒と動画）
+========================================= */
+.hero-envelope-section {
+  position: relative; width: 100%; padding: 60px 20px 0;
+  display: flex; justify-content: center;
+  background-color: var(--bg-dark);
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.ambient-text {
+  position: absolute; top: 40px;
+  font-family: var(--font-cinzel); font-size: 11px; letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4); line-height: 1.6; z-index: 0;
+}
+.ambient-left { left: 40px; text-align: left; }
+.ambient-right { right: 40px; top: auto; bottom: 40px; text-align: right; }
+
+.envelope-container {
+  width: 100%; max-width: 800px; position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 100px; z-index: 1;
+}
+
+.env-background {
+  position: absolute; top: 120px; bottom: 0; left: 0; width: 100%; z-index: 0;
+  display: flex; flex-direction: column; 
+}
+
+.env-flap-top {
+  width: 100%; height: 550px; flex-shrink: 0;
+  background-color: var(--env-inside);
+  clip-path: polygon(
+    0% 100%, 
+    0% 30%, 10% 20%, 
+    45% 2.5%, 47.5% 1.6%, 50% 1.3%, 52.5% 1.6%, 55% 2.5%, 
+    90% 20%, 100% 30%, 
+    100% 100%
+  );
+  margin-bottom: -1px;
+}
+
+.env-letter-content {
+  width: 90%; 
+  background-color: var(--bg-paper);
+  padding: 12px; 
+  padding-bottom: 12px; 
+  margin-bottom: 260px; 
+  border-radius: 0.15em;
+  position: relative; z-index: 1;
+  box-shadow: 0 -4px 20px rgba(219, 218, 215, 0);
+}
+
+.video-ratio-wrapper { 
+  width: 100%; aspect-ratio: 16 / 9; background: #0a0a0a; position: relative; 
+}
+.video-ratio-wrapper iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+}
+
+.polaroid-caption {
+  font-family: var(--font-sacramento);
+  font-size: 38px;
+  color: #444; 
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.env-flaps-bottom {
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 400px; z-index: 2;
+}
+
+.flap-wrapper {
+  position: absolute; 
+  filter: drop-shadow(0 0 10px rgba(32, 29, 26, 0.15));
+}
+.flap-left-wrap { top: 0; left: 0; width: 65%; height: 100%; z-index: 1; }
+.flap-right-wrap { top: 0; right: 0; width: 65%; height: 100%; z-index: 2; }
+.flap-bottom-wrap { bottom: 0; left: 0; width: 100%; height: 80%; z-index: 3; }
+
+.flap-left { 
+  width: 100%; height: 100%; background-color: var(--env-front); 
+  clip-path: polygon(0 0, 8% 5%, 100% 100%, 0% 100%); 
+}
+.flap-right { 
+  width: 100%; height: 100%; background-color: var(--env-front); 
+  clip-path: polygon(92% 5%, 100% 0, 100% 100%, 0% 100%); 
+}
+.flap-bottom { 
+  width: 100%; height: 100%; background-color: #eceae5; 
+  clip-path: polygon(0 100%, 0 60%, 45% 30%, 50% 28%, 55% 30%, 100% 60%, 100% 100%); 
+}
+
+.seal-wax-wrapper {
+  display: none;
+  position: absolute; 
+  top: 46%; 
+  left: 50%; transform: translate(-50%, -50%); 
+  width: 120px; height: 120px; z-index: 4;
+}
+.seal-wax-img {
+  width: 100%; height: 100%; object-fit: contain;
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,0.3));
+}
+
+.pocket-typography { 
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+  width: 100%; text-align: center; color: var(--text-dark); z-index: 5; 
+}
+.typo-serif { font-family: var(--font-cinzel); font-size: 24px; letter-spacing: 0.1em; line-height: 1.2; }
+.typo-script { font-family: var(--font-ballet); font-size: 52px; font-weight: 400; margin: 0 10px; color: #555; }
+
+/* =========================================
+   2. メインコンテンツ（白い便箋部分）
+========================================= */
+.paper-content-section { width: 100%; background-color: var(--bg-paper); padding: 60px 20px 100px; }
+.paper-inner { max-width: 800px; margin: 0 auto; }
+
+.elegant-divider { text-align: center; font-size: 16px; color: #ccc; margin: 60px 0; letter-spacing: 0.5em; }
+
+.paper-header { text-align: center; }
+
+.song-title { 
+  font-family: var(--font-doulaise), var(--font-serif); 
+  font-style: normal; 
+  font-size: 72px; 
+  font-weight: 400; 
+  color: var(--text-dark); 
+  margin-bottom: 0px; 
+  line-height: 1.2;
+}
+
+.song-credits { font-family: var(--font-cinzel); font-size: 11px; letter-spacing: 0.15em; color: var(--text-gray); }
+
+.block-title { font-family: var(--font-cinzel); font-size: 16px; letter-spacing: 0.1em; color: var(--text-dark); margin-bottom: 25px; border-bottom: 1px solid var(--border-light); padding-bottom: 10px; }
+.text-center { text-align: center; }
+
+.info-elegant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.classic-list { list-style: none; }
+.classic-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed var(--border-light); font-family: var(--font-sans); font-size: 12px; color: var(--text-gray); }
+.classic-list .label { font-family: var(--font-cinzel); letter-spacing: 0.05em; color: var(--text-dark); }
+
+.classic-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.classic-tags span { font-family: var(--font-sans); font-size: 11px; padding: 4px 12px; border: 1px solid var(--border-light); border-radius: 4px; color: var(--text-gray); }
+.classic-tags span::before { content: "#"; margin-right: 3px; color: #ccc; }
+
+.lyrics-columns.single-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lyric-block { font-family: var(--font-serif); font-size: 14px; line-height: 2.4; letter-spacing: 0.08em; color: var(--text-dark); }
+.lyric-block.text-center { text-align: center; }
+
+/* =========================================
+   ▼ レースのカメオデザイン ▼
+========================================= */
+.members-lace-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.lace-member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* レース枠全体のコンテナ */
+.lace-portrait-container {
+  display: block;
+  text-decoration: none;
+  position: relative;
+  width: 100%;
+  max-width: 260px; /* PCでの最大幅 */
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.05));
+  transition: transform 0.4s ease;
+}
+
+.lace-member-card:hover .lace-portrait-container {
+  transform: translateY(-5px);
+}
+
+.lace-frame-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 2; 
+  /* ▼ ここに追加：レース画像（lace_frame.png）を曲線SVGで切り抜く純粋なマスク ▼ */
+  -webkit-mask-image: url('../img/frame_curve.svg');
+  -webkit-mask-size: 100% 100%; /* サイズを100%に固定して崩れを防止 */
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('../img/frame_curve.svg');
+  mask-size: 100% 100%;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+
+/* レース内側のコンテンツを中央にまとめる箱 */
+.lace-portrait-content {
+  position: absolute;
+  top: 10%; bottom: 10%; left: 10%; right: 10%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* 要素を上下中央に */
+}
+
+/* ① 上部のリボン */
+.m-ribbon {
+  width: 110px; /* リボンの幅 */
+  height: auto;
+  margin-bottom: 15px;
+  z-index: 4;
+}
+
+/* ② 写真とスクリプト文字を重ねるためのラッパー */
+.m-photo-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* 下部テキストとの余白 */
+}
+
+/* ▼ SVG画像（2circle_frame.svg）を使って写真を切り抜きます ▼ */
+.m-photo-cameo {
+  /* SVGの縦横比に合わせてサイズを調整してください */
+  width: 250px; height: auto; 
+  margin-top: -30px; 
+  margin-bottom: 15px;
+  position: relative;
+  
+  /* マスク機能の適用（相対パスは環境に合わせて調整してください） */
+  -webkit-mask-image: url('../img/2circle_frame.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('../img/2circle_frame.svg');
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  
+  /* 切り抜かれた形に合わせて影を落とします */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+/* ▼ 新しく追加：下部を白くグラデーションで飛ばす ▼ */
+.m-photo-cameo::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; 
+  width: 100%; 
+  height: 60%; /* 写真の下半分くらいからグラデーション開始 */
+  background: linear-gradient(to bottom, rgba(253, 252, 246, 0) 0%, rgba(255, 255, 255, 0.95) 100%);
+  pointer-events: none;
+}
+
+.m-photo-cameo img {
+  width: 100%; height: 100%; 
+  object-fit: cover; 
+  filter: grayscale(100%); 
+  transition: filter 0.4s ease;
+}
+
+.lace-member-card:hover .m-photo-cameo img {
+  filter: grayscale(0%);
+}
+
+/* 写真に重なるスクリプト文字（Art Workなど） */
+.m-script-overlay {
+  position: absolute;
+  bottom: 30px;
+  width: 140%;
+  text-align: center;
+  font-family: var(--font-doulaise), var(--font-sacramento);
+  font-size: 56px;
+  color: var(--text-dark); /* 暗めの色にしてください */
+  line-height: 1;
+  z-index: 5;
+  
+  /* ▼ 修正：影を何重にも重ねて、強い白い光彩を作る ▼ */
+  text-shadow: 
+    0 0 5px #ffffff, 
+    0 0 10px #ffffff, 
+    0 0 15px rgba(255,255,255, 0.9), 
+    0 0 25px rgba(255,255,255, 0.9);
+}
+
+/* ③ 下部のテキスト（HOSHINO KANATAなど） */
+.m-name-bottom {
+  position: absolute;
+  /* ▼ ここの数値を増減させて、レースの空きスペースにぴったり合わせてね！ ▼ */
+  bottom: 2%; 
+  width: 100%;
+  text-align: center;
+  
+  /* 以下は既存のフォント設定そのまま */
+  font-family: var(--font-cinzel);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-gray);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+/* ③ ホバーした時に、リンクだと分かりやすいように文字を濃くする */
+.lace-portrait-container:hover .m-name-bottom {
+  color: var(--text-dark);
+}
+
+.elegant-footer { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border-light); font-family: var(--font-cinzel); font-size: 10px; letter-spacing: 0.2em; color: var(--text-light); }
+
+/* =========================================
+   レスポンシブデザイン (スマホ用)
+========================================= */
+@media (max-width: 768px) {
+  .hero-envelope-section { padding-top: 40px; }
+  .ambient-text { display: none; }
+  
+  .envelope-container { padding-top: 40px; }
+  .env-background { top: 60px; bottom: 0; }
+  
+  .env-flap-top { height: 39vh; } 
+  .env-body-back { height: 100%; }
+  
+  .env-letter-content { padding-bottom: 10px; margin-bottom: 160px; }
+  
+  .polaroid-caption { font-size: 28px; margin-top: 10px; }
+  
+  .env-flaps-bottom { height: 260px; }
+  
+  .seal-wax-wrapper { width: 80px; height: 80px; top: 46%; z-index: 4; }
+  .pocket-typography { bottom: 20px; }
+  
+  .typo-serif { font-size: 16px; }
+  .typo-script { font-size: 36px; }
+  
+  .paper-content-section { padding: 40px 20px 60px; }
+  .song-title { font-size: 48px; }
+  
+  .info-elegant-grid { grid-template-columns: 1fr; gap: 40px; }
+  
+  .lyrics-columns.single-column { padding: 0 40px; }
+  
+  .members-lace-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .lace-portrait-container {
+    max-width: 100%; 
+  }
+  
+  .lace-portrait-content {
+    top: 7.5%; bottom: 10%; left: 10%; right: 10%; 
+  }
+  
+  .m-ribbon {
+    width: 100px;
+    margin-bottom: 5px;
+  }
+  
+  .m-photo-wrapper {
+    margin-bottom: 10px;
+  }
+
+  .m-photo-cameo {
+    width: 42vw; height: fit-content;
+    margin-top: -2vh;
+  }
+
+  .m-script-overlay {
+    font-size: 42px;
+    bottom: 12%;
+  }
+
+  .m-name-bottom {
+    font-size: 8px;
+  }
+}

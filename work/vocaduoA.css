@@ -1,0 +1,187 @@
+/* =========================================
+   Vocaduo LP - メンバー紹介＆リリック (Cleaned & Responsive)
+========================================= */
+
+/* 他のページに影響を与えないよう、変数をコンテナ内に閉じ込めます */
+.grid-container {
+  --bg-paper: #f5f5f5; 
+  --line-color: #999;
+  --text-main: #555;
+  --text-light: #ccc;
+  --accent-color: #d8b4e2;
+  --line-height-blog: 2.2;
+  --letter-spacing-blog: 0.06em;
+
+  width: 100%;
+  max-width: 1201px;
+  margin: 40px auto;
+  background-color: var(--bg-paper);
+  border-top: 1px solid var(--line-color);
+  border-left: 1px solid var(--line-color);
+  border-right: 1px solid var(--line-color);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  border-top: 1px solid var(--line-color);
+}
+
+/* コンテナ内の要素リセット */
+.grid-container *, 
+.grid-container *::before, 
+.grid-container *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.cell { border-bottom: 1px solid var(--line-color); width: 100%; }
+
+/* ヘッダー */
+.header-area { height: 100px; display: flex; align-items: center; padding: 0 20px; }
+.masthead-content { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+.brand h1 { font-family: 'Playfair Display', serif; font-size: 28px; line-height: 1; color: #333; }
+.dn-badge { border: 1px solid #333; border-radius: 50%; padding: 2px 5px; font-size: 14px; }
+.issue-info { font-size: 12px; text-align: right; }
+
+/* タイトルエリア */
+.title-area { height: 200px; display: flex; }
+.side-tags {
+  width: 100px; border-right: 1px solid var(--line-color); display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 10px; gap: 20px;
+  font-family: 'Inter', sans-serif; text-transform: uppercase; 
+}
+.main-titles { padding-left: 20px; display: flex; flex-direction: column; justify-content: center; flex: 1; }
+.brutalist-title { font-family: 'Chakra Petch', sans-serif; font-size: 80px; letter-spacing: -4px; line-height: 0.8; color: #333; }
+.script-title { font-family: 'Arizonia', cursive; font-size: 40px; color: #444; }
+
+/* ビジュアル & サイドバー (7:3) */
+.visual-section { display: grid; grid-template-columns: 7fr 3fr; }
+.main-visual { border-right: 1px solid var(--line-color); padding: 0px; position: relative; }
+.video-ratio-wrapper { width: 100%; aspect-ratio: 16 / 9; }
+.video-placeholder {
+  width: 100%; height: 100%; background: #333;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #fff; font-size: 12px; letter-spacing: 0.1em;
+}
+.play-icon { font-size: 48px; margin-bottom: 10px; opacity: 0.7; }
+
+.bento-box { border-bottom: 1px solid var(--line-color); padding: 20px; }
+.bento-box:last-child { border-bottom: none; }
+.bento-heading { font-size: 12px; font-weight: bold; margin-bottom: 15px; color: #888; letter-spacing: 0.1em; }
+
+/* INFO */
+.info-list { list-style: none; }
+.info-list li {
+  display: flex; font-size: 11px; font-weight: bold; line-height: 3.25; color: #666;
+  border-bottom: 1px solid var(--line-color);
+}
+.info-list li:last-child { border-bottom: none; }
+.info-label { width: 70px; } 
+.info-colon { width: 15px; }
+.info-value { flex: 1; }
+.streaming-link { font-size: 11px; font-weight: bold; color: var(--accent-color); }
+
+/* プロンプトタグ */
+.prompts .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.prompts .tags span {
+  font-size: 10px; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.03em; 
+  border: 1px solid #ddd; background: rgba(0,0,0,0.03);
+}
+.prompts .tags span::before { content: "#"; padding-right: 2px; }
+
+/* 歌詞 */
+.lyrics-section { padding: 0px; }
+.section-title { font-size: 16px; font-weight: 400; margin: 20px; color: #333; display: flex; align-items: center; gap: 10px; }
+.members-badge { background: #555; color: #fff; padding: 2px 8px; font-size: 10px; border-radius: 10px; }
+
+.lyrics-wrapper {
+  user-select: none; -webkit-user-select: none;
+  border-top: 1px solid var(--line-color); margin-top: 15px; padding: 30px 0;
+}
+.lyrics-columns {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 900px; margin: 0 auto;
+}
+.lyric-block {
+  font-size: 15px; line-height: var(--line-height-blog); letter-spacing: var(--letter-spacing-blog);
+  text-align: left; color: #555;
+}
+
+/* メンバー紹介 */
+.members-section { border-bottom: none !important; }
+.members-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-color); }
+.member-card {
+  padding: 30px; border-right: 1px solid var(--line-color); border-bottom: 1px solid var(--line-color);
+  min-height: 420px; display: flex; flex-direction: column;
+}
+.member-card:nth-child(3n) { border-right: none; }
+.member-card:nth-last-child(-n+3) { border-bottom: none; }
+
+.m-photo { width: 150px; height: 150px; background: #ddd; margin-bottom: 15px; border: 1px solid #999; flex-shrink: 0; }
+.role-tag {
+  font-size: 10px; font-family: 'Inter', sans-serif; border: 1px solid #333; display: inline-block;
+  padding: 0px 5px; margin-bottom: 15px; width: fit-content;
+}
+.m-name { font-family: 'Chakra Petch', sans-serif; font-size: 20px; margin-bottom: 5px; color: #333; }
+.m-bio { font-size: 12px; line-height: 1.6; letter-spacing: 0.06em; margin-bottom: 20px; }
+
+.m-sns {
+  display: flex; flex-wrap: wrap; gap: 12px; border-top: 1px solid #333; padding-top: 12px; margin-top: auto;
+}
+.sns-link {
+  font-size: 10px; font-weight: bold; text-decoration: none; color: var(--text-light); text-transform: uppercase; transition: 0.2s;
+}
+.sns-link.active { color: #333; border-bottom: 1px solid #333; }
+.sns-link.active:hover { opacity: 0.6; }
+
+/* フッター */
+.footer-area {
+  height: 125px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  border-top: 1px solid var(--line-color);
+}
+.barcode-wrap { width: 200px; height: 30px; background: repeating-linear-gradient(90deg, #000, #000 2px, #fff 2px, #fff 4px); margin-bottom: 10px; }
+.footer-copy { font-size: 10px; font-weight: bold; letter-spacing: 2px; }
+
+/* =========================================
+   レスポンシブデザイン (スマホ用)
+========================================= */
+@media (max-width: 768px) {
+  .grid-container { width: 95%; margin: 20px auto; }
+  
+  .header-area { height: auto; padding: 20px; }
+  .masthead-content { flex-direction: column; align-items: flex-start; gap: 15px; }
+  .issue-info { text-align: left; }
+  
+  /* タイトルエリアの調整：縦並びにして、タイトルを画面一杯に */
+  .title-area { flex-direction: column; height: auto; }
+  .side-tags { 
+    width: 100%; border-right: none; border-bottom: 1px solid var(--line-color); 
+    padding: 10px; flex-direction: row; height: auto;
+  }
+  .main-titles { 
+    padding: 30px 10px; /* 横余白を最小限に */
+    text-align: center; /* 中央揃えで新聞の見出し感を演出 */
+  }
+  .brutalist-title { 
+    font-size: 12.5vw; /* 画面幅に合わせて動的に拡大 */
+    letter-spacing: -2px;
+    width: 100%;
+    word-break: break-all;
+  }
+  .script-title { font-size: 32px; margin-top: 10px; }
+
+  .visual-section { grid-template-columns: 1fr; }
+  .main-visual { border-right: none; border-bottom: 1px solid var(--line-color); }
+  
+  .lyrics-columns { grid-template-columns: 1fr; gap: 30px; padding: 0 20px; }
+
+  /* メンバー紹介：スマホで2列 */
+  .members-grid { grid-template-columns: repeat(2, 1fr); }
+  .member-card {
+    border-right: 1px solid var(--line-color) !important;
+    border-bottom: 1px solid var(--line-color) !important;
+    min-height: auto; padding: 20px;
+  }
+  .m-photo { width: 100%; height: auto; aspect-ratio: 1 / 1; max-width: 150px; }
+  
+  .member-card:nth-child(2n) { border-right: none !important; }
+  .member-card:last-child { border-bottom: none !important; }
+  .member-card:nth-last-child(2):nth-child(odd) { border-bottom: none !important; }
+}

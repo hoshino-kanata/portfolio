@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vivus@latest/dist/vivus.min.js"></script>
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'ghr8etq',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
+</head>
+
+<body>
+
+<nav class="nav-container">
+    <div class="nav-glass-bg"></div>
+
+    <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.svg" alt="Hoshino Kanata">
+    </a>
+    
+    <button class="wave-hamburger js-menu-open">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+</nav>
+
+<div class="menu-window" id="menuWindow">
+    <div class="menu-prism-bg"></div>
+    <div class="menu-visual-area">
+        <img src="assets/img/character_000.webp" alt="Menu Illust" class="menu-illust-img">
+    </div>
+
+    <div class="menu-content-area">
+        <button class="menu-close" id="menuClose">✕</button>
+
+        <div class="menu-inner">
+            <div class="fragaria-menu-grid">
+                <a href="index.html" class="menu-top-logo">
+                    <img src="assets/img/logo.svg" alt="Hoshino Kanata">
+                </a>
+                <a href="#" class="f-menu-item"><span class="f-mark">✦</span>HOME</a>
+                <a href="#" class="f-menu-item"><span class="f-mark">✦</span>NEWS</a>
+                <a href="#" class="f-menu-item"><span class="f-mark">✦</span>PROFILE</a>
+                <a href="#" class="f-menu-item"><span class="f-mark">✦</span>CHARACTER</a>
+                <a href="#" class="f-menu-item"><span class="f-mark">✦</span>MV / MOVIE</a>
+                <a href="#" class="f-menu-item"><span class="f-mark">✦</span>STORY</a>
+                <a href="#" class="f-menu-item"><span class="f-mark">✦</span>GOODS / EVENT</a>
+                <a href="#" class="f-menu-item"><span class="f-mark">✦</span>GALLERY</a>
+            </div>
+            <div class="f-menu-sub">
+                <div class="f-sub-row">
+                    <span class="f-sub-label">公式アカウント</span>
+                    <a href="#" class="f-sub-link">X (Twitter)</a>
+                    <a href="#" class="f-sub-link">YouTube</a>
+                </div>
+                <div class="f-sub-row">
+                    <span class="f-sub-label">グッズ情報</span>
+                    <a href="#" class="f-sub-link">BOOTH</a>
+                </div>
+                <div class="f-sub-row" style="margin-top: 15px;">
+                    <a href="guideline.html" class="f-sub-link-main">ガイドライン</a>
+                </div>
+                <a href="https://raidori.com/fanclub/user/22770/article/1905" class="fanclub-banner" target="_blank">
+                  <div class="fanclub-text">
+                    <h3>公式ファンクラブ</h3>
+                    <ul>
+                      <li>ファンクラブ限定壁紙</li>
+                      <li>先行公開、メイキングなどのブログコンテンツ</li>
+                      <li>ファン交流用のDIscordサーバー</li>
+                    </ul>
+                    <p>
+                      <strong>１年継続で『リアル信徒証』をプレゼント！</strong>
+                    </p>
+                  </div>
+                  <img class="fanclub-img" src="assets/img/fan.webp" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="hero">
+
+  <div class="hero-glass-slider">
+    <div class="hero-glass-track">
+      
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+      <div class="hero-stained-glass-set">
+        <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+        <div class="glass-nuri"></div><div class="glass-frame"></div><div class="glass-frame-glow"></div>
+        <div class="halo-mask"><div class="glass-halo"></div><div class="glass-halo-glow"></div></div>
+      </div>
+
+    </div>
+  </div>
+
+    <img src="assets/img/character_000.webp" class="hero-character breathe fade" alt="Main Visual">
+
+    <!-- ここからキラキラ -->
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+      <defs>
+        <filter id="noiseFilter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch" result="noise"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.5 1"/>
+        </filter>
+        
+        <clipPath id="kiraPathDeep" clipPathUnits="objectBoundingBox">
+          <path d="M0.5,0 C0.5,0.44 0.56,0.5 1,0.5 C0.56,0.5 0.5,0.56 0.5,1 C0.5,0.56 0.44,0.5 0,0.5 C0.44,0.5 0.5,0.44 0.5,0 Z"/>
+        </clipPath>
+      </defs>
+    </svg>
+
+    <div class="kira-items fade">
+      <div class="kira-item kira-blue" data-depth="0.1">
+        <svg class="kira-portal-svg" viewBox="0 0 1 1">
+          <path class="kira-stroke-path" d="M0.5,0 C0.5,0.44 0.56,0.5 1,0.5 C0.56,0.5 0.5,0.56 0.5,1 C0.5,0.56 0.44,0.5 0,0.5 C0.44,0.5 0.5,0.44 0.5,0 Z"/>
+        </svg>
+      </div>
+
+      <div class="kira-item kira-pink" data-depth="0.2">
+        <svg class="kira-portal-svg" viewBox="0 0 1 1">
+          <path class="kira-stroke-path" d="M0.5,0 C0.5,0.44 0.56,0.5 1,0.5 C0.56,0.5 0.5,0.56 0.5,1 C0.5,0.56 0.44,0.5 0,0.5 C0.44,0.5 0.5,0.44 0.5,0 Z"/>
+        </svg>
+      </div>
+
+      <div class="kira-item kira-white" data-depth="0.15">
+        <svg class="kira-portal-svg" viewBox="0 0 1 1">
+          <path class="kira-stroke-path" d="M0.5,0 C0.5,0.44 0.56,0.5 1,0.5 C0.56,0.5 0.5,0.56 0.5,1 C0.5,0.56 0.44,0.5 0,0.5 C0.44,0.5 0.5,0.44 0.5,0 Z"/>
+        </svg>
+      </div>
+    </div>
+    <!-- ここまでキラキラ -->
+
+    <div class="hero-ui fade">
+      <div class="logo-box">
+        <img src="assets/img/logo.svg" class="logo" alt="Logo">
+      </div>
+    </div>
+
+    <div class="voice-menu">
+      <button class="voice-circle-btn" data-target="audio1">
+        <img src="assets/img/mic.svg" alt="Mic" class="mic-icon">
+        <span>VOICE 01</span>
+      </button>
+      <audio id="audio1" src="sound/voice1.mp3"></audio>
+
+      <button class="voice-circle-btn" data-target="audio2">
+        <img src="assets/img/mic.svg" alt="Mic" class="mic-icon">
+        <span>VOICE 02</span>
+      </button>
+      <audio id="audio2" src="sound/voice2.mp3"></audio>
+
+      <button class="voice-circle-btn" data-target="audio3">
+        <img src="assets/img/mic.svg" alt="Mic" class="mic-icon">
+        <span>VOICE 03</span>
+      </button>
+      <audio id="audio3" src="sound/voice3.mp3"></audio>
+    </div>
+
+    <div class="hero-wave">
+      <svg class="wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="wave-parallax">
+          <use href="#gentle-wave" x="48" y="0" fill="rgba(244, 244, 244, 0.5)" />
+          <use href="#gentle-wave" x="48" y="3" fill="rgba(244, 244, 244, 0.3)" />
+          <use href="#gentle-wave" x="48" y="5" fill="#f4f4f4" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-foreground"></div>
+
+  </section>
+
+<div id="news" class="floating-news">
+  <div class="news-content">
+    <span class="news-label-pc">NEWS</span>
+    
+    <div class="news-banners">
+      <span class="news-label-sp">NEWS</span>
+
+      <div class="news-carousel">
+        <div class="news-track" id="newsTrack">
+          
+          <div class="news-slide">
+            <div class="youtube-wrapper">
+              <iframe src="https://www.youtube.com/embed/PRjdAfM70Ek" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="news-text-box">
+              <h4 class="news-slide-title">1st Original song「抱擁」</h4>
+              <p class="news-slide-desc">星乃かなた、初めてのオリジナル曲です。1万回再生でCDをリリース予定！</p>
+            </div>
+          </div>
+
+          <div class="news-slide">
+            <div class="youtube-wrapper">
+              <iframe src="https://www.youtube.com/embed/d7GTj7xRJ2U?si=WhsV6NpeGodVwCqW" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="news-text-box">
+              <h4 class="news-slide-title">オンナのコ♡オトコのコ</h4>
+              <p class="news-slide-desc">大好きな歌の歌ってみたを出しました！</p>
+            </div>
+          </div>
+
+          <div class="news-slide">
+            <div class="youtube-wrapper">
+              <iframe src="https://www.youtube.com/embed/PRjdAfM70Ek" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="news-text-box">
+              <h4 class="news-slide-title">3つ目のニュース見出し</h4>
+              <p class="news-slide-desc">最後まで行くと、また最初の「抱擁」のニュースにループして戻ります。</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="news-nav" id="newsNav"></div>
+
+    </div>
+  </div>
+</div>
+
+<div class="bg-lineart-animation"></div>
+
+
+<div class="frame-scroll-zone" id="stickyContainer">
+  <div class="frame-sticky-wrapper">
+
+    <h2 id="fixedHeading" class="fixed-section-title"></h2>
+
+    <div class="stained-glass-deco glass-left">
+      <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+      <div class="glass-nuri"></div>
+      
+      <div class="glass-frame"></div>
+      <div class="glass-frame-glow"></div>
+      
+      <div class="halo-mask">
+        <div class="glass-halo"></div>
+        <div class="glass-halo-glow"></div>
+      </div>
+    </div>
+
+    <div class="stained-glass-deco glass-right">
+      <img src="assets/img/glass_frame.svg" class="glass-spacer" alt="">
+      <div class="glass-nuri"></div>
+      
+      <div class="glass-frame"></div>
+      <div class="glass-frame-glow"></div>
+      
+      <div class="halo-mask">
+        <div class="glass-halo"></div>
+        <div class="glass-halo-glow"></div>
+      </div>
+    </div>
+    
+    <div class="frame-nuri"></div>
+    <div class="frame-line"></div>
+
+    <div class="frame-stars-container">
+      <img class="pf-star-deco star-tl-1 star-flip" src="assets/img/mainstar_01.svg">
+      <img class="pf-star-deco star-tl-2" src="assets/img/mainstar_02.svg">
+      <img class="pf-star-deco star-tr-1" src="assets/img/mainstar_01.svg">
+      <img class="pf-star-deco star-bl-1 star-flip" src="assets/img/mainstar_01.svg">
+      <img class="pf-star-deco star-bl-2" src="assets/img/mainstar_02.svg">
+      <img class="pf-star-deco star-bl-3" src="assets/img/mainstar_02.svg">
+      <img class="pf-star-deco star-br-1" src="assets/img/mainstar_02.svg">
+      <img class="pf-star-deco star-br-2" src="assets/img/mainstar_01.svg">
+    </div>
+
+    <div class="frame-viewport">
+      <div class="frame-moving-body" id="movingContent">
+
+<section id="about" class="about">
+  <div class="styled-card">
+   <h2 id="fixedHeading" class="fixed-section-title">Profile</h2>
+
+    <div class="profile-wrapper">
+          
+      <div class="profile-char">
+        <div class="profile-visual-area">
+          
+          <div class="profile-visual">
+            <img class="magic-circle" src="assets/img/circle.svg" alt="Magic Circle">
+            <img src="assets/img/character_001.webp" alt="Character" class="reference-main-img" id="charReference">
+            
+            <div class="illustrator-credit">
+              <span class="credit-label">Art by</span>
+              <span class="credit-name">星乃かなた</span>
+            </div>
+
+            <div class="zoom-icon-btn" id="openModalTrigger">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+
+          <div class="star-nav-wrapper">
+            
+            <div class="shared-tooltip" id="starTooltip">通常</div>
+            
+            <div class="star-nav-container">
+              <div class="star-item active" data-name="通常" data-src="assets/img/character_001.webp" data-credit="星乃かなた">✦</div>
+              <div class="star-item" data-name="キービジュアルA" data-src="assets/img/character_000.webp" data-credit="さじ様">✦</div>
+              <div class="star-item" data-name="キービジュアルB" data-src="assets/img/character_003.webp" data-credit="陀田ゾン様">✦</div>
+              <div class="star-item" data-name="いけにえの姿" data-src="assets/img/character_002.webp" data-credit="棉きのし様">✦</div>
+            </div>
+
+          </div>
+          </div>
+      </div>
+      
+      <div class="profile-details">
+        <div class="profile-card">
+          <div class="profile-card-content">
+            <div class="profile-row">
+              <span class="profile-label">名前</span>
+              <span class="profile-value">
+                <span class="name-jp">星乃 かなた</span><br>
+                <span class="name-en">HOSHINO KANATA</span>
+              </span>
+            </div>
+            <div class="profile-divider"></div>
+            <div class="profile-row">
+              <span class="profile-label">種族</span>
+              <span class="profile-value">
+                <span class="name-jp">インキュバス</span><br>
+                <span class="name-en">INCUBUS ( THEY / THEM )</span>
+              </span>
+            </div>
+          </div>
+          <a href="#" class="profile-more-trigger profile-trigger" data-url="profile.html" id="openProfileBtn">
+            <div class="speech-bubble">もっと見る？</div>
+            <img src="assets/img/tira.webp" alt="チラッ" class="peeking-char">
+          </a>
+        </div>
+
+        <div class="square-grid">
+
+          <a href="https://www.youtube.com/@hoshino_kanata" target="_blank" class="square-btn is-about">
+          <div class="icon-border-wrap">
+            <div class="square-icon">
+              <div class="mark-bg"></div>
+              <div class="clap-icon-wrapper">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <g class="clap-base-group">
+                    <g class="clap-top-group">
+                      <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z" />
+                      <path d="m6.2 5.3 3.1 3.9" />
+                      <path d="m12.4 3.4 3.1 4" />
+                    </g>
+                    <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+                  </g>
+                </svg>
+              </div>
+              <p class="link-text">YouTube</p>
+            </div>
+          </div>
+          </a>
+
+          <a href="https://x.com/V_HoshinoKanata" target="_blank" class="square-btn is-about">
+          <div class="icon-border-wrap">
+            <div class="square-icon">
+              <div class="mark-bg"></div>
+              <div class="svg-icon-wrapper">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path class="twitter-path" pathLength="1" d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                </svg>
+              </div>
+              <p class="link-text">X</p>
+            </div>
+          </div>
+          </a>
+
+          <a href="https://hoshino-kanata.booth.pm/" target="_blank" class="square-btn is-about">
+          <div class="icon-border-wrap">
+            <div class="square-icon">
+              <div class="mark-bg"></div>
+              <div class="svg-icon-wrapper">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <g class="amb-speed-lines">
+                    <line class="amb-speed-1" x1="0" x2="5" y1="8" y2="8" />
+                    <line class="amb-speed-2" x1="-1" x2="6" y1="11" y2="11" />
+                    <line class="amb-speed-3" x1="0" x2="4" y1="14" y2="14" />
+                  </g>
+                  <g class="amb-body">
+                    <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+                    <path d="M19 18h2a1 1 0 0 0 1-1v-3.28a1 1 0 0 0-.684-.948l-1.923-.641a1 1 0 0 1-.578-.502l-1.539-3.076A1 1 0 0 0 16.382 8H14" />
+                    <path d="M9 18h6" />
+                    <g class="amb-cross">
+                      <path d="M10 10H6" />
+                      <path d="M8 8v4" />
+                    </g>
+                    <circle class="amb-wheel-1" cx="7" cy="18" r="2" />
+                    <circle class="amb-wheel-2" cx="17" cy="18" r="2" />
+                  </g>
+                </svg>
+              </div>
+              <p class="link-text">Goods</p>
+            </div>
+          </div>
+          </a>
+
+          <a href="https://gi-pt.com/main/wishlist/fan-view/3a1525f7-7b3e-d93a-588f-847204d6a600" target="_blank" class="square-btn is-about">
+          <div class="icon-border-wrap">
+            <div class="square-icon">
+              <div class="mark-bg"></div>
+              <div class="svg-icon-wrapper">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path class="coffee-steam-1" d="M10 2v2" />
+                  <path class="coffee-steam-2" d="M14 2v2" />
+                  <path class="coffee-steam-3" d="M6 2v2" />
+                  <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+                </svg>
+              </div>
+              <p class="link-text">Wishlist</p>
+            </div>
+          </div>
+          </a>
+
+        </div>
+
+        <a href="https://raidori.com/fanclub/user/22770/article/1905" class="fanclub-banner" target="_blank">
+          <div class="fanclub-text">
+            <h3>公式ファンクラブ</h3>
+            <ul>
+              <li>ファンクラブ限定壁紙</li>
+              <li>先行公開、メイキングなどのブログコンテンツ</li>
+              <li>ファン交流用のDIscordサーバー</li>
+            </ul>
+            <p>
+              <strong>１年継続で『リアル信徒証』をプレゼント！</strong>
+            </p>
+          </div>
+          <img class="fanclub-img" src="assets/img/fan.webp" alt="">
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="works">
+  <h2>Skills</h2>
+  <h3>僕ができること</h3>
+  <div class="works-slider-wrapper">
+    <div class="works-slider" id="worksSlider">
+      <article class="work-card" data-url="work/work-000b.html">
+        <div class="thumb blob">
+          <img src="assets/img/record.jpg" alt="Work 1">
+        </div>
+        <div class="work-info">
+          <h4>Illustration</h4>
+          <p>Key Visual</p>
+        </div>
+      </article>
+
+      <article class="work-card" data-url="work/work-001.html">
+        <div class="thumb blob">
+          <img src="assets/img/record.jpg" alt="Work 2">
+        </div>
+        <div class="work-info">
+          <h4>VTuber</h4>
+          <p>Character Design</p>
+        </div>
+      </article>
+
+      <article class="work-card" data-url="work/work-vocaduoA.html">
+        <div class="thumb blob">
+          <img src="assets/img/Vocaduo2025/Serpent.png" alt="Work 3">
+        </div>
+        <div class="work-info">
+          <h4>VocaDuo</h4>
+          <p>Music Event</p>
+        </div>
+      </article>
+
+      <article class="work-card" data-url="work/work-vocaduoB.html">
+        <div class="thumb blob">
+          <img src="assets/img/record.jpg" alt="Work 4">
+        </div>
+        <div class="work-info">
+          <h4>Goods Design</h4>
+          <p>Acrylic / Sealing Wax</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="works-ui">
+    <div class="slider-arrows">
+      <button class="slider-btn" id="sliderPrev"><</button>
+      <button class="slider-btn" id="sliderNext">></button>
+    </div>
+    <a href="#" class="view-more-btn">VIEW MORE ≫</a>
+  </div>
+</section>
+
+<section id="activity" class="activity">
+  <div class="styled-card">
+    <h2>Works</h2>
+    <h3>活動記録</h3>
+    <div class="activity-container">
+      <div class="record-wrapper">
+        <div class="record-disc-image" id="recordDisc">
+          <img src="assets/img/record.jpg" alt="Disc Image" class="disc-bg">
+          <div class="disc-hole"></div>
+        </div>
+      </div>
+
+      <div class="activity-list-container">
+        
+        <div class="accordion-item active">
+          <button class="accordion-header">
+            <span class="accordion-title">2026</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <ul class="activity-list">
+              <li>
+                <a href="https://www.youtube.com/live/fI2tdzlC33s?si=wOuYq_fbpKR84fv6" class="activity-list-link" target="_blank">
+                  <span class="date">03.27</span>
+                  <span class="title">PR：Room8様 『 かぞくみんなでよるチーノ 』 PR大使 就任</span>
+                  <span class="activity-link-btn" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 6.19c-.23-.86-.91-1.54-1.77-1.77C18.25 4 12 4 12 4s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 7.75 2 12 2 12s0 4.25.42 5.81c.23.86.91 1.54 1.77 1.77C5.75 20 12 20 12 20s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 16.25 22 12 22 12s0-4.25-.42-5.81z M10 15V9l5.2 3L10 15z"/></svg>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/live/fI2tdzlC33s?si=wOuYq_fbpKR84fv6" class="activity-list-link" target="_blank">
+                  <span class="date">03.14</span>
+                  <span class="title">歌ってみた公開 『 オンナのコ♡オトコのコ 』</span>
+                  <span class="activity-link-btn" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 6.19c-.23-.86-.91-1.54-1.77-1.77C18.25 4 12 4 12 4s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 7.75 2 12 2 12s0 4.25.42 5.81c.23.86.91 1.54 1.77 1.77C5.75 20 12 20 12 20s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 16.25 22 12 22 12s0-4.25-.42-5.81z M10 15V9l5.2 3L10 15z"/></svg>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/live/EuMAFa2kIr8?si=3ZbsVqGTluc4M2AQ" class="activity-list-link" target="_blank">
+                  <span class="date">03.01</span>
+                  <span class="title">YouTube収益化＆メンバーシップ 開設</span>
+                  <span class="activity-link-btn" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 6.19c-.23-.86-.91-1.54-1.77-1.77C18.25 4 12 4 12 4s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 7.75 2 12 2 12s0 4.25.42 5.81c.23.86.91 1.54 1.77 1.77C5.75 20 12 20 12 20s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 16.25 22 12 22 12s0-4.25-.42-5.81z M10 15V9l5.2 3L10 15z"/></svg>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">2025</span>
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            <ul class="activity-list">
+              <li>
+                <a href="https://www.youtube.com/live/mLiTA_qxqqU?si=oIoiH53PkzuaILnR" class="activity-list-link" target="_blank">
+                  <span class="date">11.03</span>
+                  <span class="title">アニバーサリー記念配信</span>
+                  <span class="activity-link-btn" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 6.19c-.23-.86-.91-1.54-1.77-1.77C18.25 4 12 4 12 4s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 7.75 2 12 2 12s0 4.25.42 5.81c.23.86.91 1.54 1.77 1.77C5.75 20 12 20 12 20s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 16.25 22 12 22 12s0-4.25-.42-5.81z M10 15V9l5.2 3L10 15z"/></svg>
+                  </span>
+                </a>
+              </li>
+              <li class="no-link-item">
+                <span class="date">10.31</span>
+                <span class="title">チャンネル登録者1000人達成</span>
+              </li>
+              <li class="no-link-item">
+                <span class="date">08.15</span>
+                <span class="title">PR：株式会社uyet様 『 オリジナル桃酒 』コラボ</span>
+              </li>
+              <li>
+                <a href="https://youtu.be/PRjdAfM70Ek?si=UAREU-zroTFu2moq" class="activity-list-link" target="_blank">
+                  <span class="date">07.07</span>
+                  <span class="title">オリジナル曲 『 抱擁 』 発表</span>
+                  <span class="activity-link-btn" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 6.19c-.23-.86-.91-1.54-1.77-1.77C18.25 4 12 4 12 4s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 7.75 2 12 2 12s0 4.25.42 5.81c.23.86.91 1.54 1.77 1.77C5.75 20 12 20 12 20s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 16.25 22 12 22 12s0-4.25-.42-5.81z M10 15V9l5.2 3L10 15z"/></svg>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/live/jZBnxc4WxY4?si=r_4ClxZSS6sQNKcq" class="activity-list-link" target="_blank">
+                  <span class="date">07.07</span>
+                  <span class="title">星乃かなた 再臨配信</span>
+                  <span class="activity-link-btn" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 6.19c-.23-.86-.91-1.54-1.77-1.77C18.25 4 12 4 12 4s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 7.75 2 12 2 12s0 4.25.42 5.81c.23.86.91 1.54 1.77 1.77C5.75 20 12 20 12 20s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 16.25 22 12 22 12s0-4.25-.42-5.81z M10 15V9l5.2 3L10 15z"/></svg>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="community" class="community-area fade">
+  <div class="styled-card">
+    <div class="gc-layout">
+      
+      <div class="gc-left">
+        <div class="gc-sticky-visual">
+          <img src="assets/img/character_004.webp" alt="Hoshino Kanata" class="gc-char-img" oncontextmenu="return false;" draggable="false">
+        </div>
+      </div>
+
+      <div class="gc-right">
+        
+        <div class="gc-block" id="guideline-lite">
+          <h2>Guidelines</h2>
+          <h3 class="tag-heading">ガイドライン</h3>
+          
+          <ul class="clean-tag-list">
+            <li>
+              <span class="tag-meta">Fan Name</span>
+              <div class="tag-main">
+                <span>信徒さま</span>
+              </div>
+            </li>
+            <li>
+              <span class="tag-meta">Fan Mark</span>
+              <div class="tag-main">
+                <span>🦇⚜</span>
+                <button class="copy-btn" data-copy="🦇⚜" title="コピーする">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </li>            
+            <li>
+              <span class="tag-meta">Fan Art</span>
+              <div class="tag-main">
+                <span>#かなたかいた</span>
+                <button class="copy-btn" data-copy="#かなたかいた / @V_HoshinoKanata" title="コピーする">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </li>
+            <li>
+              <span class="tag-meta">Fan Letter</span>
+              <div class="tag-main">
+                <span>#魔教会だより</span>
+                <button class="copy-btn" data-copy="#魔教会だより" title="コピーする">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+          
+          <div class="guide-link-wrap">
+            <p>詳しい規約や二次創作のお約束については、下記ガイドラインをご覧ください。</p>
+            <a href="guideline.html" class="btn-refined">星乃かなたのガイドライン ≫</a>
+          </div>
+        </div>
+
+        <div class="gc-block" id="creators">
+          <h3 class="tag-heading">クリエイターの皆様</h3>
+          <p>
+            星乃かなたの活動は、ファンの皆様だけでなく、様々なクリエイター様のお力によって成り立っています。<br>
+            僕の活動を支えてくださっているすべての皆様へ、最大限の感謝を。<br><br>
+          </p>
+          
+          <div class="square-grid is-3col">
+            <a href="#" target="_blank" class="square-btn">
+              <div class="icon-border-wrap"><div class="square-icon"><img src="assets/img/pf_icon_000.jpg" alt="icon"></div></div>
+              <p class="name">星乃かなた</p><p class="sub">Character / Live2D / Web</p>
+            </a>
+            <a href="#" target="_blank" class="square-btn">
+              <div class="icon-border-wrap"><div class="square-icon"><img src="assets/img/pf_icon.jpg" alt="icon"></div></div>
+              <p class="name">さじ様</p><p class="sub">Key Visual</p>
+            </a>
+            <a href="#" target="_blank" class="square-btn">
+              <div class="icon-border-wrap"><div class="square-icon"><img src="assets/img/pf_icon_003.webp" alt="icon"></div></div>
+              <p class="name">陀田ゾン様</p><p class="sub">Key Visual</p>
+            </a>
+            <a href="#" target="_blank" class="square-btn">
+              <div class="icon-border-wrap"><div class="square-icon"><img src="assets/img/fan.webp" alt="icon"></div></div>
+              <p class="name">ASA様</p><p class="sub">Emote</p>
+            </a>
+            <a href="#" target="_blank" class="square-btn">
+              <div class="icon-border-wrap"><div class="square-icon"><img src="assets/img/logo.svg" alt="icon"></div></div>
+              <p class="name">ミナトデザイン様</p><p class="sub">Logo / Simbol Mark</p>
+            </a>
+            <a href="#" target="_blank" class="square-btn">
+              <div class="icon-border-wrap"><div class="square-icon"><img src="assets/img/pf_icon_004.webp" alt="icon"></div></div>
+              <p class="name">紐途様</p><p class="sub">Mic Design</p>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div></div></div></div>
+
+  <section class="contact fade">
+    <div class="styled-card">
+      <div class="styled-card-title-box">
+        <h2 class="section-title-small">Contact</h2>
+      </div>
+
+      <div class="contact-container">
+       <p>お仕事のご相談やお問い合わせは、以下のフォームよりお願いいたします。</p>
+       <a href="https://tayori.com/form/9e9bf22272fefe5dc64d89eaffe38382d5343636/" class="contact-btn soft-panel">Contact Form ↗</a>
+      </div>
+
+    </div>
+  </section>
+
+<!-- footer start -->
+<div class="footer-wrapper fade">
+  
+  <div class="footer-liquid">
+    <div class="cage">
+      <div class="box">
+        <div class="surface"></div>
+        <div class="drop-one"></div>
+        <div class="drop-two"></div>
+        <div class="ripple l-side"></div>
+        <div class="ripple r-side"></div>
+      </div>
+    </div>
+    <div class="cage two">
+      <div class="box">
+        <div class="surface"></div>
+        <div class="drop-three"></div>
+        <div class="drop-four"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="f-footer" style="border-top: none; margin-top: -1px; position: relative; z-index: 10; padding-top: 20px;">
+    <div class="f-footer-inner">
+      <div class="f-footer-main">
+        <div class="f-footer-logo">
+          <a href="index.html">
+            <img src="assets/img/logo.svg" alt="Hoshino Kanata" style="width: 100%; filter: invert(32%) sepia(10%) saturate(700%) hue-rotate(201deg) brightness(93%) contrast(89%);
+">
+          </a>
+          <span class="logo-sub">・ HOSHINO KANATA ・</span>
+        </div>
+        
+        <div class="f-footer-nav">
+          <div class="f-nav-row">
+            <a href="#">HOME</a>
+            <a href="#">NEWS</a>
+            <a href="#">INTRODUCTION</a>
+            <a href="#">CHARACTER</a>
+            <a href="#">MV</a>
+          </div>
+          <div class="f-nav-row">
+            <a href="#">STORY</a>
+            <a href="#">GOODS / EVENT</a>
+            <a href="#">GALLERY</a>
+            <a href="#">SPECIAL</a>
+            <a href="#">SCHEDULE</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-footer-bottom">
+        <div class="f-footer-sns">
+          <span class="f-sns-label">公式アカウント</span>
+          <a href="#" class="f-sns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
+          <a href="#" class="f-sns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+          <span class="f-sns-label" style="margin-left: 20px;">グッズ情報</span>
+          <a href="#" class="f-sns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></a>
+        </div>
+        <div class="f-footer-copy">
+          <a href="#">プライバシーポリシー</a>
+          <a href="guideline.html">ガイドライン</a>
+          <span>© 2022-2026 HOSHINO KANATA.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<svg style="position:absolute;width:0;height:0;">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 19 -9"/>
+    </filter>
+
+    <filter id="goo2">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 19 -9"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- Modal -->
+<div id="imageModal" class="image-modal-overlay">
+  <button class="modal-close-btn" id="closeModal">×</button>
+  <div class="modal-image-container">
+    <img src="" alt="Zoomed View" id="modalImg" oncontextmenu="return false;" draggable="false">
+  </div>
+</div>
+
+<div id="worksModal" class="modal-overlay">
+  <div class="modal-box">
+    <button id="modalClose" class="modal-close">×</button>
+    <div id="modalContent" class="modal-content-inner">
+      </div>
+  </div>
+</div>
+<!-- Modal -->
+
+<script src="assets/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/* =========================================
+   アイコンアニメーション (スクロール連動)
+========================================= */
+
+/* 共通設定 */
+@keyframes drawLine {
+  0% { opacity: 0; }
+  1% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+/* --- OKマーク (CircleCheck) --- */
+.icon-check-animated {
+  color: #8ecbd6; 
+}
+.icon-check-animated .check-path {
+  stroke-dasharray: 15;
+  stroke-dashoffset: 15;
+  opacity: 0;
+}
+/* ポップアップ後に描画 */
+.show .icon-check-animated .check-path {
+  animation: drawLine 0.4s ease 0.2s forwards;
+}
+
+/* --- 禁止マーク (Ban) --- */
+.icon-ban-animated {
+  color: #d68eb0; 
+}
+.icon-ban-animated .ban-circle {
+  stroke-dasharray: 65;
+  stroke-dashoffset: 65;
+  opacity: 0;
+}
+.icon-ban-animated .ban-slash {
+  stroke-dasharray: 25;
+  stroke-dashoffset: 25;
+  opacity: 0;
+}
+/* ポップアップ後に描画（斜線は少し遅れて） */
+.show .icon-ban-animated .ban-circle {
+  animation: drawLine 0.4s ease 0.2s forwards;
+}
+.show .icon-ban-animated .ban-slash {
+  animation: drawLine 0.3s ease 0.5s forwards;
+}
+
+/* --- 警告マーク (Warn) --- */
+.icon-warn {
+  color: #d6c68e;
+}
+.icon-warn path {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  opacity: 0;
+}
+.icon-warn line {
+  stroke-dasharray: 10;
+  stroke-dashoffset: 10;
+  opacity: 0;
+}
+/* ポップアップ後に描画（三角形を描いた後にビックリマーク） */
+.show .icon-warn path {
+  animation: drawLine 0.5s ease 0.2s forwards;
+}
+.show .icon-warn line {
+  animation: drawLine 0.2s ease 0.6s forwards;
+}
+
+/* --- 送信・手紙マーク (Send / Letter) --- */
+.icon-send-animated {
+  color: #8cd6ab; /* パステルグリーン */
+  overflow: visible;
+}
+.icon-send-animated .send-plane {
+  transform-origin: center;
+}
+.icon-send-animated .send-trail {
+  opacity: 0;
+}
+
+/* ポップアップ後にアニメーションを実行 */
+.show .icon-send-animated .send-plane {
+  animation: flyPlane 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.show .icon-send-animated .send-trail {
+  animation: showTrail 0.6s ease 0.3s forwards;
+}
+
+@keyframes flyPlane {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(3px, -3px) scale(0.85); }
+}
+@keyframes showTrail {
+  0% { opacity: 0; transform: translate(-3px, 3px); }
+  100% { opacity: 1; transform: translate(0, 0); }
+}
