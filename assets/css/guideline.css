@@ -3,7 +3,10 @@
 /* =========================================
    ★ ベースリセット & 全体設定は style.css に任せるためスリム化
 ========================================= */
-*{ line-height:2; font-size: 18px; }
+.guideline-page-wrapper * {
+  line-height: 2;
+  font-size: 18px;
+}
 p { padding: 10px 10px 30px; }
 /* ページ遷移アニメーション */
 .page-transition {
