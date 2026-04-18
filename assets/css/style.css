@@ -2224,6 +2224,8 @@ body.no-scroll { overflow: hidden; }
   .profile-char { width: 100%; }
   .profile-details { gap: 35px; padding: 20px; }
   .diff-btn { font-size: 0.75em; }
+  .fanclub-banner h3 { font-size: 18px; }
+  .fanclub-banner li { font-size: 14px; line-height: 1.6; }
 
   .profile-visual {
     height: 600px !important; /* 300px〜250pxくらいがスッキリ見えます */
@@ -2894,7 +2896,7 @@ body:has(.menu-window.open) .wave-hamburger {
   }
   .menu-window.open .menu-content-area { transform: translateY(0); opacity: 1; }
 
-  .menu-inner { width: 100%; padding: 80px 5vw; margin: 0; align-items: center; }
+  .menu-inner { width: 100%; min-width: 10vw; padding: 80px 5vw; margin: 0; align-items: center; }
 
   .fragaria-menu-grid { 
     grid-template-columns: repeat(2, 1fr); 
