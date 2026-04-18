@@ -2219,7 +2219,7 @@ body.no-scroll { overflow: hidden; }
 
   /* About / Profile */
   #about { padding-top: 0px; }
-  .profile-wrapper { flex-direction: column; gap: 30px; padding: 0; margin-top: 90px; }
+  .profile-wrapper { flex-direction: column; gap: 30px; padding: 0; }
   .profile-char { width: 100%; }
   .profile-visual { aspect-ratio: 1/1; min-height: 750px; padding: 0px; }
   .profile-details { gap: 35px; padding: 20px; }
