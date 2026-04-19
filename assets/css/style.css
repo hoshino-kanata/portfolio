@@ -2898,7 +2898,26 @@ body:has(.menu-window.open) .wave-hamburger {
   }
   .menu-window.open .menu-content-area { transform: translateY(0); opacity: 1; }
 
-  .menu-inner { width: 100%; min-width: 10vw; padding: 80px 5vw; margin: 0; align-items: center; }
+  .menu-inner { 
+    width: 100%; 
+    padding: 80px 8vw 60px; /* 左右の余白を8vwに増やし、下にもゆとりを */
+    margin: 0; 
+    align-items: center; 
+    box-sizing: border-box; /* 確実にはみ出しを防止 */
+  }
+  .menu-close { 
+    top: 20px; 
+    right: 4vw; 
+    width: 50px; 
+    height: 50px; 
+    font-size: 36px; /* ✕の文字サイズを小さく */
+  }
+  .f-sub-row {
+    gap: 15px; /* 項目の隙間を少し詰める */
+  }
+  .f-sub-label, .f-sub-link, .f-sub-link-main {
+    font-size: 13px; /* 少しだけ文字を小さくして収まりを良くする */
+  }
 
   .fragaria-menu-grid { 
     grid-template-columns: repeat(2, 1fr); 
