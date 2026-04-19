@@ -3011,51 +3011,110 @@ body:has(.menu-window.open) .wave-hamburger {
   margin-top: 15px;
   text-decoration: none;
   
-  /* rootのラベンダーブルーを使用 */
-  background: var(--theme-purple); 
+  /* Variation 3: 古書の記憶（クリーム色の背景） */
+  background: #fcfbf9; 
   color: var(--text-main);
   
   font-family: 'Cinzel', 'Shippori Mincho', serif;
   font-size: 11px;
   letter-spacing: 0.2em;
   
-  /* パチカ空押し風のデボス（へこみ）シャドウ */
-  border: 0.5px solid rgba(0,0,0,0.03);
-  box-shadow: inset 1px 1px 3px rgba(180, 185, 230, 0.4), inset -1px -1px 3px rgba(255,255,255,0.8);
+  /* ゴールド系のパチカ空押し風デボスシャドウ */
+  border: 0.5px solid rgba(224, 188, 168, 0.3); /* accent-goldの薄い色 */
+  box-shadow: inset 1px 1px 3px rgba(224, 188, 168, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 1);
   transition: all 0.4s ease;
 }
 
 .elegant-fc-btn .fc-text {
   margin-left: 12px;
   margin-top: 1px;
-  transition: letter-spacing 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 /* ホバー時の凹み深化と文字の広がり */
 .elegant-fc-btn:hover {
-  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: inset 2px 2px 5px rgba(224, 188, 168, 0.25);
 }
 .elegant-fc-btn:hover .fc-text {
   letter-spacing: 0.25em;
+  color: var(--accent-gold); /* ホバーすると文字が静かにゴールドに染まります */
 }
 
 /* --- 羽根のアニメーション --- */
 .feather-icon {
   opacity: 0.6;
+  color: var(--accent-gold); /* 羽根をアンティークゴールドに */
   transition: opacity 0.4s ease;
 }
 
 .elegant-fc-btn:hover .feather-icon {
   opacity: 1;
-  /* ホバー中は1.6秒かけて優雅に舞うアニメーションを繰り返します */
   animation: featherFlutter 1.6s ease-in-out infinite; 
 }
 
-/* Reactコードの数値をCSSキーフレームに翻訳 */
+/* 舞い散る羽根のキーフレーム */
 @keyframes featherFlutter {
   0%   { transform: translate(0px, 0px) rotate(0deg); }
   20%  { transform: translate(2px, -4px) rotate(-8deg); }
   40%  { transform: translate(-2px, -2px) rotate(4deg); }
   60%  { transform: translate(1px, -1px) rotate(-3deg); }
   100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+.elegant-fc-btn.banner-rose {
+  background: #fdf0f1;
+  border-color: rgba(218, 112, 121, 0.2);
+  box-shadow: inset 1px 1px 3px rgba(218, 112, 121, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 1);
+}
+
+.elegant-fc-btn.banner-rose:hover {
+  box-shadow: inset 2px 2px 5px rgba(218, 112, 121, 0.25);
+}
+
+.elegant-fc-btn.banner-rose:hover .fc-text {
+  color: #da7079; /* 落ち着いたコーラルピンク */
+}
+
+.elegant-fc-btn.banner-rose .feather-icon {
+  color: #da7079;
+}
+
+/* =========================================
+   Read More Button: Variation 3 Antique Gold
+========================================= */
+.elegant-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px;
+  text-decoration: none;
+  font-family: 'Cinzel', 'Shippori Mincho', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  transition: all 0.4s ease;
+  margin-top: 10px;
+}
+
+/* Antique Gold 仕様 */
+.elegant-more-btn.more-gold {
+  background: #fcfbf9;
+  color: var(--text-main);
+  border: 0.5px solid rgba(224, 188, 168, 0.3);
+  box-shadow: inset 1px 1px 3px rgba(224, 188, 168, 0.1), inset -1px -1px 3px rgba(255, 255, 255, 1);
+}
+
+.elegant-more-btn.more-gold:hover {
+  box-shadow: inset 2px 2px 5px rgba(224, 188, 168, 0.2);
+  color: var(--accent-gold);
+}
+
+.elegant-more-btn .feather-icon {
+  opacity: 0.6;
+  color: var(--accent-gold);
+  margin-right: 8px;
+}
+
+.elegant-more-btn:hover .feather-icon {
+  opacity: 1;
+  animation: featherFlutter 1.6s ease-in-out infinite; /* menuと同じアニメーションを使用 */
 }
