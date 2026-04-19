@@ -97,3 +97,110 @@
   0% { opacity: 0; transform: translate(-3px, 3px); }
   100% { opacity: 1; transform: translate(0, 0); }
 }
+
+/* =========================================
+   SVG Hover Animations (アイコンの特殊な動き)
+========================================= */
+
+/* -----------------------------------------
+   1. YouTube (Clap)
+----------------------------------------- */
+.clap-base-group { transform-origin: 4px 20px; }
+.clap-top-group { transform-origin: 3px 11px; }
+
+.square-btn:hover .clap-base-group { animation: clapBaseAnim 0.8s ease-in-out forwards; }
+.square-btn:hover .clap-top-group { animation: clapTopAnim 0.4s ease-in-out forwards; }
+
+@keyframes clapBaseAnim {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-10deg); }
+  50%  { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes clapTopAnim {
+  0%   { transform: rotate(0deg); }
+  30%  { transform: rotate(-10deg); }
+  60%  { transform: rotate(16deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* -----------------------------------------
+   2. X / Twitter (Draw Line)
+----------------------------------------- */
+.twitter-path { stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 1; }
+.square-btn:hover .twitter-path { animation: twitterDraw 0.6s linear forwards; }
+
+@keyframes twitterDraw {
+  0%   { stroke-dashoffset: 1; opacity: 0; }
+  10%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+/* -----------------------------------------
+   3. Goods (Ambulance)
+----------------------------------------- */
+.amb-wheel-1 { transform-origin: 7px 18px; }
+.amb-wheel-2 { transform-origin: 17px 18px; }
+.amb-speed-1, .amb-speed-2, .amb-speed-3 { opacity: 0; transform-origin: left; }
+
+.square-btn:hover .amb-body { animation: ambBodyBounce 0.4s ease-in-out infinite; }
+.square-btn:hover .amb-wheel-1, .square-btn:hover .amb-wheel-2 { animation: ambWheelSpin 0.5s linear infinite; }
+.square-btn:hover .amb-cross { animation: ambCrossBlink 0.6s ease-in-out infinite; }
+.square-btn:hover .amb-speed-1 { animation: ambSpeedLine 0.5s ease-out infinite 0s; }
+.square-btn:hover .amb-speed-2 { animation: ambSpeedLine 0.5s ease-out infinite 0.16s; }
+.square-btn:hover .amb-speed-3 { animation: ambSpeedLine 0.5s ease-out infinite 0.08s; }
+
+@keyframes ambBodyBounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-1px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-0.5px); }
+}
+@keyframes ambWheelSpin { 100% { transform: rotate(360deg); } }
+@keyframes ambCrossBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes ambSpeedLine {
+  0%   { opacity: 0; transform: translateX(0) scaleX(0.2); }
+  20%  { opacity: 0.7; transform: translateX(-4px) scaleX(1); }
+  60%  { opacity: 0.5; transform: translateX(-10px) scaleX(0.8); }
+  100% { opacity: 0; transform: translateX(-16px) scaleX(0.3); }
+}
+
+/* -----------------------------------------
+   4. Wishlist (Coffee)
+----------------------------------------- */
+.coffee-steam-1, .coffee-steam-2, .coffee-steam-3 { opacity: 0; }
+.square-btn:hover .coffee-steam-1 { animation: coffeeSteam 1.5s ease-in-out infinite 0.2s; }
+.square-btn:hover .coffee-steam-2 { animation: coffeeSteam 1.5s ease-in-out infinite 0.4s; }
+.square-btn:hover .coffee-steam-3 { animation: coffeeSteam 1.5s ease-in-out infinite 0s; }
+
+@keyframes coffeeSteam {
+  0%   { transform: translateY(0); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateY(-3px); opacity: 0; }
+}
+
+/* -----------------------------------------
+   5. Guideline (Bell)
+----------------------------------------- */
+.bell-group { transform-origin: 50% 100%; }
+.bell-sound-waves { transform-origin: center; opacity: 0; }
+
+.square-btn:hover .bell-stem { transform: translateY(2px); transition: transform 0.1s ease; }
+.square-btn:hover .bell-group { animation: bellRing 0.28s ease-in-out 0.1s; }
+.square-btn:hover .bell-sound-waves { animation: bellWaves 0.7s ease-out 0.13s; }
+
+@keyframes bellRing {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-2deg); }
+  40%  { transform: rotate(2deg); }
+  60%  { transform: rotate(-2deg); }
+  80%  { transform: rotate(2deg); }
+  90%  { transform: rotate(-1deg); }
+  95%  { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes bellWaves {
+  0%   { opacity: 0; transform: scale(0.8); }
+  20%  { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.3); }
+}

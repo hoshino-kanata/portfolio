@@ -6,7 +6,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vivus@latest/dist/vivus.min.js"></script>
   <script>
     (function(d) {
@@ -87,39 +89,6 @@
     <img src="assets/img/character_000.webp" class="hero-character breathe fade" alt="Main Visual">
 
     <!-- 
-    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
-      <defs>
-        <filter id="noiseFilter">
-          <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch" result="noise"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.5 1"/>
-        </filter>
-        
-        <clipPath id="kiraPathDeep" clipPathUnits="objectBoundingBox">
-          <path d="M0.5,0 C0.5,0.44 0.56,0.5 1,0.5 C0.56,0.5 0.5,0.56 0.5,1 C0.5,0.56 0.44,0.5 0,0.5 C0.44,0.5 0.5,0.44 0.5,0 Z"/>
-        </clipPath>
-      </defs>
-    </svg>
-
-    <div class="kira-items fade">
-      <div class="kira-item kira-blue" data-depth="0.1">
-        <svg class="kira-portal-svg" viewBox="0 0 1 1">
-          <path class="kira-stroke-path" d="M0.5,0 C0.5,0.44 0.56,0.5 1,0.5 C0.56,0.5 0.5,0.56 0.5,1 C0.5,0.56 0.44,0.5 0,0.5 C0.44,0.5 0.5,0.44 0.5,0 Z"/>
-        </svg>
-      </div>
-
-      <div class="kira-item kira-pink" data-depth="0.2">
-        <svg class="kira-portal-svg" viewBox="0 0 1 1">
-          <path class="kira-stroke-path" d="M0.5,0 C0.5,0.44 0.56,0.5 1,0.5 C0.56,0.5 0.5,0.56 0.5,1 C0.5,0.56 0.44,0.5 0,0.5 C0.44,0.5 0.5,0.44 0.5,0 Z"/>
-        </svg>
-      </div>
-
-      <div class="kira-item kira-white" data-depth="0.15">
-        <svg class="kira-portal-svg" viewBox="0 0 1 1">
-          <path class="kira-stroke-path" d="M0.5,0 C0.5,0.44 0.56,0.5 1,0.5 C0.56,0.5 0.5,0.56 0.5,1 C0.5,0.56 0.44,0.5 0,0.5 C0.44,0.5 0.5,0.44 0.5,0 Z"/>
-        </svg>
-      </div>
-    </div>
-     
 
     <div class="hero-ui fade">
       <div class="logo-box">
@@ -443,59 +412,108 @@
   </div>
 </section>
 
-<section id="skills" class="works">
-  <h2>Skills</h2>
-  <h3 class="tag-heading">僕ができること</h3>
-  <div class="works-slider-wrapper">
-    <div class="works-slider" id="worksSlider">
-      <article class="work-card" data-url="works/work-000b.html">
-        <div class="thumb blob">
-          <img src="assets/img/record.jpg" alt="Work 1">
-        </div>
-        <div class="work-info">
-          <h4>Illustration</h4>
-          <p>Key Visual</p>
-        </div>
-      </article>
-
-      <article class="work-card" data-url="works/work-001.html">
-        <div class="thumb blob">
-          <img src="assets/img/record.jpg" alt="Work 2">
-        </div>
-        <div class="work-info">
-          <h4>VTuber</h4>
-          <p>Character Design</p>
-        </div>
-      </article>
-
-      <article class="work-card" data-url="works/work-vocaduoA.html">
-        <div class="thumb blob">
-          <img src="assets/img/Vocaduo2025/Serpent.png" alt="Work 3">
-        </div>
-        <div class="work-info">
-          <h4>VocaDuo</h4>
-          <p>Music Event</p>
-        </div>
-      </article>
-
-      <article class="work-card" data-url="works/work-vocaduoB.html">
-        <div class="thumb blob">
-          <img src="assets/img/record.jpg" alt="Work 4">
-        </div>
-        <div class="work-info">
-          <h4>Goods Design</h4>
-          <p>Acrylic / Sealing Wax</p>
-        </div>
-      </article>
+<section id="skills" class="skills">
+  <div class="styled-card is-full">
+    <div class="skills-section-header">
+      <h2 class="fixed-section-title">Skills</h2>
     </div>
-  </div>
 
-  <div class="works-ui">
-    <div class="slider-arrows">
-      <button class="slider-btn" id="sliderPrev"><</button>
-      <button class="slider-btn" id="sliderNext">></button>
+    <div class="swiper skills-slider">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <a href="#" class="skills-item-anchor">
+            <article class="skills-item">
+              <div class="skills-arch-border">
+                <div class="skills-arch-mask"><img src="assets/img/record.jpg"></div>
+              </div>
+              <div class="skills-text-area">
+                <p class="skills-en">Artworks & Visuals</p>
+                <h3 class="skills-jp" data-en="ILLUST">イラスト</h3>
+                <img src="assets/img/line_kira.svg" class="kira-line">
+                <span class="elegant-more-link theme-gold"><span class="more-text">READ MORE</span></span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="#" class="skills-item-anchor">
+            <article class="skills-item">
+              <div class="skills-arch-border">
+                <div class="skills-arch-mask"><img src="assets/img/record.jpg"></div>
+              </div>
+              <div class="skills-text-area">
+                <p class="skills-en">Live2D Modeling</p>
+                <h3 class="skills-jp" data-en="LIVE2D">モデリング</h3>
+                <img src="assets/img/line_kira.svg" class="kira-line">
+                <span class="elegant-more-link theme-gold"><span class="more-text">READ MORE</span></span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="#" class="skills-item-anchor">
+            <article class="skills-item">
+              <div class="skills-arch-border">
+                <div class="skills-arch-mask"><img src="assets/img/record.jpg"></div>
+              </div>
+              <div class="skills-text-area">
+                <p class="skills-en">Graphic Design</p>
+                <h3 class="skills-jp" data-en="DESIGN">デザイン</h3>
+                <img src="assets/img/line_kira.svg" class="kira-line">
+                <span class="elegant-more-link theme-gold"><span class="more-text">READ MORE</span></span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="#" class="skills-item-anchor">
+            <article class="skills-item">
+              <div class="skills-arch-border">
+                <div class="skills-arch-mask"><img src="assets/img/record.jpg"></div>
+              </div>
+              <div class="skills-text-area">
+                <p class="skills-en">Graphic Design</p>
+                <h3 class="skills-jp" data-en="DESIGN">デザイン</h3>
+                <img src="assets/img/line_kira.svg" class="kira-line">
+                <span class="elegant-more-link theme-gold"><span class="more-text">READ MORE</span></span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="#" class="skills-item-anchor">
+            <article class="skills-item">
+              <div class="skills-arch-border">
+                <div class="skills-arch-mask"><img src="assets/img/record.jpg"></div>
+              </div>
+              <div class="skills-text-area">
+                <p class="skills-en">Graphic Design</p>
+                <h3 class="skills-jp" data-en="DESIGN">デザイン</h3>
+                <img src="assets/img/line_kira.svg" class="kira-line">
+                <span class="elegant-more-link theme-gold"><span class="more-text">READ MORE</span></span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="f-slider-nav">
+        <button class="f-slider-btn prev" id="skillsPrev">
+          <span class="arrow-left">&#x27A2;</span>
+        </button>
+        <div class="f-slider-dots" id="skillsDots"></div> 
+        <button class="f-slider-btn next" id="skillsNext">
+          <span class="arrow-right">&#x27A2;</span>
+        </button>
+      </div>
+
     </div>
-    <a href="#" class="view-more-btn">VIEW MORE ≫</a>
   </div>
 </section>
 

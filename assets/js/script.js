@@ -829,3 +829,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Skills専用スライダーの起動設定をこちらに差し替えてください
+const skillsSwiper = new Swiper('.skills-slider', {
+  loop: true,
+  speed: 1000,
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+  },
+  centeredSlides: true,
+  grabCursor: true,
+  
+  /* ★画面幅に応じた枚数調整をより細かくします */
+  breakpoints: {
+    0: {
+      slidesPerView: 1.2, // スマホ：中央1枚＋左右チラ見せ
+      spaceBetween: 20,
+    },
+    769: {
+      slidesPerView: 2.2, // タブレット〜ノートPC
+      spaceBetween: 40,
+    },
+    1400: {
+      slidesPerView: 3,   // 大画面：安定して3枚表示
+      spaceBetween: 60,
+    }
+  },
+  
+  navigation: {
+    nextEl: '#skillsNext',
+    prevEl: '#skillsPrev',
+  },
+  pagination: {
+    el: '#skillsDots',
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">✦</span>';
+    },
+  },
+});
