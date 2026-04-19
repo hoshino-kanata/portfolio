@@ -2282,10 +2282,9 @@ body.no-scroll { overflow: hidden; }
     height: 100% !important;
   }
 
-  .profile-row { flex-direction: column; gap: 8px; }
-  .profile-row { padding-left: 20px; }
-  .name-jp{ font-size: 1.4rem; line-height:1; }
-  .name-en{ font-size: 0.7rem; }
+  .profile-row { padding-left: 10px; }
+  .name-jp{ font-size: 1.4rem; line-height: 1.65; }
+  .name-en{ font-size: 0.7rem; letter-spacing: 0.1rem; }
   
   .profile-card { flex-direction: row; }
   .profile-card-content { padding: 20px 15px; }
@@ -2999,4 +2998,64 @@ body:has(.menu-window.open) .wave-hamburger {
 @keyframes slideLineartBg {
   0% { background-position: 0 0; }
   100% { background-position: -1920px -1080px; }
+}
+
+/* =========================================
+   Elegant Fanclub Banner (Lavender & Feather)
+========================================= */
+.elegant-fc-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-top: 15px;
+  text-decoration: none;
+  
+  /* rootのラベンダーブルーを使用 */
+  background: var(--theme-purple); 
+  color: var(--text-main);
+  
+  font-family: 'Cinzel', 'Shippori Mincho', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  
+  /* パチカ空押し風のデボス（へこみ）シャドウ */
+  border: 0.5px solid rgba(0,0,0,0.03);
+  box-shadow: inset 1px 1px 3px rgba(180, 185, 230, 0.4), inset -1px -1px 3px rgba(255,255,255,0.8);
+  transition: all 0.4s ease;
+}
+
+.elegant-fc-btn .fc-text {
+  margin-left: 12px;
+  margin-top: 1px;
+  transition: letter-spacing 0.4s ease;
+}
+
+/* ホバー時の凹み深化と文字の広がり */
+.elegant-fc-btn:hover {
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
+}
+.elegant-fc-btn:hover .fc-text {
+  letter-spacing: 0.25em;
+}
+
+/* --- 羽根のアニメーション --- */
+.feather-icon {
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.elegant-fc-btn:hover .feather-icon {
+  opacity: 1;
+  /* ホバー中は1.6秒かけて優雅に舞うアニメーションを繰り返します */
+  animation: featherFlutter 1.6s ease-in-out infinite; 
+}
+
+/* Reactコードの数値をCSSキーフレームに翻訳 */
+@keyframes featherFlutter {
+  0%   { transform: translate(0px, 0px) rotate(0deg); }
+  20%  { transform: translate(2px, -4px) rotate(-8deg); }
+  40%  { transform: translate(-2px, -2px) rotate(4deg); }
+  60%  { transform: translate(1px, -1px) rotate(-3deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
 }
