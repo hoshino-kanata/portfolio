@@ -2009,7 +2009,7 @@ body.no-scroll { overflow: hidden; }
     -webkit-mask-image: url('../img/main_frame_11nuri.svg');
     mask-image: url('../img/main_frame_11nuri.svg');
   }
-  .fixed-section-title { top:1vh; }
+  .fixed-section-title { top:1vh; display: none; }
   .star-tl-1 { top: 2%; left: 0%; height: 100px; }
   .star-tl-2 { top: 12%; left: -4%; height: 50px; }
   .star-tr-1 { top: 2%; right: 0%; height: 120px; }
@@ -2384,7 +2384,7 @@ body.no-scroll { overflow: hidden; }
 
 .nav-container { 
   display: flex; justify-content: space-between; align-items: center; 
-  padding: 30px 4vw; pointer-events: none;
+  padding: 30px 3vw; pointer-events: none;
   position: fixed; 
   top: 0; left: 0; width: 100%; z-index: 100;
   box-sizing: border-box;
@@ -2397,7 +2397,7 @@ body.no-scroll { overflow: hidden; }
   position: relative; /* 背景層の基準 */
   pointer-events: auto; display: block;
   
-  width: 320px; 
+  width: 240px; 
   padding: 30px 15px; 
   
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -2445,8 +2445,8 @@ body.no-scroll { overflow: hidden; }
 
 .wave-hamburger {
   position: absolute;
-  top: 30px; right: 4vw; 
-  width: 160px; height: 160px; 
+  top: 30px; right: 3vw; 
+  width: 120px; height: 120px; 
   cursor: pointer; outline: none; background: transparent; border: none;
   display: flex; flex-direction: column; align-items: center; justify-content: center; 
   gap: 8px;
