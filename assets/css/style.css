@@ -2384,7 +2384,7 @@ body.no-scroll { overflow: hidden; }
 
 .nav-container { 
   display: flex; justify-content: space-between; align-items: center; 
-  padding: 30px 2vw; pointer-events: none;
+  padding: 30px 4vw; pointer-events: none;
   position: fixed; 
   top: 0; left: 0; width: 100%; z-index: 100;
   box-sizing: border-box;
@@ -2435,17 +2435,17 @@ body.no-scroll { overflow: hidden; }
 .nav-logo img {
   position: relative; z-index: 1; /* マスクの影響を受けないように手前へ */
   width: 100%; height: auto; display: block;
-  filter: invert(32%) sepia(10%) saturate(700%) hue-rotate(201deg) brightness(93%) contrast(89%);
+  filter: invert(81%) sepia(21%) saturate(350%) hue-rotate(338deg) brightness(96%) contrast(89%);
   transition: filter 0.3s ease;
 }
 /* ★② ホバー時の色をテキストメイン(#54545f)に */
 .nav-logo:hover img {
-  filter: invert(81%) sepia(21%) saturate(350%) hue-rotate(338deg) brightness(96%) contrast(89%);
+  filter: invert(32%) sepia(10%) saturate(700%) hue-rotate(201deg) brightness(93%) contrast(89%);
 }
 
 .wave-hamburger {
   position: absolute;
-  top: 30px; right: 2vw; 
+  top: 30px; right: 4vw; 
   width: 120px; height: 120px; 
   cursor: pointer; outline: none; background: transparent; border: none;
   display: flex; flex-direction: column; align-items: center; justify-content: center; 
