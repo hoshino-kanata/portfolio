@@ -1867,6 +1867,44 @@ body.no-scroll { overflow: hidden; }
   100% { transform: translateY(-3px); opacity: 0; }
 }
 
+/* =========================================
+   4. Guideline (Bell) アニメーション
+========================================= */
+/* 1. ボタンが押される動き */
+.square-btn:hover .bell-stem {
+  transform: translateY(2px);
+  transition: transform 0.1s ease;
+}
+
+/* 2. ベル本体が揺れる動き */
+.square-btn:hover .bell-group {
+  animation: bellRing 0.28s ease-in-out 0.1s;
+}
+
+/* 3. 音波が広がる動き */
+.square-btn:hover .bell-sound-waves {
+  animation: bellWaves 0.7s ease-out 0.13s;
+}
+
+/* ベルの揺れのキーフレーム（Reactの数値を完全再現） */
+@keyframes bellRing {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-2deg); }
+  40%  { transform: rotate(2deg); }
+  60%  { transform: rotate(-2deg); }
+  80%  { transform: rotate(2deg); }
+  90%  { transform: rotate(-1deg); }
+  95%  { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* 音波の広がりとフェードアウトのキーフレーム */
+@keyframes bellWaves {
+  0%   { opacity: 0; transform: scale(0.8); }
+  20%  { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.3); }
+}
+
 /* -----------------------------------------
    テキストとアンダーグロウの設定
 ----------------------------------------- */
