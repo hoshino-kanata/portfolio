@@ -2397,7 +2397,7 @@ body.no-scroll { overflow: hidden; }
   position: relative; /* 背景層の基準 */
   pointer-events: auto; display: block;
   
-  width: 240px; 
+  width: 320px; 
   padding: 30px 15px; 
   
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -2446,7 +2446,7 @@ body.no-scroll { overflow: hidden; }
 .wave-hamburger {
   position: absolute;
   top: 30px; right: 4vw; 
-  width: 120px; height: 120px; 
+  width: 160px; height: 160px; 
   cursor: pointer; outline: none; background: transparent; border: none;
   display: flex; flex-direction: column; align-items: center; justify-content: center; 
   gap: 8px;
