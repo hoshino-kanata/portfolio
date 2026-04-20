@@ -1,10 +1,67 @@
 @charset "UTF-8";
 
 /* =========================================
-   アイコンアニメーション (スクロール連動)
+   Basic Animations (共通の動き)
 ========================================= */
+/* フェードイン */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* 共通設定 */
+/* 呼吸・浮遊 */
+@keyframes breathe {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* 羽の舞い（バナー・リンク用） */
+@keyframes featherFlutter {
+  0%   { transform: translate(0px, 0px) rotate(0deg); }
+  20%  { transform: translate(2px, -4px) rotate(-8deg); }
+  40%  { transform: translate(-2px, -2px) rotate(4deg); }
+  60%  { transform: translate(1px, -1px) rotate(-3deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+/* =========================================
+   Hero & Layout Animations (メイン・背景の動き)
+========================================= */
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes logoJellyfish {
+  0% {
+    filter: invert(86%) sepia(21%) saturate(366%) hue-rotate(194deg) brightness(38%) contrast(92%) drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+    opacity: 0.5;
+  }
+  100% {
+    filter: invert(86%) sepia(21%) saturate(366%) hue-rotate(194deg) brightness(45%) contrast(92%) drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+    opacity: 0.7;
+  }
+}
+
+/* ステンドグラスのジャンプ演出 */
+@keyframes pyonJumpLeft { 0% { transform: translate(-150%, -50%); } 100% { transform: translate(-110%, -50%); } }
+@keyframes pyonJumpRight { 0% { transform: translate(150%, -50%) scaleX(-1); } 100% { transform: translate(110%, -50%) scaleX(-1); } }
+
+/* =========================================
+   Scroll-Linked Icon Animations (スクロール連動アイコン)
+========================================= */
+/* 線を描画する共通アニメーション */
 @keyframes drawLine {
   0% { opacity: 0; }
   1% { opacity: 1; }
@@ -12,23 +69,18 @@
 }
 
 /* --- OKマーク (CircleCheck) --- */
-.icon-check-animated {
-  color: #8ecbd6; 
-}
+.icon-check-animated { color: #8ecbd6; }
 .icon-check-animated .check-path {
   stroke-dasharray: 15;
   stroke-dashoffset: 15;
   opacity: 0;
 }
-/* ポップアップ後に描画 */
 .show .icon-check-animated .check-path {
   animation: drawLine 0.4s ease 0.2s forwards;
 }
 
 /* --- 禁止マーク (Ban) --- */
-.icon-ban-animated {
-  color: #d68eb0; 
-}
+.icon-ban-animated { color: #d68eb0; }
 .icon-ban-animated .ban-circle {
   stroke-dasharray: 65;
   stroke-dashoffset: 65;
@@ -39,18 +91,11 @@
   stroke-dashoffset: 25;
   opacity: 0;
 }
-/* ポップアップ後に描画（斜線は少し遅れて） */
-.show .icon-ban-animated .ban-circle {
-  animation: drawLine 0.4s ease 0.2s forwards;
-}
-.show .icon-ban-animated .ban-slash {
-  animation: drawLine 0.3s ease 0.5s forwards;
-}
+.show .icon-ban-animated .ban-circle { animation: drawLine 0.4s ease 0.2s forwards; }
+.show .icon-ban-animated .ban-slash { animation: drawLine 0.3s ease 0.5s forwards; }
 
 /* --- 警告マーク (Warn) --- */
-.icon-warn {
-  color: #d6c68e;
-}
+.icon-warn { color: #d6c68e; }
 .icon-warn path {
   stroke-dasharray: 80;
   stroke-dashoffset: 80;
@@ -61,33 +106,19 @@
   stroke-dashoffset: 10;
   opacity: 0;
 }
-/* ポップアップ後に描画（三角形を描いた後にビックリマーク） */
-.show .icon-warn path {
-  animation: drawLine 0.5s ease 0.2s forwards;
-}
-.show .icon-warn line {
-  animation: drawLine 0.2s ease 0.6s forwards;
-}
+.show .icon-warn path { animation: drawLine 0.5s ease 0.2s forwards; }
+.show .icon-warn line { animation: drawLine 0.2s ease 0.6s forwards; }
 
 /* --- 送信・手紙マーク (Send / Letter) --- */
 .icon-send-animated {
-  color: #8cd6ab; /* パステルグリーン */
+  color: #8cd6ab; 
   overflow: visible;
 }
-.icon-send-animated .send-plane {
-  transform-origin: center;
-}
-.icon-send-animated .send-trail {
-  opacity: 0;
-}
+.icon-send-animated .send-plane { transform-origin: center; }
+.icon-send-animated .send-trail { opacity: 0; }
 
-/* ポップアップ後にアニメーションを実行 */
-.show .icon-send-animated .send-plane {
-  animation: flyPlane 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-.show .icon-send-animated .send-trail {
-  animation: showTrail 0.6s ease 0.3s forwards;
-}
+.show .icon-send-animated .send-plane { animation: flyPlane 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.show .icon-send-animated .send-trail { animation: showTrail 0.6s ease 0.3s forwards; }
 
 @keyframes flyPlane {
   0% { transform: translate(0, 0) scale(1); }
@@ -101,32 +132,17 @@
 /* =========================================
    SVG Hover Animations (アイコンの特殊な動き)
 ========================================= */
-
-/* -----------------------------------------
-   1. YouTube (Clap)
------------------------------------------ */
+/* 1. YouTube (Clap) */
 .clap-base-group { transform-origin: 4px 20px; }
 .clap-top-group { transform-origin: 3px 11px; }
 
 .square-btn:hover .clap-base-group { animation: clapBaseAnim 0.8s ease-in-out forwards; }
 .square-btn:hover .clap-top-group { animation: clapTopAnim 0.4s ease-in-out forwards; }
 
-@keyframes clapBaseAnim {
-  0%   { transform: rotate(0deg); }
-  25%  { transform: rotate(-10deg); }
-  50%  { transform: rotate(-10deg); }
-  100% { transform: rotate(0deg); }
-}
-@keyframes clapTopAnim {
-  0%   { transform: rotate(0deg); }
-  30%  { transform: rotate(-10deg); }
-  60%  { transform: rotate(16deg); }
-  100% { transform: rotate(0deg); }
-}
+@keyframes clapBaseAnim { 0%, 100% { transform: rotate(0deg); } 25%, 50% { transform: rotate(-10deg); } }
+@keyframes clapTopAnim { 0%, 100% { transform: rotate(0deg); } 30% { transform: rotate(-10deg); } 60% { transform: rotate(16deg); } }
 
-/* -----------------------------------------
-   2. X / Twitter (Draw Line)
------------------------------------------ */
+/* 2. X / Twitter (Draw Line) */
 .twitter-path { stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 1; }
 .square-btn:hover .twitter-path { animation: twitterDraw 0.6s linear forwards; }
 
@@ -136,9 +152,7 @@
   100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
-/* -----------------------------------------
-   3. Goods (Ambulance)
------------------------------------------ */
+/* 3. Goods (Ambulance) */
 .amb-wheel-1 { transform-origin: 7px 18px; }
 .amb-wheel-2 { transform-origin: 17px 18px; }
 .amb-speed-1, .amb-speed-2, .amb-speed-3 { opacity: 0; transform-origin: left; }
@@ -150,12 +164,7 @@
 .square-btn:hover .amb-speed-2 { animation: ambSpeedLine 0.5s ease-out infinite 0.16s; }
 .square-btn:hover .amb-speed-3 { animation: ambSpeedLine 0.5s ease-out infinite 0.08s; }
 
-@keyframes ambBodyBounce {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-1px); }
-  50% { transform: translateY(0); }
-  75% { transform: translateY(-0.5px); }
-}
+@keyframes ambBodyBounce { 0%, 100% { transform: translateY(0); } 25% { transform: translateY(-1px); } 50% { transform: translateY(0); } 75% { transform: translateY(-0.5px); } }
 @keyframes ambWheelSpin { 100% { transform: rotate(360deg); } }
 @keyframes ambCrossBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 @keyframes ambSpeedLine {
@@ -165,9 +174,7 @@
   100% { opacity: 0; transform: translateX(-16px) scaleX(0.3); }
 }
 
-/* -----------------------------------------
-   4. Wishlist (Coffee)
------------------------------------------ */
+/* 4. Wishlist (Coffee) */
 .coffee-steam-1, .coffee-steam-2, .coffee-steam-3 { opacity: 0; }
 .square-btn:hover .coffee-steam-1 { animation: coffeeSteam 1.5s ease-in-out infinite 0.2s; }
 .square-btn:hover .coffee-steam-2 { animation: coffeeSteam 1.5s ease-in-out infinite 0.4s; }
@@ -179,9 +186,7 @@
   100% { transform: translateY(-3px); opacity: 0; }
 }
 
-/* -----------------------------------------
-   5. Guideline (Bell)
------------------------------------------ */
+/* 5. Guideline (Bell) */
 .bell-group { transform-origin: 50% 100%; }
 .bell-sound-waves { transform-origin: center; opacity: 0; }
 
@@ -190,17 +195,20 @@
 .square-btn:hover .bell-sound-waves { animation: bellWaves 0.7s ease-out 0.13s; }
 
 @keyframes bellRing {
-  0%   { transform: rotate(0deg); }
-  20%  { transform: rotate(-2deg); }
-  40%  { transform: rotate(2deg); }
-  60%  { transform: rotate(-2deg); }
-  80%  { transform: rotate(2deg); }
+  0%, 100% { transform: rotate(0deg); }
+  20%, 60% { transform: rotate(-2deg); }
+  40%, 80% { transform: rotate(2deg); }
   90%  { transform: rotate(-1deg); }
   95%  { transform: rotate(1deg); }
-  100% { transform: rotate(0deg); }
 }
 @keyframes bellWaves {
   0%   { opacity: 0; transform: scale(0.8); }
   20%  { opacity: 0.7; transform: scale(1); }
   100% { opacity: 0; transform: scale(1.3); }
 }
+
+/* =========================================
+   Footer Liquid Animations (フッターの液体)
+========================================= */
+@keyframes bigDrop { 0%, 100% { top: 80px; } 50% { top: -40px; } }
+@keyframes smallDrop { 0%, 100% { top: 80px; } 50% { top: 11px; } }

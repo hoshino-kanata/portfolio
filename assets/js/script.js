@@ -835,7 +835,7 @@ const skillsSwiper = new Swiper('.skills-slider', {
   loop: true,
   speed: 1000,
   autoplay: {
-    delay: 3500,
+    delay: 5000,
     disableOnInteraction: false,
   },
   centeredSlides: true,
