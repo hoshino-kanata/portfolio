@@ -818,7 +818,7 @@ document.addEventListener("DOMContentLoaded", () => {
         el: '.slider-dots',
         clickable: true,
         renderBullet: function (index, className) {
-          return '<span class="' + className + '">✦</span>'; // 点を「✦」に変更
+          return '<span class="' + className + '"></span>';
         },
       },
       breakpoints: {
