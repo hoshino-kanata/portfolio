@@ -1313,9 +1313,8 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
     border-radius: 0;
     filter: none;
   }
-  .nav-logo::before, .nav-logo::after {
-    display: none;
-  }
+  .nav-logo::before, .nav-logo::after { display: none; }
+  .nav-logo:hover img { filter: invert(81%) sepia(21%) saturate(350%) hue-rotate(338deg) brightness(96%) contrast(89%); }
   
   /* ★ハンバーガーの白い丸背景とガラス質感を解除 */
   .wave-hamburger {
@@ -1328,17 +1327,16 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-radius: 0; gap: 6px;
-    filter: none; /* ★ PC版のドロップシャドウを解除 */
+    filter: none;
   }
   /* ★ 追加：PC版のすりガラスフレーム（::before）を非表示にする */
-  .wave-hamburger::before, .wave-hamburger::after {
-    display: none;
-  }
+  .wave-hamburger::before, .wave-hamburger::after { display: none; }
   
   .wave-hamburger:hover {
     background: transparent; 
   }
   .wave-hamburger .bar { width: 28px; height: 2px; }
+  .wave-hamburger:hover .bar { background: var(--accent-gold); }
 
   .menu-window { 
     flex-direction: column; 
