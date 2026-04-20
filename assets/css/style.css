@@ -1273,6 +1273,89 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .f-footer-main { flex-direction: column; gap: 30px; text-align: center; }
   .f-nav-row { justify-content: center; gap: 15px; }
   .f-footer-bottom { flex-direction: column; text-align: center; gap: 20px; }
+
+  /* =========================================
+     全画面すりガラスメニュー
+  ========================================= */
+  .nav-logo {
+    width: 200px; height: auto;
+    margin-top: 5px; 
+    background: transparent; 
+    border: none; 
+    box-shadow: none; 
+    padding: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+    filter: none; /* ★ PC版のドロップシャドウを解除 */
+  }
+  .nav-logo::before, .nav-logo::after {
+    display: none;
+  }
+  
+  /* ★ハンバーガーの白い丸背景とガラス質感を解除 */
+  .wave-hamburger {
+    position: relative; top: auto; right: auto;
+    margin-top: 15px; 
+    width: 40px; height: 40px;
+    background: transparent; 
+    border: none; 
+    box-shadow: none; 
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0; gap: 6px;
+    filter: none; /* ★ PC版のドロップシャドウを解除 */
+  }
+  /* ★ 追加：PC版のすりガラスフレーム（::before）を非表示にする */
+  .wave-hamburger::before, .wave-hamburger::after {
+    display: none;
+  }
+  
+  .wave-hamburger:hover {
+    background: transparent; 
+  }
+  .wave-hamburger .bar { width: 28px; height: 2px; }
+
+  .menu-window { 
+    flex-direction: column; 
+    background: transparent;
+    backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px);
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.6s ease, backdrop-filter 0.6s ease, -webkit-backdrop-filter 0.6s ease;
+  }
+  .menu-window.open {
+    opacity: 1;
+    pointer-events: auto;
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+  }
+  
+  .menu-prism-bg, .menu-visual-area { display: none; }
+
+  .menu-content-area {
+    position: relative; width: 100%; height: 100%;
+    -webkit-mask-image: none; mask-image: none;
+    background: rgba(255, 255, 255, 0.65);
+    transform: translateY(20px); opacity: 0;
+    align-items: center; 
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+  .menu-window.open .menu-content-area { transform: translateY(0); opacity: 1; }
+
+  .menu-inner { 
+    width: 100%; 
+    padding: 80px 8vw 60px; /* 左右の余白を8vwに増やし、下にもゆとりを */
+    margin: 0; 
+    align-items: center; 
+    box-sizing: border-box; /* 確実にはみ出しを防止 */
+  }
+  .menu-close { top: 20px; right: 4vw; width: 50px; height: 50px; font-size: 36px; }
+  .f-sub-row { gap: 15px; }
+  .f-sub-label, .f-sub-link, .f-sub-link-main { font-size: 13px; }
+  .fragaria-menu-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px; }
+  .f-menu-item { font-size: 16px; justify-content: flex-start; }
+  .f-mark { display: inline-block; }
+
 }
 
 /* スマホ用タイトル（固定表示の代わり） */
