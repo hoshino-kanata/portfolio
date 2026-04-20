@@ -804,7 +804,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 3. Swiperスライダーの初期化設定 (無限ループ & ドラッグ対応)
   if (document.querySelector('.slider-container')) {
-    const swiper = new Swiper('slider-container', {
+    const swiper = new Swiper('.slider-container', {
       loop: true,                     // 無限にスライド
       centeredSlides: true,           // 選択したスライドを常に中央へ
       slidesPerView: 2,               // PCでは中央に1枚、左右に0.5枚ずつ
