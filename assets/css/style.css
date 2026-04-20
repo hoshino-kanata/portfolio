@@ -267,7 +267,7 @@ button, input, textarea, select {
   rotate: 20deg; object-fit: contain; z-index: 2; pointer-events: none; 
 }
 .breathe { animation: breathe 6s ease-in-out infinite; }
-@keyframes breathe { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+@keyframes breathe { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
 
 /* Wave Animations */
 .hero-wave {
@@ -1196,7 +1196,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .hero { height: 90vh; max-width: 100%; }
   .hero-character { max-width: 250%; height: 160vh; left: 5vw; bottom: -25vh; rotate: 45deg; object-fit: contain; }
   .hero-character.breathe { animation: breatheMobile 6s ease-in-out infinite; }
-  @keyframes breatheMobile { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+  @keyframes breatheMobile { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
   .hero-light { left: 50%; }
   .hero-ui { top: auto; bottom: 200px; left: 10vw; transform: translateY(50%); align-items: center; }
   .logo-box { display: inline-block; position: relative;}
@@ -1262,11 +1262,40 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .skills-text-area { margin-top: 15px; }
   .skills-arch-border::before { top: -0.5%; padding: 0 8px; font-size: 18px; }
 
-  /* ナビゲーション（ヘッダー） */
-  .nav-container { padding: 15px 4vw; height: 70px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+  /* ナビゲーション（ヘッダー）と波型ガラス */
+  .nav-container { 
+    padding: 15px 4vw; 
+    height: 95px; /* 波の分の高さを追加 */
+    background: transparent;
+    backdrop-filter: none;
+    align-items: flex-start;
+  }
+  .nav-glass-bg {
+    display: block;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    z-index: -1;
+    
+    -webkit-mask-image: linear-gradient(black, black), url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H1000 V50 Q750,100 500,50 T0,50 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: linear-gradient(black, black), url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H1000 V50 Q750,100 500,50 T0,50 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 70px, 300px 25px; 
+    mask-size: 100% 70px, 300px 25px;
+    -webkit-mask-position: 0 0, 0 70px; 
+    mask-position: 0 0, 0 70px;
+    -webkit-mask-repeat: no-repeat, repeat-x; 
+    mask-repeat: no-repeat, repeat-x;
+    animation: seamlessWave 4s linear infinite;
+  }
+  @keyframes seamlessWave {
+    0%   { -webkit-mask-position: 0 0, 0 70px; mask-position: 0 0, 0 70px; }
+    100% { -webkit-mask-position: 0 0, -300px 70px; mask-position: 0 0, -300px 70px; }
+  }
   .nav-logo { width: 160px; padding: 0; }
   .nav-logo::before, .nav-logo::after { display: none; }
-  .wave-hamburger { position: static; width: 40px; height: 40px; margin: 0; }
+  .wave-hamburger { position: relative; top: -5px; width: 40px; height: 40px; margin: 0; }
   .wave-hamburger::before, .wave-hamburger::after { display: none; }
 
   /* フッター */
