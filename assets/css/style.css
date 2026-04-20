@@ -968,13 +968,12 @@ body.no-scroll { overflow: hidden; }
 .nav-logo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(-45deg, var(--theme-pink), var(--bg-white), var(--theme-purple)); background-size: 200% 200%; animation: gradientMove 5s ease infinite; -webkit-mask-image: url('../img/fuwa_frame.svg'); mask-image: url('../img/fuwa_frame.svg'); -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; filter: blur(12px); opacity: 0.8; z-index: -2; transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease; }
 .nav-logo::before { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); -webkit-mask-image: url('../img/fuwa_frame.svg'); mask-image: url('../img/fuwa_frame.svg'); -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; z-index: -1; }
 .nav-logo:hover { opacity: 0.8; transform: translateY(2px); }
-.nav-logo img { position: relative; z-index: 1; width: 100%; height: auto; display: block; filter: invert(81%) sepia(21%) saturate(350%) hue-rotate(338deg) brightness(96%) contrast(89%); transition: filter 0.3s ease; }
-.nav-logo:hover img { filter: invert(32%) sepia(10%) saturate(700%) hue-rotate(201deg) brightness(93%) contrast(89%); }
+.nav-logo img { position: relative; z-index: 1; width: 100%; height: auto; display: block; transition: filter 0.3s ease; filter: invert(35%) sepia(7%) saturate(735%) hue-rotate(201deg) brightness(94%) contrast(88%); }
 
 .wave-hamburger { position: absolute; top: 30px; right: 3vw; width: 120px; height: 120px; cursor: pointer; outline: none; background: transparent; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); pointer-events: auto; z-index: 150; filter: drop-shadow(0px 0px 6px rgba(149, 148, 207, 0.25)) drop-shadow(-2px -2px 8px rgba(255, 255, 255, 0.8)); }
 .wave-hamburger::after { content: ""; position: absolute; inset: 0; background: linear-gradient(-45deg, var(--theme-pink), var(--bg-white), var(--theme-purple)); background-size: 200% 200%; animation: gradientMove 5s ease infinite; -webkit-mask-image: url('../img/funya_frame.svg'); mask-image: url('../img/funya_frame.svg'); -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; filter: blur(12px); opacity: 0.8; z-index: -2; transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease; }
 .wave-hamburger::before { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); -webkit-mask-image: url('../img/funya_frame.svg'); mask-image: url('../img/funya_frame.svg'); -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; z-index: -1; }
-.wave-hamburger .bar { display: block; width: 40px; height: 2px; background: var(--accent-gold); transition: 0.3s; }
+.wave-hamburger .bar { display: block; width: 40px; height: 2px; background: var(--text-main); transition: 0.3s; }
 .wave-hamburger:hover { transform: translateY(2px); opacity: 0.85; }
 .wave-hamburger:hover .bar { background: var(--text-main); }
 body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; transform: scale(0.8); }
@@ -1304,7 +1303,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   ========================================= */
   .nav-logo {
     width: 200px; height: auto;
-    margin-top: -5px; 
+    margin-top: -10px; left: -2.5%;
     background: transparent; 
     border: none; 
     box-shadow: none; 
@@ -1321,7 +1320,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   /* ★ハンバーガーの白い丸背景とガラス質感を解除 */
   .wave-hamburger {
     position: relative; top: auto; right: auto;
-    margin-top: 15px; 
+    margin-top: 0; 
     width: 40px; height: 40px;
     background: transparent; 
     border: none; 
