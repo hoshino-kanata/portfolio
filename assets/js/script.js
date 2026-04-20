@@ -803,19 +803,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 3. Swiperスライダーの初期化設定 (無限ループ & ドラッグ対応)
-  if (document.querySelector('.f-slider-container')) {
-    const swiper = new Swiper('.f-slider-container', {
+  if (document.querySelector('.slider-container')) {
+    const swiper = new Swiper('slider-container', {
       loop: true,                     // 無限にスライド
       centeredSlides: true,           // 選択したスライドを常に中央へ
       slidesPerView: 2,               // PCでは中央に1枚、左右に0.5枚ずつ
       spaceBetween: 1,                // グリッド線の幅を1pxに
       grabCursor: true,               // ドラッグ時に手のマークを表示
       navigation: {
-        nextEl: '.f-slider-btn.next',
-        prevEl: '.f-slider-btn.prev',
+        nextEl: '.slider-btn.next',
+        prevEl: '.slider-btn.prev',
       },
       pagination: {
-        el: '.f-slider-dots',
+        el: '.slider-dots',
         clickable: true,
         renderBullet: function (index, className) {
           return '<span class="' + className + '">✦</span>'; // 点を「✦」に変更
