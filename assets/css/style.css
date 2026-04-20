@@ -1293,10 +1293,6 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
     0%   { -webkit-mask-position: 0 0, 0 70px; mask-position: 0 0, 0 70px; }
     100% { -webkit-mask-position: 0 0, -300px 70px; mask-position: 0 0, -300px 70px; }
   }
-  .nav-logo { width: 160px; padding: 0; }
-  .nav-logo::before, .nav-logo::after { display: none; }
-  .wave-hamburger { position: relative; top: -5px; width: 40px; height: 40px; margin: 0; }
-  .wave-hamburger::before, .wave-hamburger::after { display: none; }
 
   /* フッター */
   .f-footer-main { flex-direction: column; gap: 30px; text-align: center; }
@@ -1308,7 +1304,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   ========================================= */
   .nav-logo {
     width: 200px; height: auto;
-    margin-top: 5px; 
+    margin-top: -5px; 
     background: transparent; 
     border: none; 
     box-shadow: none; 
@@ -1316,7 +1312,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-radius: 0;
-    filter: none; /* ★ PC版のドロップシャドウを解除 */
+    filter: none;
   }
   .nav-logo::before, .nav-logo::after {
     display: none;
