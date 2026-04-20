@@ -386,7 +386,10 @@ h4 { font-size: 16px; font-weight: bold; color: var(--text-main); text-transform
 
 /* 星の装飾コンテナ */
 .frame-stars-container { position: absolute; width: 92vw; max-width: 1600px; height: 82vh; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 25; }
-.star-deco { position: absolute; display: block; filter: brightness(0) invert(1) drop-shadow(1px 0 0 #ead5cd) drop-shadow(-1px 0 0 #ead5cd) drop-shadow(0 1px 0 #ead5cd) drop-shadow(0 -1px 0 #ead5cd);}
+.star-deco {
+  position: absolute; display: block;
+  filter: brightness(0) invert(1) drop-shadow(1px 0 0 #ead5cd) drop-shadow(-1px 0 0 #ead5cd) drop-shadow(0 1px 0 #ead5cd) drop-shadow(0 -1px 0 #ead5cd);
+}
 .star-tl-1 { top: 4%; left: 0%; height: 120px; } .star-tl-2 { top: 18%; left: -4%; height: 60px; } .star-tr-1 { top: 14%; right: -1%; height: 100px; } .star-bl-1 { bottom: 9%; left: -1%; height: 140px; } .star-bl-2 { bottom: 24%; left: -4%; height: 80px; } .star-bl-3 { bottom: 10%; left: 10%; height: 40px; } .star-br-1 { bottom: 6%; right: 3%; height: 65px; } .star-br-2 { bottom: 16%; right: -5%; height: 120px; } .star-flip { transform: scaleX(-1); }
 
 .hero-glass-slider { position: absolute; top: 50%; left: 0; width: 100%; height: 95vh; transform: translateY(-50%); overflow: hidden; opacity: 0.2; pointer-events: none; }
