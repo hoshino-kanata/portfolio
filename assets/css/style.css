@@ -263,9 +263,11 @@ button, input, textarea, select {
 }
 
 .hero-character {
-  position: absolute; height: 180vh; width: auto; bottom: -20vh; left: 25%;
+  position: absolute; height: 180vh; width: auto; bottom: -15vh; left: 25%;
   rotate: 20deg; object-fit: contain; z-index: 2; pointer-events: none; 
 }
+.breathe { animation: breathe 6s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
 
 /* Wave Animations */
 .hero-wave {
@@ -277,11 +279,10 @@ button, input, textarea, select {
 .wave-parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 12s; opacity: 0.3; }
 .wave-parallax > use:nth-child(2) { animation-delay: -4s; animation-duration: 18s; opacity: 0.6; }
 .wave-parallax > use:nth-child(3) { animation-delay: -6s; animation-duration: 24s; opacity: 1.0; }
-
 @keyframes move-forever { 0% { transform: translate3d(-90px, 0, 0); } 100% { transform: translate3d(85px, 0, 0); } }
 
 .hero-ui { position: absolute; top: 3vw; left: 4vw; z-index: 10; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
-.logo-box { display: inline-block; position: relative; }
+.logo-box { display: inline-block; position: relative; display: none; }
 .logo { width: 420px; display: block; animation: logoJellyfish 10s ease-in-out infinite alternate; }
 @media (max-width: 768px) { .logo { width: 260px; } }
 
@@ -757,7 +758,7 @@ body.no-scroll { overflow: hidden; }
   -webkit-mask-size: calc(50% - 20px) 40px, calc(50% - 20px) 40px, 100% calc(100% - 40px);
   -webkit-mask-position: top left, top right, bottom center; -webkit-mask-repeat: no-repeat;
 }
-.skills-arch-border::before { content: "✦"; position: absolute; top: -0.5%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-base); padding: 0 8px; color: var(--text-main); font-size: 20px; z-index: 2; }
+.skills-arch-border::before { content: "✦"; position: absolute; top: -0.5%; left: 50%; transform: translate(-50%, -50%); background: transparent; padding: 0 8px; color: var(--text-main); font-size: 20px; z-index: 2; }
 .skills-item .skills-arch-top-star { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: transparent; padding: 0; display: flex; z-index: 5; }
 .skills-arch-top-star svg { width: clamp(14px, 3vw, 22px); height: auto; color: var(--text-main); }
 .skills-arch-mask { z-index: 0; width: clamp(240px, 60vw, 400px); height: clamp(320px, 80vw, 540px); border-radius: 500px 500px 0 0; overflow: hidden; border: 1px solid var(--text-main); }
@@ -1124,3 +1125,162 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
 @keyframes lRipple { 0% { left: 51%; top: 50px; } 25% { left: 25%; top: 80px; } 49% { top: 80px; } 50% { left: 51%; top: 55px; } 75% { left: 35%; top: 80px; } 99% { left: 35%; top: 80px; } 100% { left: 51%; top: 50px; } }
 @keyframes rRipple { 0% { left: 53%; top: 50px; } 25% { left: 75%; top: 80px; } 49% { top: 80px; } 50% { left: 53%; top: 55px; } 75% { left: 65%; top: 80px; } 99% { top: 80px; } 100% { left: 53%; top: 50px; } }
 
+/* =========================================
+   Responsive (Smartphone & Tablet Optimized)
+   ※1400px版を廃止し、スマホ版の設計に一本化
+========================================= */
+
+@media (max-width: 1024px) {
+  /* 共通の余白・基本設定 */
+  .page-header { padding: 100px 5vw 40px; }
+  .f-grid-3col { grid-template-columns: repeat(2, 1fr); }
+  .text-layout-2col, .text-layout-3col { grid-template-columns: repeat(1, 1fr); }
+  .footer-wrapper { width: 100%; margin: 0; }
+
+  /* =========================================
+     装飾・特殊スクロールの完全解除
+  ========================================= */
+  .frame-stars-container, 
+  .frame-line, 
+  .frame-nuri, 
+  .hero-glass-slider, 
+  .stained-glass-deco {
+    display: none !important;
+  }
+
+  /* 額縁（main_frame）のマスクと固定挙動を解除 */
+  .frame-viewport {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  .frame-scroll-zone {
+    height: auto !important;
+    margin-top: 0 !important;
+  }
+
+  .frame-sticky-wrapper {
+    position: static !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .frame-moving-body {
+    position: relative !important;
+    margin-top: 0 !important;
+    padding-bottom: 80px !important;
+    transform: none !important; /* JavaScriptによる強制移動を無効化 */
+  }
+
+  /* セクションの背景と余白をクリーンに */
+  .links, .about, .skills, .community-area, .contact { 
+    padding: 60px 6vw; 
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .styled-card { 
+    padding: 30px 20px; 
+    box-shadow: none; 
+    background: transparent;
+  }
+  .styled-card.is-full { margin-top: 0; }
+
+  /* =========================================
+     各パーツのスマホ最適化
+  ========================================= */
+  
+  /* Hero */
+  .hero { height: 90vh; max-width: 100%; }
+  .hero-character { max-width: 250%; height: 160vh; left: 5vw; bottom: -25vh; rotate: 45deg; object-fit: contain; }
+  .hero-character.breathe { animation: breatheMobile 6s ease-in-out infinite; }
+  @keyframes breatheMobile { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+  .hero-light { left: 50%; }
+  .hero-ui { top: auto; bottom: 200px; left: 10vw; transform: translateY(50%); align-items: center; }
+  .logo-box { display: inline-block; position: relative;}
+  .logo { width: 80vw; }
+
+  .voice-menu { top: auto; bottom: 112px; left: 0; right: 0; width: 100%; transform: none; flex-direction: row; justify-content: center; gap: 16px; }
+  .voice-circle-btn { width: 84px; height: 84px; animation-name: popInUp; }
+  .mic-icon { width: 24px; height: 24px; }
+  .voice-circle-btn span { font-family: var(--font-en-serif); font-size: 10px; }
+
+  .floating-news {
+    position: relative; top: auto; bottom: auto; left: 50%; right: auto; transform: translateX(-50%);
+    margin: 30px 0 20px 0; width: calc(100% - 5vw); max-width: none; animation: none; z-index: 20;
+  }
+  .news-content { width: 100%; padding: 20px; flex-direction: column; align-items: center; }
+  .news-label-pc { display: none; }
+  .news-label-sp {
+    display: block; writing-mode: horizontal-tb; transform: none;
+    font-size: 1em; font-weight: bold; color: var(--text-sub); letter-spacing: 0.1em;
+    text-align: center; margin: 4px 0;
+  }
+  .frame-scroll-zone { margin-top: 0px; }
+  .news-slide-desc { font-size: 1em; }
+  .news-slide-title { font-size: 16px; }
+  .news-slide-desc { font-size: 15px; }
+
+  /* プロフィール */
+  .profile-wrapper, .profile-details, .fanclub-banner, .fanclub-text { height: auto !important; min-height: min-content !important; }
+  .fanclub-banner { flex-direction: column; align-items: flex-start; padding: 30px; }
+  .profile-visual { height: auto; max-width: 100%; aspect-ratio: 3/4; }
+  .profile-details { padding: 20px; gap: 30px; }
+  .profile-card { flex-direction: column; }
+  .profile-more-trigger { display: none; }
+  .profile-more-btn-sp { display: flex; margin: 0 auto; }
+  .fanclub-img { width: 240px; right: -10px; bottom: -10px; }
+
+  /* Square Grid (SNSアイコン等) */
+  .square-grid { grid-template-columns: repeat(2, 1fr); gap: 5vw; justify-items: center; }
+  .square-grid.is-3col { grid-template-columns: repeat(2, 1fr); }
+  .square-btn { width: 100%; max-width: 40vw; }
+  .square-btn.is-about .link-text { font-size: 20px; margin-top: 8px; }
+
+  /* Activity / Guideline */
+  .activity-container { flex-direction: column; align-items: center; gap: 50px; }
+  .record-disc-image { width: 280px; height: 280px; position: static; }
+  .activity-list .date { font-size: 14px; color: var(--accent-gold); }
+  .activity-list-link { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+  
+  .community-area .styled-card { padding: 0; }
+  .community-area .gc-layout { flex-direction: column; }
+  .gc-left, .gc-right { grid-area: 1 / 1; }
+  .gc-left { width: 100%; height: 100%; position: absolute; opacity: 0.25; pointer-events: none; }
+  .gc-char-img { height: 80vh; left: -30%; }
+  .gc-right { width: 100%; padding: 0; }
+  .gc-block { background: transparent; box-shadow: none; padding: 30px; border-radius: 20px; }
+  .clean-tag-list { grid-template-columns: 1fr; }
+
+  /* 3. Skillsセクションの広すぎる余白をカット */
+  .skills { padding: 0 6vw 90px; }
+  #skills .styled-card { padding: 0; margin: 0; height: 60vh; }
+  #skills .skills-slider { padding: 10px 0; }
+  .skills-arch-mask { height: clamp(280px, 75vw, 420px); }
+  .skills-text-area { margin-top: 15px; }
+  .skills-arch-border::before { top: -0.5%; padding: 0 8px; font-size: 18px; }
+
+  /* ナビゲーション（ヘッダー） */
+  .nav-container { padding: 15px 4vw; height: 70px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+  .nav-logo { width: 160px; padding: 0; }
+  .nav-logo::before, .nav-logo::after { display: none; }
+  .wave-hamburger { position: static; width: 40px; height: 40px; margin: 0; }
+  .wave-hamburger::before, .wave-hamburger::after { display: none; }
+
+  /* フッター */
+  .f-footer-main { flex-direction: column; gap: 30px; text-align: center; }
+  .f-nav-row { justify-content: center; gap: 15px; }
+  .f-footer-bottom { flex-direction: column; text-align: center; gap: 20px; }
+}
+
+/* スマホ用タイトル（固定表示の代わり） */
+@media (max-width: 1024px) {
+  .fixed-section-title {
+    position: relative; top: 0; left: 0; width: 100%;
+    font-size: 2.8rem; margin-bottom: 30px; text-align: center;
+    opacity: 1 !important; transform: none !important;
+    pointer-events: auto; display: block;
+  }
+}
