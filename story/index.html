@@ -4,145 +4,307 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Story ｜ 星乃かなた</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Story | Hoshino Kanata - The Sacred Pages</title>
   
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/story.css">
   <script>
     (function(d) {
       var config = { kitId: 'ghr8etq', scriptTimeout: 3000, async: true },
       h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
     })(document);
   </script>
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
 {% include menu.html %}
 
-<header class="page-header scroll-pop">
-    <span class="page-sub-title">Secret Lore</span>
-    <h1 class="page-main-title">Story</h1>
-    <p class="page-desc">彼の、本当のすがた。</p>
-</header>
+  <nav class="mobile-nav">
+    <button class="nav-btn" id="prevBtn" disabled>PREV</button>
+    <div class="nav-divider"></div>
+    <button class="nav-btn" id="nextBtn">NEXT</button>
+  </nav>
 
-<main class="main-content">
+  <div class="snap-container" id="snap">
+    
+    <section class="is-active">
+      <div class="layer layer-back">
+        <div class="content">
+          <p class="story-text text-center">
+            真実は、やさしい顔で隠されている。<br>
+            ——これは、その記録である。
+          </p>
+        </div>
+      </div>
+      <div class="layer layer-front">
+        <div class="content">
+          <h1 class="hero-title">STORY</h1>
+          <p class="hint-bar">ゆっくりなぞって、覗いてみてね</p>
+          <p class="subtitle">星乃 かなた</p>
+        </div>
+      </div>
+    </section>
 
-<section class="component-section">
-    <div class="text-layout-1col scroll-pop">
-        <p class="poetic-title">やさしい歌で、あなたに寄り添う存在</p>
-        <p class="poetic-desc">
-            祈りの少年<br>
-            彼は、歌う。<br>
-            ただ誰かのために。<br><br>
-            魔教会の聖歌隊として、迷える人々に寄り添い、癒しを与える存在。<br>
-            争いを知らず、恋を知らず、ただ静かに、誰かのために在ろうとする。
-        </p>
-    </div>
-</section>
+    <section>
+      <div class="layer layer-back">
+        <div class="content">
+          <p class="story-text">
+            観察記録<br>
+            <br>
+            被験体Kは、極めて従順である。<br>
+            他個体と比較して、著しく攻撃性が低い。<br>
+            対象からの搾取行動を確認できず。<br>
+            <br>
+            代替行動として「奉仕」を選択している。<br>
+            ——これは適応か、それとも欠損か。
+          </p>
+        </div>
+      </div>
+      <div class="layer layer-front">
+        <span class="vertical-text">聖歌隊の祈り</span>
+        <div class="content">
+          <span class="title-large">やさしい歌で、あなたに寄り添う</span>
+          <p class="story-text">
+            彼は歌う。<br>
+            魔教会の聖歌隊として、迷える人々に寄り添い、癒やしを与える存在。<br>
+            争いを知らず、自由を知らず、ただ誰かのために在ろうとする。
+          </p>
+        </div>
+      </div>
+    </section>
 
-<section class="component-section">
-    <div class="text-layout-1col scroll-pop">
-        <p class="poetic-title">やさしさの理由</p>
-        <p class="poetic-desc">
-            彼は少しだけ、他の子どもたちと違っていた。<br><br>
-            人を堕とすことができない。<br>
-            支配することもできない。<br><br>
-            だから、ただ尽くした。<br>
-            それしか、できなかった。
-        </p>
-    </div>
-    <hr class="divider scroll-pop">
-</section>
+    <section>
+      <div class="layer layer-back">
+        <div class="content">
+          <p class="story-text">
+            規定から逸脱して、彼は孤立している。<br>
+            奪うことができない個体は、通常、淘汰される。<br>
+            <br>
+            だが——<br>
+            この個体は私が最も欲していた、守り慈しむべき存在である。
+          </p>
+        </div>
+      </div>
+      <div class="layer layer-front">
+        <div class="content">
+          <h2 class="title-large no-border-title">戒律</h2>
+          <p class="story-text">
+            インキュバスは、人を導く存在。<br>
+            迷える心に寄り添い甘く囁き、やがてその心も体も魂をも手に入れる。<br>
+            <br>
+            それが、彼らに与えられた役目。
+          </p>
+        </div>
+      </div>
+    </section>
 
-<section class="component-section">
-    <div class="text-layout-2col scroll-pop">
-        <div class="text-col">
-            <p class="col-title">✦ 魔教会</p>
-            <p class="col-text">
-                そこは、どこにでもある。<br>
-                どこにもない場所。<br><br>
-                路地の奥、扉の向こう。<br>
-                気づけば辿り着く、祈りの場所。<br><br>
-                少年たちは歌う。<br>
-                そして——人を堕とす。
+    <section>
+      <div class="layer layer-back">
+        <div class="content" style="display: grid;">
+          <div style="grid-area: 1 / 1;">
+            <div class="split-box">
+              <div class="split-left">
+                <span class="split-title">✦ 檻</span>
+                <p class="split-text">
+                  教会という体裁は、子供たちを閉じ込めておくには都合がいい。<br><br><br>
+                </p>
+              </div>
+              <div class="split-right">
+                <span class="split-title">✦ 観察</span>
+                <p class="split-text">
+                  悪魔としては、彼は永遠に満たされないのだろう。<br><br><br>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div style="grid-area: 1 / 1; visibility: hidden; pointer-events: none;" aria-hidden="true">
+            <div class="split-box">
+              <div class="split-left">
+                <span class="split-title">✦ 魔教会</span>
+                <p class="split-text">
+                  そこは、どこにでもある。どこにもない場所。<br>
+                  路地の奥、扉の向こう。<br>
+                  気づけば辿り着く、祈りの場所。
+                </p>
+              </div>
+              <div class="split-right">
+                <span class="split-title">✦ インキュバス</span>
+                <p class="split-text">
+                  彼らは悪魔。<br>
+                  人を魅了し、堕落させ、眷属とする存在。<br>
+                  それが、正しい在り方。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layer layer-front">
+        <div class="content" style="display: grid;">
+          <div style="grid-area: 1 / 1;">
+            <div class="split-box">
+              <div class="split-left">
+                <span class="split-title">✦ 魔教会</span>
+                <p class="split-text">
+                  そこは、どこにでもある。どこにもない場所。<br>
+                  路地の奥、扉の向こう。<br>
+                  気づけば辿り着く、祈りの場所。
+                </p>
+              </div>
+              <div class="split-right">
+                <span class="split-title">✦ インキュバス</span>
+                <p class="split-text">
+                  彼らは悪魔。<br>
+                  人を魅了し、堕落させ、眷属とする存在。<br>
+                  それが、正しい在り方。
+                </p>
+              </div>
+            </div>
+          </div>
+          <div style="grid-area: 1 / 1; visibility: hidden; pointer-events: none;" aria-hidden="true">
+            <div class="split-box">
+              <div class="split-left">
+                <span class="split-title">✦ 檻</span>
+                <p class="split-text">
+                  教会という体裁は、子供たちを閉じ込めておくには都合がいい。<br><br>
+                </p>
+              </div>
+              <div class="split-right">
+                <span class="split-title">✦ 観察</span>
+                <p class="split-text">
+                  悪魔としては、彼は永遠に満たされないのだろう。<br><br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="layer layer-back">
+        <div class="content" style="display: grid;">
+          <div style="grid-area: 1 / 1;">
+            <h2 class="title-large no-border-title" style="margin-bottom: 20px;">肩甲骨の縫合痕</h2>
+            <div class="img-frame truth-border" style="background: #000;">
+              <img src="https://images.unsplash.com/photo-1502220941724-7da9f8602b9e?q=80&w=600&auto=format&fit=crop" style="filter: grayscale(1) brightness(0.4);">
+            </div>
+            <p class="story-text">
+              外科処置は成功。<br>
+              翼の切除、及び置換は問題なく完了。拒絶反応も見られない。<br>
+              <br>
+              記憶障害の発生を確認。<br>
+              ——理想的な状態である。
             </p>
+          </div>
+          <div style="grid-area: 1 / 1; visibility: hidden; pointer-events: none;" aria-hidden="true">
+            <h2 class="title-large no-border-title" style="margin-bottom: 20px;">肩甲骨の縫合痕</h2>
+            <div class="img-frame">
+              <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=600&auto=format&fit=crop" alt="Angel Statue">
+            </div>
+            <p class="story-text">題：自画像</p>
+          </div>
         </div>
-        <div class="text-col">
-            <p class="col-title">✦ インキュバス</p>
-            <p class="col-text">
-                彼らは悪魔。<br>
-                人を魅了し、堕落させ、眷属とする存在。<br><br>
-                それが、正しい在り方。<br><br>
-                けれど彼は——違った。
+      </div>
+      <div class="layer layer-front">
+        <div class="content" style="display: grid;">
+          <div style="grid-area: 1 / 1;">
+            <h2 class="title-large no-border-title" style="margin-bottom: 20px; visibility: hidden;" aria-hidden="true">肩甲骨の縫合痕</h2>
+            <div class="img-frame">
+              <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=600&auto=format&fit=crop" alt="Angel Statue">
+            </div>
+            <p class="story-text">題：自画像</p>
+          </div>
+          <div style="grid-area: 1 / 1; visibility: hidden; pointer-events: none;" aria-hidden="true">
+            <h2 class="title-large no-border-title" style="margin-bottom: 20px;">肩甲骨の縫合痕</h2>
+            <div class="img-frame truth-border" style="background: #000;">
+              <img src="https://images.unsplash.com/photo-1502220941724-7da9f8602b9e?q=80&w=600&auto=format&fit=crop">
+            </div>
+            <p class="story-text">
+              外科処置は成功。<br>
+              翼の切除、及び置換は問題なく完了。拒絶反応も見られない。<br>
+              <br>
+              記憶障害の発生を確認。<br>
+              ——理想的な状態である。
             </p>
+          </div>
         </div>
-    </div>
-    <hr class="divider scroll-pop">
-</section>
+      </div>
+    </section>
 
-<section class="component-section">
-    <p class="section-title scroll-pop" style="color: var(--theme-pink); border-color: rgba(218, 112, 121, 0.2);">違和感</p>
-    <div class="text-layout-1col scroll-pop">
-        <p class="poetic-desc">
-            なぜ、彼は奪えないのか。<br>
-            なぜ、彼は与え続けるのか。<br><br>
-            なぜ——そんなにも、やさしいのか。
-        </p>
-    </div>
-
-    <div class="text-layout-3col scroll-pop" style="margin-top: 60px;">
-        <div class="text-col" style="text-align: center;">
-            <span class="col-meta" style="color: var(--text-muted);">Point 01</span>
-            <p class="col-title-small" style="color: var(--theme-pink);">彼は悪魔ではない</p>
+    <section>
+      <div class="layer layer-back">
+        <div class="content">
+          <p class="story-text">
+            彼は、悪魔ではない。空から落ちてきた、天使だった。<br>
+            光り輝く空を、彼はもう思い出せない。
+          </p>
         </div>
-        <div class="text-col" style="text-align: center;">
-            <span class="col-meta" style="color: var(--text-muted);">Point 02</span>
-            <p class="col-title-small" style="color: var(--theme-pink);">彼は天使だった</p>
+      </div>
+      <div class="layer layer-front">
+        <div class="content">
+          <p class="story-text">
+            彼は、どこから来たのかを語らない。<br>
+            問えば少し困ったように微笑むだけで、それ以上は何も言わない。<br>
+            <br>
+            ただひとつ確かなのは、<br>
+            彼が「ここにいる理由」を、誰よりも大切にしていることだった。
+          </p>
         </div>
-        <div class="text-col" style="text-align: center;">
-            <span class="col-meta" style="color: var(--text-muted);">Point 03</span>
-            <p class="col-title-small" style="color: var(--theme-pink);">それは奪われた</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="layer layer-back">
+        <div class="content">
+          <h2 class="title-large no-border-title">天使</h2>
+          <p class="story-text">
+            悪魔が存在すると知った時、逆説的に判明した事実。<br>
+            喉から手が出るほどに切望した存在。手放すわけにはいかない。<br>
+            <br>
+            記憶をなくしていたのは幸運だった。<br>
+            「悪魔だ」という認識誘導も概ね成功している。
+          </p>
         </div>
-    </div>
+      </div>
+      <div class="layer layer-front">
+        <div class="content">
+          <h2 class="title-large no-border-title">真実</h2>
+          <p class="story-text">
+            彼の声を聴いた者は、口を揃えて言う。<br>
+            「まるで、空から舞い降りてきたみたいだ」と。<br>
+            <br>
+            その意味を、彼自身は知らない。<br>
+            ただそう言われるたびに、少しだけ寂しそうに笑う。
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <div class="text-layout-1col scroll-pop" style="margin-top: 80px;">
-        <p class="poetic-title">真実</p>
-        <p class="poetic-desc">
-            空から落ちてきた、天使だった。<br><br>
-            その羽は切り取られ、<br>
-            別のものに置き換えられた。<br><br>
-            記憶は失われ、<br>
-            ただひとつ、言葉だけが残された。
-        </p>
-    </div>
-    <hr class="divider scroll-pop" style="border-color: rgba(0,0,0,0.05);">
-</section>
-
-<section class="component-section" style="margin-bottom: 200px;">
-    <div class="text-layout-1col scroll-pop">
-        <p class="poetic-title">刷り込み</p>
-        <p class="poetic-desc">
-            「あなたは悪魔だ」<br><br>
-            そう教えられた少年は、<br>
-            今日も歌う。<br><br>
+    <section>
+      <div class="layer layer-back">
+        <div class="content">
+          <p class="whisper-text">「いい子ですね」</p>
+        </div>
+      </div>
+      <div class="layer layer-front">
+        <div class="content">
+          <p class="story-text text-center">
+            「きみは悪魔です」<br><br>
+            そう教えられた少年は、今日も歌う。<br>
             それが、正しいことだと信じて。
-        </p>
-    </div>
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <div class="text-layout-1col scroll-pop" style="margin-top: 120px;">
-        <p class="poetic-title" style="font-family: var(--font-en-serif); font-size: 24px; color: var(--text-muted); letter-spacing: 0.5em; text-shadow: 0 0 10px rgba(160, 170, 190, 0.2);">
-            「いい子だね」
-        </p>
-    </div>
-</section>
+    {% include footer.html %}
 
-</main>
-
-  {% include footer.html %}
-
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  </div>
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/story.js"></script>
 </body>
 </html>
