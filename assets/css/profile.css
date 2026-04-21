@@ -249,8 +249,8 @@
 .contract-clause { margin-bottom: 40px; }
 
 /* 筆記体（大文字化を防止） */
-.en-cursive {
-    font-family: var(--font-en-cursive), cursive;
+.en-serif {
+    font-family: var(--font-en-serif), cursive;
     font-size: 1.5em;
     font-weight: normal;
     margin-right: 4px;
