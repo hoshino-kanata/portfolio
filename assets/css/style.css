@@ -1268,7 +1268,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   ========================================= */
   
   /* Hero */
-  .hero { height: 98svh; max-width: 100%; }
+  .hero { height: 100svh; max-width: 100%; }
   .hero-character { max-width: 250%; height: 160svh; left: 5svw; bottom: -25svh; rotate: 45deg; object-fit: contain; }
   .hero-character.breathe { animation: breatheMobile 6s ease-in-out infinite; }
   @keyframes breatheMobile { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
