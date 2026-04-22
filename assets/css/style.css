@@ -1238,7 +1238,8 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   /* =========================================
      各パーツのスマホ最適化
   ========================================= */
-  
+  html, body { width: 100%; max-width: 100vw; overflow-x: hidden; }
+
   /* Hero */
   .hero { height: 90vh; max-width: 100%; }
   .hero-character { max-width: 250%; height: 160svh; left: 5vw; bottom: -25vh; rotate: 45deg; object-fit: contain; }
@@ -1311,6 +1312,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .skills { padding: 0 6vw 90px; }
   #skills .styled-card { padding: 0; margin: 0; height: 60vh; }
   #skills .skills-slider { padding: 10px 0; }
+  .skills-slider { overflow: hidden !important; }
   .skills-arch-mask { height: clamp(280px, 75vw, 420px); }
   .skills-text-area { margin-top: 15px; }
   .skills-arch-border::before { top: -0.5%; padding: 0 8px; font-size: 18px; }
