@@ -54,7 +54,18 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  /* html側でのスクロールバー生成を抑制します */
+  overflow-x: hidden;
+  overflow-y: visible; /* または clip */
+  height: auto;
+}
+
 body {
+  width: 100%; max-width: 100svw;
+  height: auto !important;
+  overflow-x: hidden; overflow-y: auto;
+  position: relative;
   background: var(--bg-base);
   color: var(--text-sub);
   font-family: var(--font-base);
@@ -1310,7 +1321,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
 
   /* 3. Skillsセクションの広すぎる余白をカット */
   .skills { padding: 0 6vw 90px; }
-  #skills .styled-card { padding: 0; margin: 0; height: 60vh; }
+  #skills .styled-card { padding: 0; margin: 0; height: auto; padding-bottom: 40px; }
   #skills .skills-slider { padding: 10px 0; }
   .skills-slider { overflow: hidden !important; }
   .skills-arch-mask { height: clamp(280px, 75vw, 420px); }
