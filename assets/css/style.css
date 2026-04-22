@@ -1187,6 +1187,40 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .footer-wrapper { width: 100%; margin: 0; }
 
   /* =========================================
+     Hタグ
+  ========================================= */
+  h2, .section-title-small {
+    font-size: clamp(2.5rem, 10vw, 3.5rem) !important; /* 画面幅に合わせて自動縮小 */
+    line-height: 1.2;
+    word-wrap: break-word;
+    max-width: 100%;
+  }
+  /* ▼ 2. カードコンテナが画面外に突き抜けないように制御 */
+  .styled-card, .gc-block, .contact-container {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  
+  /* コミュニティ内の余白調整（はみ出し防止） */
+  .gc-block {
+    padding: 30px 20px !important;
+  }
+
+  /* ▼ 3. スライダーのはみ出しを正しく隠す */
+  .skills-slider {
+    overflow: hidden !important; 
+    /* ※上下のpaddingが十分にあるため、hiddenにしてもホバー時の浮き上がりは切れません */
+  }
+
+  /* ▼ 4. サイト全体を横揺れから強力に保護する */
+  html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* =========================================
      装飾・特殊スクロールの完全解除
   ========================================= */
   .frame-stars-container, 
@@ -1384,7 +1418,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   /* ★ハンバーガーの白い丸背景とガラス質感を解除 */
   .wave-hamburger {
     position: absolute !important;
-    top: 15px; right: 2svw;
+    top: 15px; right: 15px;
     margin-top: 0; 
     width: 40px; height: 40px;
     background: transparent; 
