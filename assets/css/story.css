@@ -36,8 +36,6 @@ p, h1, h2, h3, span {
     -webkit-user-select: none;
     -ms-user-select: none;
     -webkit-touch-callout:none;
-    pointer-events:none;
-    overscroll-behavior-y: none;
     }
 }
 

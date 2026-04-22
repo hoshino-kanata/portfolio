@@ -1241,7 +1241,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   
   /* Hero */
   .hero { height: 90vh; max-width: 100%; }
-  .hero-character { max-width: 250%; height: 160vh; left: 5vw; bottom: -25vh; rotate: 45deg; object-fit: contain; }
+  .hero-character { max-width: 250%; height: 160svh; left: 5vw; bottom: -25vh; rotate: 45deg; object-fit: contain; }
   .hero-character.breathe { animation: breatheMobile 6s ease-in-out infinite; }
   @keyframes breatheMobile { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
   .hero-light { left: 50%; }
@@ -1316,13 +1316,22 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .skills-arch-border::before { top: -0.5%; padding: 0 8px; font-size: 18px; }
 
   /* ナビゲーション（ヘッダー）と波型ガラス */
-  .nav-container { 
-    padding: 15px 4vw; 
-    height: 95px; /* 波の分の高さを追加 */
-    background: transparent;
+  .nav-logo {
+    width: 200px; height: auto;
+    margin-top: -10px; 
+    margin-left: -10px;
+    left: auto;
+    background: transparent; 
+    border: none; 
+    box-shadow: none; 
+    padding: 0;
     backdrop-filter: none;
-    align-items: flex-start;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+    filter: none;
   }
+  .nav-logo::before, .nav-logo::after { display: none; }
+  .nav-logo:hover img { filter: invert(81%) sepia(21%) saturate(350%) hue-rotate(338deg) brightness(96%) contrast(89%); }
   .nav-glass-bg {
     display: block;
     position: absolute;
@@ -1372,7 +1381,9 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   
   /* ★ハンバーガーの白い丸背景とガラス質感を解除 */
   .wave-hamburger {
-    position: relative; top: auto; right: auto;
+    position: absolute !important; /* 画面右上に強制固定 */
+    top: 25px !important;
+    right: 4vw !important;
     margin-top: 0; 
     width: 40px; height: 40px;
     background: transparent; 
@@ -1382,6 +1393,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
     -webkit-backdrop-filter: none;
     border-radius: 0; gap: 6px;
     filter: none;
+    z-index: 1000;
   }
   /* ★ 追加：PC版のすりガラスフレーム（::before）を非表示にする */
   .wave-hamburger::before, .wave-hamburger::after { display: none; }

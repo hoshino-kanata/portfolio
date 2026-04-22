@@ -532,6 +532,9 @@ document.addEventListener("DOMContentLoaded", () => {
    額縁スクロール：中身の同期
 ============================ */
 window.addEventListener('scroll', () => {
+  // ★追加：スマホ版（幅1024px以下）ならここで処理をストップ
+  if (window.innerWidth <= 1024) return;
+  
   const container = document.getElementById('stickyContainer');
   const content = document.getElementById('movingContent');
   const record = document.getElementById('recordDisc');
