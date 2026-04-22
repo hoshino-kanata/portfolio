@@ -1187,7 +1187,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .footer-wrapper { width: 100%; margin: 0; }
 
   /* =========================================
-     Hタグ
+     突き抜け防止
   ========================================= */
   h2, .section-title-small {
     font-size: clamp(2.5rem, 10vw, 3.5rem) !important; /* 画面幅に合わせて自動縮小 */
@@ -1195,25 +1195,17 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
     word-wrap: break-word;
     max-width: 100%;
   }
-  /* ▼ 2. カードコンテナが画面外に突き抜けないように制御 */
   .styled-card, .gc-block, .contact-container {
     width: 100%;
     max-width: 100vw;
     box-sizing: border-box;
   }
-  
-  /* コミュニティ内の余白調整（はみ出し防止） */
   .gc-block {
     padding: 30px 20px !important;
   }
-
-  /* ▼ 3. スライダーのはみ出しを正しく隠す */
   .skills-slider {
     overflow: hidden !important; 
-    /* ※上下のpaddingが十分にあるため、hiddenにしてもホバー時の浮き上がりは切れません */
   }
-
-  /* ▼ 4. サイト全体を横揺れから強力に保護する */
   html, body {
     width: 100%;
     max-width: 100vw;
@@ -1338,7 +1330,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .community-area .gc-layout { flex-direction: column; }
   .gc-left, .gc-right { grid-area: 1 / 1; }
   .gc-left { width: 100%; height: 100%; position: absolute; opacity: 0.25; pointer-events: none; }
-  .gc-char-img { height: 80vh; left: -30%; }
+  .gc-char-img { height: 80svh; left: -30%; }
   .gc-right { width: 100%; padding: 0; }
   .gc-block { background: transparent; box-shadow: none; padding: 30px; border-radius: 20px; }
   .clean-tag-list { grid-template-columns: 1fr; }
@@ -1479,10 +1471,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .menu-item { font-size: 16px; justify-content: flex-start; }
   .mark { display: inline-block; }
 
-}
-
-/* スマホ用タイトル（固定表示の代わり） */
-@media (max-width: 1024px) {
+  /* スマホ用タイトル（固定表示の代わり） */
   .fixed-section-title {
     position: relative; top: 0; left: 0; width: 100%;
     font-size: 2.8rem; margin-bottom: 30px; text-align: center;
