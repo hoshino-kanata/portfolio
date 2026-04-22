@@ -1321,7 +1321,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
 
   /* 3. Skillsセクションの広すぎる余白をカット */
   .skills { padding: 0 6vw 90px; }
-  #skills .styled-card { padding: 0; margin: 0; height: auto; min-height: min-content; overflow: visible !important; }
+  #skills .styled-card { padding: 0; margin: 0; height: auto !important; min-height: min-content; overflow: visible !important; }
   #skills .skills-slider { padding: 10px 0; }
   .skills-arch-mask { height: clamp(280px, 75vw, 420px); }
   .skills-text-area { margin-top: 15px; }
