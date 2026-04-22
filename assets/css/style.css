@@ -58,6 +58,7 @@ body {
   background: var(--bg-base);
   color: var(--text-sub);
   font-family: var(--font-base);
+  overflow-x: hidden;
   letter-spacing: 0.08em; 
   line-height: 1.65;
   font-feature-settings: "palt";
