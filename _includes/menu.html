@@ -1,11 +1,25 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+
+<div id="liquid-glass-svg" style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="liquid-filter-nav" x="-20%" y="-20%" width="140%" height="140%">
+      <feImage id="fe-image-nav" href="" result="MAP"></feImage>
+      <feDisplacementMap id="fe-displace-nav" in="SourceGraphic" in2="MAP" scale="-40" xChannelSelector="R" yChannelSelector="B" result="DISPLACED"></feDisplacementMap>
+      <feGaussianBlur id="fe-blur-nav" in="DISPLACED" stdDeviation="1.5"></feGaussianBlur>
+    </filter>
+  </svg>
+</div>
+
 <nav class="nav-container">
     <div class="nav-glass-bg"></div>
 
     <a href="{{ site.baseurl }}/index.html" class="nav-logo">
+        <div class="liquid-bg liquid-logo"></div>
         <img src="{{ site.baseurl }}/assets/img/logo.svg" alt="Hoshino Kanata">
     </a>
     
     <button class="wave-hamburger js-menu-open">
+        <div class="liquid-bg liquid-hamburger"></div>
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>

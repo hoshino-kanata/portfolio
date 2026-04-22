@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoshino Kanata - Gallery of Mirrors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Zen+Kaku+Gothic+Antique:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #F9F8F6; /* Pachika White */
+      --text-color: #3B3530;
+      --accent-color: #C0BFC5;
+      --glass-alpha: rgba(255, 255, 255, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Zen Kaku Gothic Antique', sans-serif;
+      overflow-x: hidden;
+      /* 背景にうっすら大理石風の質感を */
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(192, 191, 197, 0.1), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(244, 234, 230, 0.2), transparent 30%);
+    }
+
+    /* 共通設定 */
+    .serif { font-family: 'Playfair Display', serif; }
+
+    /* セクション設定：1人1画面 */
+    .gallery-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* 額装（フレーム）のコンテナ */
+    .frame-wrapper {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      perspective: 1000px;
+    }
+
+    /* アーチ型の鏡・額装 */
+    .mirror-frame {
+      position: relative;
+      width: 320px;
+      height: 480px;
+      background: var(--bg-color);
+      border-radius: 160px 160px 20px 20px; /* 上部アーチ */
+      padding: 12px;
+      /* 空押し（デボス）エフェクト */
+      box-shadow: 
+        inset 5px 5px 15px rgba(192, 191, 197, 0.4),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.9),
+        5px 10px 30px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mirror-frame::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(192, 191, 197, 0.3);
+      border-radius: 154px 154px 14px 14px;
+      pointer-events: none;
+    }
+
+    /* キャラクター画像表示領域（マスク） */
+    .image-mask {
+      width: 100%;
+      height: 100%;
+      border-radius: 150px 150px 10px 10px;
+      overflow: hidden;
+      position: relative;
+      background: #eee;
+    }
+
+    .image-mask img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(10%) contrast(105%);
+      transition: transform 0.5s ease;
+    }
+
+    /* 名前プレート */
+    .char-caption {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .char-name {
+      font-size: 1.8rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.2rem;
+    }
+
+    .char-title {
+      font-size: 0.7rem;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+    }
+
+    /* 吹き出し（最前面・ガラスエフェクト） */
+    .bubble-container {
+      position: absolute;
+      inset: 0;
+      z-index: 100; /* 額装より手前 */
+      pointer-events: none;
+    }
+
+    .glass-bubble {
+      position: absolute;
+      padding: 1.2rem 1.8rem;
+      background: var(--glass-alpha);
+      backdrop-filter: blur(10px) url(#liquid-filter);
+      -webkit-backdrop-filter: blur(10px) url(#liquid-filter);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 40px;
+      max-width: 280px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      color: #222;
+    }
+
+    /* 吹き出しの個別配置用クラス（JSで制御するが初期値としていくつか用意） */
+    .b-1 { top: 15%; left: 10%; }
+    .b-2 { top: 25%; right: 10%; }
+    .b-3 { bottom: 20%; left: 15%; }
+    .b-4 { bottom: 10%; right: 15%; }
+
+    /* スクロール案内 */
+    .scroll-hint {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      writing-mode: vertical-rl;
+      font-size: 0.7rem;
+      letter-spacing: 0.5em;
+      color: var(--accent-color);
+      z-index: 1000;
+    }
+
+    /* SVG Filter Container (非表示) */
+    #svg-container {
+      position: absolute;
+      width: 0; height: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-hint serif">SCROLL TO EXPLORE</div>
+
+  <main>
+    <section class="gallery-section">
+      <div class="frame-wrapper">
+        <div class="mirror-frame">
+          <div class="image-mask">
+            <img src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=600&q=80" alt="Kanata">
+          </div>
+        </div>
+        <div class="char-caption">
+          <h2 class="serif char-name">Hoshino Kanata</h2>
+          <p class="char-title">The Choir of Demon Church</p>
+        </div>
+      </div>
+      
+      <div class="bubble-container">
+        <div class="glass-bubble b-1" data-speed="1.2">おはよ… .ᐟ<br>聖歌隊の星乃かなたです🦇</div>
+        <div class="glass-bubble b-2" data-speed="0.8">映画のアーカイブを<br>書き留めるのが好きです🕯𓈒𓂂𓏸</div>
+        <div class="glass-bubble b-4" data-speed="1.5">今日もおしごと頑張れて<br>本当にえらいよ…🤲🏻</div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="frame-wrapper">
+        <div class="mirror-frame">
+          <div class="image-mask">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Ren">
+          </div>
+        </div>
+        <div class="char-caption">
+          <h2 class="serif char-name">Hizuki Ren</h2>
+          <p class="char-title">Twilight Gamer</p>
+        </div>
+      </div>
+      
+      <div class="bubble-container">
+        <div class="glass-bubble b-2" data-speed="1.1">ホラーゲームは…<br>ちょっと苦手かも~~ 🎮</div>
+        <div class="glass-bubble b-3" data-speed="1.4">かなたくんと一緒に<br>遊ぶ時間はたのしいね📖</div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="frame-wrapper">
+        <div class="mirror-frame">
+          <div class="image-mask">
+            <img src="https://images.unsplash.com/photo-1519682577862-22b62b24e493?auto=format&fit=crop&w=600&q=80" alt="Ciel">
+          </div>
+        </div>
+        <div class="char-caption">
+          <h2 class="serif char-name">Ciel</h2>
+          <p class="char-title">Library Guardian</p>
+        </div>
+      </div>
+      
+      <div class="bubble-container">
+        <div class="glass-bubble b-1" data-speed="1.3">教会の図書室へようこそ📜</div>
+        <div class="glass-bubble b-2" data-speed="0.9">美味しい紅茶を淹れました。<br>ゆっくりしていってくださいね☕</div>
+        <div class="glass-bubble b-4" data-speed="1.6">やさしい知識は、<br>心を温めてくれます🍀</div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="frame-wrapper">
+        <div class="mirror-frame">
+          <div class="image-mask">
+            <img src="https://images.unsplash.com/photo-1507290439931-a861b5a38200?auto=format&fit=crop&w=600&q=80" alt="Luna">
+          </div>
+        </div>
+        <div class="char-caption">
+          <h2 class="serif char-name">Luna</h2>
+          <p class="char-title">Moonlight Gardener</p>
+        </div>
+      </div>
+      
+      <div class="bubble-container">
+        <div class="glass-bubble b-2" data-speed="1.2">月夜にしか咲かないお花を<br>育てているの…🫧</div>
+        <div class="glass-bubble b-3" data-speed="1.5">きらきらして綺麗でしょ？🤍</div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="frame-wrapper">
+        <div class="mirror-frame">
+          <div class="image-mask">
+            <img src="https://images.unsplash.com/photo-1552862750-746b8f6f7f25?auto=format&fit=crop&w=600&q=80" alt="Noah">
+          </div>
+        </div>
+        <div class="char-caption">
+          <h2 class="serif char-name">Noah</h2>
+          <p class="char-title">Nocturne Pianist</p>
+        </div>
+      </div>
+      
+      <div class="bubble-container">
+        <div class="glass-bubble b-1" data-speed="1.0">今夜の祈りを、<br>ピアノの音色に乗せて…✉</div>
+        <div class="glass-bubble b-4" data-speed="1.8">おやすみなさい。<br>良い夢を見てね🕯𓈒𓂂𓏸</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <filter id="liquid-filter" x="-20%" y="-20%" width="140%" height="140%">
+        <feImage id="fe-image" href="" result="MAP"></feImage>
+        <feDisplacementMap id="fe-displace" in="SourceGraphic" in2="MAP" scale="-80" xChannelSelector="R" yChannelSelector="B"></feDisplacementMap>
+      </filter>
+    </svg>
+    <div class="displacement-debug"></div>
+  </div>
+
+  <script type="module">
+    import gsap from 'https://esm.sh/gsap@3.12.0';
+    import ScrollTrigger from 'https://esm.sh/gsap@3.12.0/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. リキッドグラスの歪みマップ生成 (使い回し)
+    const config = { width: 300, height: 150, radius: 40, scale: -80 };
+    const buildMap = () => {
+      const kids = `
+        <svg viewBox="0 0 ${config.width} ${config.height}" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="black" />
+          <rect width="100%" height="100%" rx="${config.radius}" fill="url(#red)" />
+          <rect width="100%" height="100%" rx="${config.radius}" fill="url(#blue)" style="mix-blend-mode:difference" />
+          <defs>
+            <linearGradient id="red"><stop offset="0%" stop-color="red"/><stop offset="100%" stop-color="black"/></linearGradient>
+            <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="blue"/><stop offset="100%" stop-color="black"/></linearGradient>
+          </defs>
+        </svg>`;
+      const encoded = encodeURIComponent(kids);
+      gsap.set('#fe-image', { attr: { href: `data:image/svg+xml,${encoded}` } });
+    };
+    buildMap();
+
+    // 歪みのアニメーション
+    gsap.to('#fe-displace', {
+      attr: { scale: -100 },
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    // 2. スクロールに応じたアニメーション
+    const sections = document.querySelectorAll('.gallery-section');
+
+    sections.forEach(section => {
+      const bubbles = section.querySelectorAll('.glass-bubble');
+      const image = section.querySelector('.image-mask img');
+
+      // 画像のズームイン効果
+      gsap.from(image, {
+        scale: 1.2,
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // 吹き出しの浮遊・パララックス効果
+      bubbles.forEach(bubble => {
+        const speed = bubble.getAttribute('data-speed') || 1;
+        
+        gsap.fromTo(bubble, 
+          { y: 100, opacity: 0 }, 
+          { 
+            y: -100, 
+            opacity: 1,
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: speed // スピード設定によって動きに差をつける
+            }
+          }
+        );
+      });
+    });
+
+  </script>
+</body>
+</html>

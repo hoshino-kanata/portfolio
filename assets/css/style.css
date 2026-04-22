@@ -1479,3 +1479,62 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
     pointer-events: auto; display: block;
   }
 }
+/* =========================================
+   Liquid Glass Navigation
+========================================= */
+/* 1. 既存のグラデーション背景（疑似要素）を非表示にする */
+.nav-logo::before, .nav-logo::after,
+.wave-hamburger::before, .wave-hamburger::after {
+    display: none !important;
+}
+
+/* 2. リキッドグラスの共通ベース設定 */
+.liquid-bg {
+    position: absolute;
+    inset: -10px; /* SVGの形に合わせて少し余裕を持たせる */
+    z-index: -1;
+    pointer-events: none;
+    /* うっすらとした白を重ねてガラス感を出す */
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: url(#liquid-filter-nav) saturate(1.2);
+    -webkit-backdrop-filter: url(#liquid-filter-nav) saturate(1.2);
+    transition: background 0.4s ease;
+}
+
+/* 3. ロゴ用のマスク適用（fuwa_frame） */
+.liquid-logo {
+    -webkit-mask-image: url('../img/fuwa_frame.svg');
+    mask-image: url('../img/fuwa_frame.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+/* 4. ハンバーガーメニュー用のマスク適用（funya_frame） */
+.liquid-hamburger {
+    inset: -5px; /* ハンバーガーは少しサイズ調整 */
+    -webkit-mask-image: url('../img/funya_frame.svg');
+    mask-image: url('../img/funya_frame.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+/* ホバー時のガラスの艶出し効果 */
+.nav-logo:hover .liquid-logo,
+.wave-hamburger:hover .liquid-hamburger {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* スマホ版でハンバーガーボタンの背景を消している場合は、こちらにも適用させない設定が必要かもしれません */
+@media (max-width: 1024px) {
+  .wave-hamburger .liquid-hamburger {
+      display: none; /* スマホ版で透明にしたい場合は非表示に */
+  }
+}
