@@ -54,18 +54,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html {
-  /* html側でのスクロールバー生成を抑制します */
-  overflow-x: hidden;
-  overflow-y: visible; /* または clip */
-  height: auto;
-}
-
 body {
-  width: 100%; max-width: 100svw;
-  height: auto !important;
-  overflow-x: hidden; overflow-y: auto;
-  position: relative;
   background: var(--bg-base);
   color: var(--text-sub);
   font-family: var(--font-base);
@@ -1189,6 +1178,18 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
 ========================================= */
 
 @media (max-width: 1024px) {
+  html {
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto; /* スクロールはbodyひとつに任せる */
+    height: auto;
+    min-height: 100%;
+  }
+
   /* 共通の余白・基本設定 */
   .page-header { padding: 100px 5vw 40px; }
   .grid-3col { grid-template-columns: repeat(2, 1fr); }
@@ -1249,8 +1250,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   /* =========================================
      各パーツのスマホ最適化
   ========================================= */
-  html, body { width: 100%; max-width: 100vw; overflow-x: hidden; }
-
+  
   /* Hero */
   .hero { height: 90vh; max-width: 100%; }
   .hero-character { max-width: 250%; height: 160svh; left: 5vw; bottom: -25vh; rotate: 45deg; object-fit: contain; }
@@ -1321,9 +1321,8 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
 
   /* 3. Skillsセクションの広すぎる余白をカット */
   .skills { padding: 0 6vw 90px; }
-  #skills .styled-card { padding: 0; margin: 0; height: auto; padding-bottom: 40px; }
+  #skills .styled-card { padding: 0; margin: 0; height: auto; min-height: min-content; overflow: visible !important; }
   #skills .skills-slider { padding: 10px 0; }
-  .skills-slider { overflow: hidden !important; }
   .skills-arch-mask { height: clamp(280px, 75vw, 420px); }
   .skills-text-area { margin-top: 15px; }
   .skills-arch-border::before { top: -0.5%; padding: 0 8px; font-size: 18px; }
