@@ -1178,17 +1178,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
 ========================================= */
 
 @media (max-width: 1024px) {
-  html {
-    overflow-x: hidden;
-    height: auto;
-  }
-
-  body {
-    overflow-x: hidden;
-    overflow-y: auto; /* スクロールはbodyひとつに任せる */
-    height: auto;
-    min-height: 100%;
-  }
+  html { overflow-x: hidden; width: 100%; }
 
   /* 共通の余白・基本設定 */
   .page-header { padding: 100px 5vw 40px; }
@@ -1252,7 +1242,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   ========================================= */
   
   /* Hero */
-  .hero { height: 90vh; max-width: 100%; }
+  .hero { height: 90svh; max-width: 100%; }
   .hero-character { max-width: 250%; height: 160svh; left: 5vw; bottom: -25vh; rotate: 45deg; object-fit: contain; }
   .hero-character.breathe { animation: breatheMobile 6s ease-in-out infinite; }
   @keyframes breatheMobile { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
