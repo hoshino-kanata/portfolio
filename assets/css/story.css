@@ -30,8 +30,15 @@ p, h1, h2, h3, span {
 
 @media (max-width: 768px) {
   .snap-container {
-    overflow-y: hidden; /* スマホ用スクロールロック */
-  }
+    overflow-y: hidden;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout:none;
+    pointer-events:none;
+    overscroll-behavior-y: none;
+    }
 }
 
 section {
@@ -114,12 +121,13 @@ section {
 
 /* Section Titles */
 .title-large {
-  font-family: var(--font-base);
+  width: 100%; max-width: 680px;
   font-size: 2.5rem;
   margin-bottom: 60px;
   border-bottom: 1px solid var(--accent-gold);
   padding-bottom: 20px;
   display: inline-block;
+  text-align: justify;
   color: var(--text-main);
 }
 
@@ -213,7 +221,7 @@ section {
 .img-frame img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* どんな画像でも枠に合わせて自動トリミング */
+  object-fit: cover;
   display: block;
 }
 
@@ -270,16 +278,16 @@ section {
   border: none;
   color: var(--accent-gold);
   font-family: var(--font-en-serif);
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: 0.2em;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 1;
   padding: 10px;
   transition: opacity 0.3s;
 }
 
 .nav-btn:disabled {
-  opacity: 0.1;
+  opacity: 0.5;
   cursor: default;
 }
 
