@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumi Studio — UI Design System 1.0</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+
+<section class="hero" style="padding-top: 0; padding-bottom: 0;">
+    <div class="hero-bg"></div>
+    <div class="hero-deco d1"></div>
+    <div class="hero-deco d2"></div>
+    <div class="hero-deco d3"></div>
+
+    <div class="star" style="top:15%; left:55%; animation-delay:0s;">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+    </div>
+    <div class="star" style="top:65%; left:45%; animation-delay:-1.5s; font-size:14px;">
+        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+    </div>
+    <div class="star" style="top:30%; left:70%; animation-delay:-3s; font-size:12px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+    </div>
+    <div class="star" style="top:80%; left:65%; animation-delay:-4.5s;">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+    </div>
+
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span></span>
+            UI Design System 1.0
+        </div>
+        <h1 class="hero-title">
+            想いを、<em>そっと</em><br>
+            カタチに。
+        </h1>
+        <p class="hero-sub">
+            わたしたちは、やわらかな発想と、ひとさじの遊び心で、<br>
+            世界をちょっとだけ、きらめかせるデザインをつくります。
+        </p>
+        <div class="hero-cta">
+            <button class="btn btn-primary btn-lg">はじめる ✦</button>
+            <button class="btn btn-secondary btn-lg">詳しく見る</button>
+        </div>
+    </div>
+
+    <div style="position: absolute; right: 80px; top: 50%; transform: translateY(-50%); width: 380px; height: 380px; pointer-events: none; z-index: 1;">
+        <svg width="380" height="380" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="190" cy="190" r="160" fill="url(#heroGrad1)" opacity="0.25"/>
+            <circle cx="200" cy="160" r="100" fill="url(#heroGrad2)" opacity="0.3"/>
+            <circle cx="160" cy="220" r="80" fill="url(#heroGrad3)" opacity="0.2"/>
+            <ellipse cx="190" cy="190" rx="160" ry="60" stroke="url(#orbitStroke)" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.4" transform="rotate(-20 190 190)"/>
+            <path d="M190 90 L193 103 L206 103 L196 111 L199 124 L190 116 L181 124 L184 111 L174 103 L187 103 Z" fill="var(--accent-light)" opacity="0.8"/>
+            <path d="M290 160 L292 167 L299 167 L294 172 L296 179 L290 175 L284 179 L286 172 L281 167 L288 167 Z" fill="var(--accent-gold)" opacity="0.6"/>
+            <path d="M110 230 L111.5 235 L117 235 L113 238 L114.5 243 L110 240 L105.5 243 L107 238 L103 235 L108.5 235 Z" fill="var(--accent-gold-dark)" opacity="0.6"/>
+            <circle cx="300" cy="120" r="4" fill="var(--accent-gold)" opacity="0.5"/>
+            <circle cx="80" cy="150" r="3" fill="var(--accent-gold-dark)" opacity="0.4"/>
+            <circle cx="320" cy="260" r="5" fill="#9b8ed4" opacity="0.3"/>
+            <circle cx="100" cy="300" r="3" fill="var(--accent-gold)" opacity="0.4"/>
+            <defs>
+                <radialGradient id="heroGrad1" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#e0faff"/>
+                    <stop offset="100%" stop-color="#ffe6f2" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="heroGrad2" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ffe6f2"/>
+                    <stop offset="100%" stop-color="#e8ebff" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="heroGrad3" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#e8ebff"/>
+                    <stop offset="100%" stop-color="#fff8e0" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="orbitStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--accent-gold)"/>
+                    <stop offset="50%" stop-color="var(--accent-gold-dark)"/>
+                    <stop offset="100%" stop-color="#9b8ed4"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+</section>
+
+<section>
+    <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+        <span class="section-eyebrow-text">Colors</span>
+    </div>
+    <h2 class="section-title">カラーパレット</h2>
+    <p class="section-desc">淡いパステルに、やわらかな金色をポイントカラーとして添えて。</p>
+
+    <p class="btn-label">Theme Colors</p>
+    <div class="color-grid">
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--theme-blue);">
+                <div class="star-deco">✦</div>
+            </div>
+            <div class="swatch-info">
+                <div class="swatch-name">--theme-blue</div>
+                <div class="swatch-hex">#e0faff</div>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--theme-pink);">
+                <div class="star-deco">✦</div>
+            </div>
+            <div class="swatch-info">
+                <div class="swatch-name">--theme-pink</div>
+                <div class="swatch-hex">#ffe6f2</div>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--theme-purple);">
+                <div class="star-deco">✦</div>
+            </div>
+            <div class="swatch-info">
+                <div class="swatch-name">--theme-purple</div>
+                <div class="swatch-hex">#e8ebff</div>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--theme-yellow);">
+                <div class="star-deco">✦</div>
+            </div>
+            <div class="swatch-info">
+                <div class="swatch-name">--theme-yellow</div>
+                <div class="swatch-hex">#fff8e0</div>
+            </div>
+        </div>
+    </div>
+
+    <p class="btn-label">Accent</p>
+    <div style="display: flex; align-items: center; gap: var(--space-5); margin-bottom: var(--space-6);">
+        <div class="swatch" style="min-width: 100px;">
+            <div class="swatch-color" style="background: var(--accent-gold);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white" style="opacity:0.8"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+            </div>
+            <div class="swatch-info">
+                <div class="swatch-name">--accent-gold</div>
+                <div class="swatch-hex">#f8ae8b</div>
+            </div>
+        </div>
+        <div style="flex: 1;">
+            <div class="accent-bar"></div>
+            <div style="font-size: 11px; color: var(--gray-400);">グラデーション：全テーマカラーをなめらかに繋いで</div>
+        </div>
+    </div>
+
+    <p class="btn-label">Gradients</p>
+    <div class="color-grid">
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--grad-aurora)">
+                <div class="star-deco">✦</div>
+            </div>
+            <div class="swatch-info">
+                <div class="swatch-name">--grad-aurora</div>
+                <div class="swatch-hex">#E0FAFF — #FFF8E0</div>
+            </div>
+        </div>
+
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--grad-soft)"></div>
+            <div class="swatch-info">
+                <div class="swatch-name">--grad-soft</div>
+                <div class="swatch-hex">#FFE6F2 — #E8EBFF</div>
+            </div>
+        </div>
+
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--grad-warm)"></div>
+            <div class="swatch-info">
+                <div class="swatch-name">--grad-warm</div>
+                <div class="swatch-hex">#FFF8E0 — #FFE6F2</div>
+            </div>
+        </div>
+
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--grad-cool)"></div>
+            <div class="swatch-info">
+                <div class="swatch-name">--grad-cool</div>
+                <div class="swatch-hex">#E0FAFF — #E8EBFF</div>
+            </div>
+        </div>
+
+        <div class="swatch">
+            <div class="swatch-color" style="background: var(--grad-accent)"></div>
+            <div class="swatch-info">
+                <div class="swatch-name">--grad-accent</div>
+                <div class="swatch-hex">#F6DAC6 — #F8AE8B</div>
+            </div>
+        </div>
+    </div>
+
+    <p class="btn-label">Neutral</p>
+    <div class="color-grid">
+        <div class="swatch"><div class="swatch-color" style="background:var(--white); border-bottom: 1px solid var(--gray-100);"></div><div class="swatch-info"><div class="swatch-name">--white</div><div class="swatch-hex">#FFFFFF</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--gray-50)"></div><div class="swatch-info"><div class="swatch-name">--gray-50</div><div class="swatch-hex">#FAFAFC</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--gray-100)"></div><div class="swatch-info"><div class="swatch-name">--gray-100</div><div class="swatch-hex">#F2F2F7</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--gray-200)"></div><div class="swatch-info"><div class="swatch-name">--gray-200</div><div class="swatch-hex">#E5E5ED</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--gray-400)"></div><div class="swatch-info"><div class="swatch-name">--gray-400</div><div class="swatch-hex">#ADADBD</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--gray-600);"></div><div class="swatch-info"><div class="swatch-name">--gray-600</div><div class="swatch-hex">#6E6E82</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:var(--gray-800)"></div><div class="swatch-info"><div class="swatch-name">--gray-800</div><div class="swatch-hex">#333348</div></div></div>
+    </div>
+</section>
+
+<section class="alt">
+    <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+        <span class="section-eyebrow-text">Typography</span>
+    </div>
+    <h2 class="section-title">タイポグラフィ</h2>
+    <p class="section-desc">日本語と英語の美しい共存。フォントが感情を運ぶ。</p>
+
+    <div>
+        <div class="type-sample">
+            <h1>きらめく想いを、<br>やさしいカタチに。</h1>
+            <p class="type-spec">
+                Cormorant Garamond<br>
+                Regular / 52px / 1.2
+            </p>
+        </div>
+        <div class="type-sample">
+            <h2>Lumi Design Studio</h2>
+            <p class="type-spec">
+                DM Serif Display<br>
+                Italic / 36px / Normal
+            </p>
+        </div>
+        <div class="type-sample">
+            <h3>デザインで、心が動く瞬間をつくる。</h3>
+            <p class="type-spec">
+                Noto Sans JP<br>
+                Medium / 22px / 1.5
+            </p>
+        </div>
+        <div class="type-sample">
+            <p>
+                わたしたちは、ユーザーの気持ちに寄り添い、直感的で心地よい体験をデザインします。シンプルの中に、遊び心とストーリーを。
+            </p>
+            <p class="type-spec">
+                Noto Sans JP<br>
+                Light / 16px / 1.9
+            </p>
+        </div>
+        <div class="type-sample">
+            <small>やさしいデザインは、やさしい未来をつくる。</small>
+            <p class="type-spec">
+                Noto Sans JP<br>
+                Regular / 12px / 1.7
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+        <span class="section-eyebrow-text">Buttons</span>
+    </div>
+    <h2 class="section-title">ボタン</h2>
+    <p class="section-desc">アクションに命を吹き込む、動きのあるボタン。</p>
+
+    <div class="grid-2" style="gap: var(--space-12);">
+        <div>
+            <p class="btn-label">Primary</p>
+            <div class="btn-row">
+                <button class="btn btn-primary">Primary ✦</button>
+                <button class="btn btn-blue">Primary</button>
+                <button class="btn btn-pink">Primary</button>
+                <button class="btn btn-purple">Primary</button>
+            </div>
+
+            <p class="btn-label" style="margin-top: 28px;">Secondary</p>
+            <div class="btn-row">
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-secondary" style="border-color: rgba(58,143,160,0.3); color: #5fb3cc;">Secondary</button>
+                <button class="btn btn-secondary" style="border-color: rgba(176,92,132,0.3); color: #d97ba6;">Secondary</button>
+                <button class="btn btn-secondary" style="border-color: rgba(106,93,181,0.3); color: #7b86d4;">Secondary</button>
+            </div>
+
+            <p class="btn-label" style="margin-top: 28px;">Tertiary / Text</p>
+            <div class="btn-row">
+                <button class="btn btn-ghost">Text Button →</button>
+                <button class="btn btn-ghost">✦ Text Button →</button>
+                <button class="btn btn-ghost" style="opacity: 0.38;">Text Button →</button>
+            </div>
+        </div>
+
+        <div>
+            <p class="btn-label">Sizes</p>
+            <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+                <button class="btn btn-primary btn-lg">Large Button ✦</button>
+                <button class="btn btn-primary">Default Button ✦</button>
+                <button class="btn btn-primary btn-sm">Small Button ✦</button>
+            </div>
+
+            <p class="btn-label" style="margin-top: 32px;">Icon Buttons</p>
+            <div class="btn-row">
+                <button class="btn btn-primary" style="width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 14px;">✦</button>
+                <button class="btn btn-secondary" style="width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 14px;">🔍</button>
+                <button class="btn btn-blue" style="width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 14px; font-size: 18px;">⊹</button>
+                <button class="btn btn-pink" style="width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 14px;">♡</button>
+                <button class="btn btn-purple" style="width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 14px;">☾</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="alt">
+    <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+        <span class="section-eyebrow-text">Inputs</span>
+    </div>
+    <h2 class="section-title">入力フォーム</h2>
+    <p class="section-desc">タッチするたびに、やさしく応答する。</p>
+
+    <div class="input-grid">
+        <div>
+            <div class="input-group">
+                <label class="input-label">Default</label>
+                <div class="input-wrap">
+                    <input type="text" class="input-field" placeholder="テキストを入力">
+                    <span class="input-suffix">✦</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="input-label">Focus State</label>
+                <div class="input-wrap">
+                    <input type="text" class="input-field" value="入力中のテキスト" style="border-color: var(--accent-gold); box-shadow: 0 0 0 3px rgba(225,165,135,0.15);">
+                    <span class="input-suffix">✦</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="input-label">Disabled</label>
+                <input type="text" class="input-field" value="無効なフィールド" disabled>
+            </div>
+        </div>
+        <div>
+            <div class="input-group">
+                <label class="input-label">Search</label>
+                <div class="input-wrap">
+                    <span class="icon">🔍</span>
+                    <input type="text" class="input-field" placeholder="キーワードを入力">
+                    <span class="input-suffix">✦</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="input-label">Dropdown</label>
+                <select class="input-field">
+                    <option>選択してください</option>
+                    <option>UI / UX デザイン</option>
+                    <option>ブランディング</option>
+                    <option>イラストレーション</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label class="input-label">Controls (Check, Radio, Toggle)</label>
+                <div style="display: flex; gap: var(--space-5); margin-top: var(--space-1); flex-wrap: wrap;">
+                    <label class="check-wrap">
+                        <input type="checkbox" checked>
+                        <div class="custom-check">✓</div>
+                        チェック
+                    </label>
+                    <label class="check-wrap">
+                        <input type="radio" name="ui-radio" checked>
+                        <div class="custom-check custom-radio"></div>
+                        ラジオ
+                    </label>
+                    <label class="check-wrap">
+                        <input type="radio" name="ui-radio">
+                        <div class="custom-check custom-radio"></div>
+                        ラジオ
+                    </label>
+                    <label class="toggle-wrap">
+                        <input type="checkbox" checked>
+                        <div class="toggle-switch"></div>
+                        トグル
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+        <span class="section-eyebrow-text">Navigation</span>
+    </div>
+    <h2 class="section-title">ナビゲーション</h2>
+    <p class="section-desc">迷わない、気持ちいい道案内。</p>
+
+    <div class="nav-bar" style="display: inline-flex; margin-bottom: 28px;">
+        <a class="nav-item active" href="#">
+            <span class="nav-icon">⌂</span>
+            Home
+        </a>
+        <a class="nav-item" href="#">
+            <span class="nav-icon">⊡</span>
+            Works
+        </a>
+        <a class="nav-item" href="#">
+            <span class="nav-icon">◎</span>
+            About
+        </a>
+        <a class="nav-item" href="#">
+            <span class="nav-icon">✉</span>
+            News
+        </a>
+        <a class="nav-item" href="#">
+            <span class="nav-icon">☏</span>
+            Contact
+        </a>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="#">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#">Works</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Project Detail</span>
+    </div>
+
+    <div class="pagination">
+        <button class="page-btn">‹</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn" style="border: none; color: var(--gray-400); background: none;">…</button>
+        <button class="page-btn">8</button>
+        <button class="page-btn">›</button>
+    </div>
+</section>
+
+<section class="alt">
+    <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+        <span class="section-eyebrow-text">Cards</span>
+    </div>
+    <h2 class="section-title">プロジェクトカード</h2>
+    <p class="section-desc">それぞれの物語を、ひとつの額縁に収めて。</p>
+
+    <div class="grid-3">
+        <div class="project-card">
+            <div class="project-card-thumb">
+                <div class="project-card-thumb-inner thumb-gradient-1">🌟</div>
+                <div class="project-card-badge">
+                    <span class="badge badge-new">NEW</span>
+                </div>
+                <div class="project-card-fav">✦</div>
+            </div>
+            <div class="project-card-body">
+                <div class="project-card-tags">
+                    <span class="project-card-tag">UI/UX</span>
+                    <span class="project-card-tag">Branding</span>
+                </div>
+                <div class="project-card-title">Stellaflare Website</div>
+                <div class="project-card-desc">コーポレートサイトのリニューアルプロジェクト。</div>
+                <div class="project-card-foot">
+                    <span class="project-card-date">2024.05.12</span>
+                    <div class="project-card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-card-thumb">
+                <div class="project-card-thumb-inner thumb-gradient-2">🎵</div>
+                <div class="project-card-badge">
+                    <span class="badge badge-pickup">PICK UP</span>
+                </div>
+                <div class="project-card-fav">✦</div>
+            </div>
+            <div class="project-card-body">
+                <div class="project-card-tags">
+                    <span class="project-card-tag">UI Design</span>
+                </div>
+                <div class="project-card-title">Music App Concept</div>
+                <div class="project-card-desc">音楽と感情をつなぐアプリのUIコンセプトデザイン。</div>
+                <div class="project-card-foot">
+                    <span class="project-card-date">2024.04.28</span>
+                    <div class="project-card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-card-thumb">
+                <div class="project-card-thumb-inner thumb-gradient-3">🌸</div>
+                <div class="project-card-fav">✦</div>
+            </div>
+            <div class="project-card-body">
+                <div class="project-card-tags">
+                    <span class="project-card-tag">Branding</span>
+                </div>
+                <div class="project-card-title">Floria Project</div>
+                <div class="project-card-desc">架空のアイドルグループのブランディングとビジュアル制作。</div>
+                <div class="project-card-foot">
+                    <span class="project-card-date">2024.04.10</span>
+                    <div class="project-card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+        <span class="section-eyebrow-text">Icons</span>
+    </div>
+    <h2 class="section-title">アイコン</h2>
+    <p class="section-desc">シンプルな輪郭のなかに、ことばを宿す。</p>
+
+    <div class="icon-grid">
+        <div class="icon-item">⌂<span class="icon-name">home</span></div>
+        <div class="icon-item">🔍<span class="icon-name">search</span></div>
+        <div class="icon-item">♡<span class="icon-name">heart</span></div>
+        <div class="icon-item">🔔<span class="icon-name">bell</span></div>
+        <div class="icon-item">✉<span class="icon-name">mail</span></div>
+        <div class="icon-item">☰<span class="icon-name">menu</span></div>
+        <div class="icon-item">⊞<span class="icon-name">grid</span></div>
+        <div class="icon-item">✏️<span class="icon-name">edit</span></div>
+        <div class="icon-item">⬇<span class="icon-name">download</span></div>
+        <div class="icon-item">⬆<span class="icon-name">upload</span></div>
+        <div class="icon-item">⚙<span class="icon-name">settings</span></div>
+        <div class="icon-item">☾<span class="icon-name">moon</span></div>
+        <div class="icon-item">☀<span class="icon-name">sun</span></div>
+        <div class="icon-item">◎<span class="icon-name">target</span></div>
+        <div class="icon-item">✦<span class="icon-name">star</span></div>
+        <div class="icon-item">↗<span class="icon-name">arrow</span></div>
+    </div>
+</section>
+
+<section class="alt">
+    <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+        <span class="section-eyebrow-text">Feedback · Badges · Progress</span>
+    </div>
+    <h2 class="section-title">フィードバックと状態表示</h2>
+    <p class="section-desc">伝えたいことを、正確に、やさしく。</p>
+
+    <div class="grid-3">
+        <div>
+            <p class="btn-label">Feedback</p>
+            <div class="feedback-item">
+                <div class="feedback-icon feedback-success">✓</div>
+                <span class="feedback-text">保存が完了しました！</span>
+                <span class="feedback-chev">›</span>
+            </div>
+            <div class="feedback-item">
+                <div class="feedback-icon feedback-info">ℹ</div>
+                <span class="feedback-text">お知らせがあります</span>
+                <span class="feedback-chev">›</span>
+            </div>
+            <div class="feedback-item">
+                <div class="feedback-icon feedback-warn">⚠</div>
+                <span class="feedback-text">入力内容を確認してください</span>
+                <span class="feedback-chev">›</span>
+            </div>
+            <div class="feedback-item">
+                <div class="feedback-icon feedback-error">✕</div>
+                <span class="feedback-text">エラーが発生しました</span>
+                <span class="feedback-chev">›</span>
+            </div>
+        </div>
+
+        <div>
+            <p class="btn-label">Badges</p>
+            <div class="badge-wrap" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                <div><span class="badge badge-new"><span class="badge-dot"></span>NEW</span></div>
+                <div><span class="badge badge-pickup"><span class="badge-dot"></span>PICK UP</span></div>
+                <div><span class="badge badge-recommend"><span class="badge-dot"></span>RECOMMEND</span></div>
+                <div><span class="badge badge-update"><span class="badge-dot"></span>UPDATE</span></div>
+                <div><span class="badge badge-soon">✦ COMING SOON</span></div>
+            </div>
+        </div>
+
+        <div>
+            <p class="btn-label">Progress</p>
+
+            <div class="progress-wrap">
+                <div class="progress-head">
+                    <span class="progress-label">Progress Bar</span>
+                    <span class="progress-val">70%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+
+            <p class="btn-label" style="margin-top: 24px;">Step Indicator</p>
+            <div class="step-indicator">
+                <div class="step done">
+                    <div class="step-dot">01</div>
+                    <div class="step-label">入力</div>
+                </div>
+                <div class="step-line done"></div>
+                <div class="step active">
+                    <div class="step-dot">02</div>
+                    <div class="step-label">確認</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-dot">03</div>
+                    <div class="step-label">完了</div>
+                </div>
+            </div>
+
+            <p class="btn-label" style="margin-top: 24px;">Slider</p>
+            <div class="range-wrap">
+                <span style="font-size: 14px;">✦</span>
+                <input type="range" min="0" max="100" value="65" id="slider1" style="--pct: 65%;">
+                <span class="range-val" id="slider1-val">65</span>
+                <span style="font-size: 14px;">✦</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="background: var(--gray-800); color: white; overflow: hidden; position: relative;">
+    <div style="position: absolute; inset: 0; opacity: 0.04;">
+        <div style="position: absolute; width: 600px; height: 600px; border-radius: 50%; background: var(--accent-gold); top: -200px; right: -100px;"></div>
+        <div style="position: absolute; width: 400px; height: 400px; border-radius: 50%; background: var(--accent-gold-dark); bottom: -100px; left: -100px;"></div>
+    </div>
+
+    <div style="position: relative; z-index: 1; max-width: 640px;">
+        <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24" style="fill: var(--accent-gold);"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"/></svg>
+            <span class="section-eyebrow-text" style="color: var(--accent-gold);">About</span>
+        </div>
+        <h2 class="section-title" style="color: white;">
+            Let's make something<br>
+            <em style="font-family: var(--font-serif); font-style: italic; background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">wonderful.</em>
+        </h2>
+        <p style="font-size: 15px; color: #8888aa; line-height: 1.9; font-weight: 300; margin-bottom: 40px; max-width: 480px;">
+            Lumi Design Studio は、感性とテクノロジーの間で踊るクリエイティブスタジオです。
+            あなたのビジョンを、世界に届けるかたちにします。
+        </p>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+            <button class="btn btn-primary">お問い合わせ ✦</button>
+            <button class="btn" style="background: rgba(255,255,255,0.08); color: white; border: 1.5px solid rgba(255,255,255,0.15);">実績を見る</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div>
+        <div class="footer-logo">
+            <div class="footer-logo-mark">✦</div>
+            <div>
+                <div class="footer-logo-text">Lumi Studio</div>
+                <div class="footer-copy">© 2024 Lumi Design Studio Inc. All Rights Reserved.</div>
+            </div>
+        </div>
+    </div>
+    <nav class="footer-nav">
+        <a href="#">Home</a>
+        <a href="#">Works</a>
+        <a href="#">About</a>
+        <a href="#">News</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="footer-social">
+        <a class="social-btn" href="#">✕</a>
+        <a class="social-btn" href="#">◎</a>
+        <a class="social-btn" href="#">⊞</a>
+    </div>
+</footer>
+
+<script src="assets/js/base.js"></script>
+</body>
+</html>
