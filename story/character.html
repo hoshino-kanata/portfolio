@@ -18,6 +18,7 @@
       --accent-color: #C0BFC5;
       --accent-gold: #f8ae8b;
       --menu-height: 100px;
+      --menu-height-pc: 200px;
     }
 
     * {
@@ -82,7 +83,7 @@
     /* ── META DATA ── */
     .meta-block {
       position: absolute;
-      top: calc(var(--menu-height) + 20px);
+      top: calc(var(--menu-height-pc) + 20px);
       left: 40px;
       z-index: 10;
       font-size: 11px;
@@ -421,8 +422,6 @@
     </svg>
     <div class="displacement-debug"></div>
   </div>
-
-  {% include footer.html %}
 
   <script src="../assets/js/script.js"></script>
   <script type="module">
