@@ -1186,8 +1186,11 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .footer-wrapper { width: 100%; margin: 0; }
 
   /* =========================================
-     突き抜け防止
+     スクロール二重防止
   ========================================= */
+  html, body { width: 100%; } /* 絶対変えない */
+  body { overflow-x: hidden; } /* 絶対変えない */
+
   h2, .section-title-small {
     font-size: clamp(2.5rem, 10vw, 3.5rem) !important;
     line-height: 1.2;
@@ -1205,8 +1208,6 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .skills-slider {
     overflow: hidden !important; 
   }
-  html, body { width: 100%; }
-  body { overflow-x: hidden; }
 
   /* =========================================
      装飾・特殊スクロールの完全解除
