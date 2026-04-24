@@ -14,7 +14,11 @@
   --text-main: #54545f;
   --text-sub: #71717a;
   --text-muted: #a0a0ac;
-  --accent-gold: #e0bca8;
+
+  /* Neutrals */    
+  --accent-gold: #f8ae8b;
+  --accent-gold-dark: #f39473;
+  --accent-gold-light: #f6dac6;
 
   /* Colors - Theme & Accent */
   --theme-blue: #e0faff;
@@ -26,7 +30,8 @@
   --grad-rainbow: linear-gradient(-45deg, var(--theme-blue), var(--theme-pink), var(--theme-purple), var(--theme-yellow));
   --grad-hero: linear-gradient(-45deg, var(--theme-blue), var(--theme-pink), var(--theme-purple), #fdfbfb);
   --grad-stained-glass: linear-gradient(135deg, var(--theme-blue), var(--theme-pink), var(--theme-purple), var(--theme-yellow));
-
+  --grad-accent: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
+  
   /* Shadows (ニューモフィズムなどの影を統一) */
   --shadow-dark: rgba(160, 170, 190, 0.3);
   --shadow-inset-dark: rgba(160, 170, 190, 0.08);

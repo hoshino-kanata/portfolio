@@ -1,17 +1,8 @@
 @charset "UTF-8";
 
 /* =========================================
-   ★ ベースリセット & 全体設定は style.css に任せるためスリム化
-========================================= */
-.guideline-page-wrapper * {
-  line-height: 2;
-  font-size: 18px;
-}
-p { padding: 10px 10px 30px; }
-
-
-/* =========================================
-   ★ レイアウト・コンテナ
+   1. Base Layout & Containers
+   (全体レイアウトと白い角丸のセクション)
 ========================================= */
 .guideline-page-wrapper {
   padding: 80px 4vw;
@@ -19,32 +10,25 @@ p { padding: 10px 10px 30px; }
   margin: 0 auto;
 }
 
-/* 戻るボタンの洗練 */
-.back-btn-container { margin-bottom: 50px; }
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 28px;
-  background: var(--bg-white);
-  border: 1px solid var(--shadow-inset-dark);
-  border-radius: 99px;
-  text-decoration: none;
-  color: var(--accent-gold);
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 0.15em;
-  transition: all 0.4s ease;
+/* ユーザー指定の「白い角丸」セクション */
+.styled-card {
+  background-color: var(--bg-white, #ffffff);
+  border-radius: 24px;
+  padding: 60px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
-.back-btn:hover {
-  background: var(--bg-alt);
-  color: var(--bg-white);
-  transform: translateX(-5px);
+.styled-card.top-section { text-align: center; }
+.styled-card.intro-section,
+.styled-card.tags-section { text-align: left; }
+
+.guide-intro-text {
+  line-height: 2;
+  font-size: 16px;
+  color: var(--text-sub);
 }
 
-/* =========================================
-   ★ UIパーツ（ボタン・カード）
-========================================= */
+/* 戻るボタン（既存の記述を維持） */
 .back-btn-container {
   margin-bottom: 40px;
   text-align: left;
@@ -54,10 +38,10 @@ p { padding: 10px 10px 30px; }
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: #ffffff;
+  background: var(--bg-white, #ffffff);
   border-radius: 99px;
   text-decoration: none;
-  color: #888;
+  color: var(--text-sub, #888);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -66,27 +50,16 @@ p { padding: 10px 10px 30px; }
 }
 .back-btn:hover {
   transform: translateX(-4px);
-  color: #555;
+  color: var(--text-main, #555);
   box-shadow: inset 2px 2px 5px #f0f0f0, inset -2px -2px 5px #ffffff;
 }
 
-.styled-card {
-  background-color: #ffffff;
-  border-radius: 24px;
-  padding: 60px;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-}
-
 /* =========================================
-   ★ トップ・見出しセクション
+   2. Hero / Header Area (ロゴ周り)
 ========================================= */
-.styled-card.top-section {
-  text-align: center;
-}
 .guide-logo-area {
-  margin-bottom: 0;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .logo-gradient {
@@ -95,39 +68,32 @@ p { padding: 10px 10px 30px; }
   max-width: 400px;
   height: 120px;
   margin: 0 auto;
-
-  background: 
-    linear-gradient(rgba(85, 85, 85, 0.4), rgba(85, 85, 85, 0.1)),
-    linear-gradient(-45deg, #e0faff, #ffe6f2, #e8ebff);
+  background: linear-gradient(rgba(85, 85, 85, 0.4), rgba(85, 85, 85, 0.1)), linear-gradient(-45deg, #e0faff, #ffe6f2, #e8ebff);
   background-size: 100% 100%, 200% 200%;
   animation: gradientMove 5s ease infinite;
-
-  -webkit-mask-image: url('../img/logo.svg');
+  
+  /* CSSファイル(assets/css/)から画像フォルダへの相対パス */
+  -webkit-mask-image: url('../img/logo.svg'); 
   mask-image: url('../img/logo.svg');
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
 }
 
 .guide-subtitle {
   font-size: 13px;
-  color: #888;
+  color: var(--text-muted);
   letter-spacing: 0.2em;
   margin: 8px 0 0 0;
   text-transform: uppercase;
   font-weight: 700;
   text-align: center;
+  display: block;
 }
 
+/* =========================================
+   3. Headings (見出し)
+========================================= */
 .guide-heading {
   font-size: 24px;
   margin-top: 0;
@@ -135,15 +101,15 @@ p { padding: 10px 10px 30px; }
   display: flex;
   align-items: center;
   gap: 12px;
-  border-bottom: 1px solid var(--text-muted);
+  border-bottom: 1px solid rgba(224, 188, 168, 0.3);
   padding-bottom: 10px;
-  text-align: left; 
+  text-align: left;
+  color: var(--text-main);
 }
 .guide-heading.center {
   justify-content: center;
   text-align: center;
 }
-
 .guide-heading::before {
   content: "";
   display: block;
@@ -155,33 +121,29 @@ p { padding: 10px 10px 30px; }
 .guide-heading.center::before { display: none; }
 .guide-heading.ok-section::before { background-color: #8ecbd6; } 
 .guide-heading.ng-section::before { background-color: #d68eb0; } 
-
-.styled-card.intro-section { text-align: left; }
+.guide-heading.warn-section::before { background-color: #d6c68e; }
+.guide-heading.letter-section::before { background-color: #8cd6ab; }
 
 /* =========================================
-   ★ あいさつなどのセクション
+   4. Content Elements (リスト・セクション)
 ========================================= */
-.styled-card.tags-section {
-  text-align: left;
-}
-
+/* 挨拶タグ */
 .tags-list {
   list-style: none;
-  padding: 0;
-  margin: 0;
   padding: 0 20px;
+  margin: 0;
 }
 .tags-list li {
   display: flex;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.05); 
+  border-bottom: 1px solid rgba(0,0,0,0.05);
   color: var(--text-main);
-  align-items: self-start;
+  align-items: flex-start;
 }
 .tags-list .lbl {
-  width: 160px; 
+  width: 160px;
   font-weight: bold;
-  color: var(--text-sub); 
+  color: var(--text-sub);
   flex-shrink: 0;
 }
 .tags-list .desc {
@@ -189,39 +151,18 @@ p { padding: 10px 10px 30px; }
   font-weight: normal;
 }
 
-/* =========================================
-   ★ 権利・ガイドラインセクション
-========================================= */
+/* セクションボックス (OK, NG, 警告など) */
 .section-box {
   border-radius: 16px;
   padding: 40px;
   margin-top: 40px;
 }
-.section-box.ok-box {
-  background-color: #f6fcfd;
-  border: 1px solid #e0f2f5;
-}
-.section-box.ng-box {
-  background-color: #fdf6f9;
-  border: 1px solid #f5e0ea;
-}
+.section-box.ok-box { background-color: #f6fcfd; border: 1px solid #e0f2f5; }
+.section-box.ng-box { background-color: #fdf6f9; border: 1px solid #f5e0ea; }
+.section-box.warn-box { background-color: #fffcf0; border: 1px solid #f5f0e0; }
+.section-box.letter-box { background-color: #f2fcf6; border: 1px solid #e0f5e8; }
 
-/* 注意・お願いセクション（黄色） */
-.section-box.warn-box {
-  background-color: #fffcf0;
-  border: 1px solid #f5f0e0;
-}
-.guide-heading.warn-section::before { background-color: #d6c68e; }
-
-/* 手紙・お願いセクション（やさしい緑色） */
-.section-box.letter-box {
-  background-color: #f2fcf6;
-  border: 1px solid #e0f5e8;
-}
-.guide-heading.letter-section::before {
-  background-color: #8cd6ab;
-}
-
+/* リストアイテム */
 .guide-list {
   display: flex;
   flex-direction: column;
@@ -237,29 +178,32 @@ p { padding: 10px 10px 30px; }
 }
 .item-text { flex: 1; }
 .item-title {
-  font-size: 20px;
+  font-size: 18px;
   color: var(--text-main);
-  margin: 0 0 8px 0; padding: 0 20px;
+  margin: 0 0 8px 0;
   font-weight: bold;
+  line-height: 1.4;
 }
 .item-desc {
   color: var(--text-sub);
-  font-size: 17px;
-  margin: 0; padding: 0 20px;
-  font-weight: normal; 
+  font-size: 15px;
+  margin: 0;
+  font-weight: normal;
+  line-height: 1.8;
 }
 
-.icon-check-animated, .icon-ban-animated, .icon-warn, .icon-message-animated {
+/* リスト内アイコン */
+.icon-check-animated, .icon-ban-animated, .icon-warn, .icon-send-animated {
   flex-shrink: 0;
   margin-top: -2px;
 }
-/* アイコンのカラーリング */
 .icon-check-animated { color: #8ecbd6; }
 .icon-ban-animated { color: #d68eb0; }
+.icon-warn { color: #d6c68e; }
 .icon-send-animated { color: #8cd6ab; }
 
 /* =========================================
-   ★ よくあるご質問 (FAQ) セクション
+   5. FAQ Section
 ========================================= */
 .faq-container {
   display: flex;
@@ -267,53 +211,58 @@ p { padding: 10px 10px 30px; }
   gap: 16px;
 }
 .faq-item {
-  border: 1px solid #eee;
-  border-radius: 8px;
+  border: 1px solid rgba(224, 188, 168, 0.3);
+  border-radius: 12px;
   overflow: hidden;
+  background: var(--bg-white);
 }
 .faq-check { display: none; }
-
 .faq-label {
-  padding: 20px;
-  padding-right: 60px;
-  background-color: #fafafa;
+  padding: 20px 60px 20px 20px;
+  background-color: rgba(245, 246, 251, 0.3);
   cursor: pointer;
   position: relative;
-  font-size: 18px; font-weight: 600;
+  font-size: 16px;
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 12px;
   transition: background-color 0.3s;
   margin: 0;
+  color: var(--text-main);
 }
 .faq-label::before {
   content: "Q.";
-  color: #d68eb0;
+  color: #d97ba6;
   font-weight: 600;
   font-size: 20px;
 }
-.faq-label:hover { background-color: var(--shadow-inset-dark); }
+.faq-label:hover { 
+  background-color: var(--bg-alt, #e8ebff);
+}
 .faq-label::after {
   content: '+';
   position: absolute;
   right: 20px;
   font-size: 24px;
   transition: transform 0.3s;
+  color: var(--text-muted);
 }
-
 .faq-content {
   height: 0;
   overflow: hidden;
   transition: height 0.3s ease;
-  background-color: white;
+  background-color: var(--bg-white);
 }
 .faq-answer {
-  padding: 20px 20px 25px 48px; 
+  padding: 20px 20px 25px 48px;
   opacity: 0;
-  font-weight: 400; 
+  font-weight: 400;
   transition: opacity 0.3s ease;
+  color: var(--text-sub);
+  line-height: 1.8;
+  font-size: 15px;
 }
-
 .faq-check:checked ~ .faq-content { height: auto; }
 .faq-check:checked ~ .faq-label::after {
   content: '-';
@@ -325,46 +274,24 @@ p { padding: 10px 10px 30px; }
 .outro-text {
   margin-top: 40px;
   padding: 30px;
-  background: #fdfdfd;
-  border: 1px solid #eee;
+  background: var(--bg-alt);
+  border: 1px solid rgba(224, 188, 168, 0.3);
   border-radius: 12px;
-  color: #666;
+  color: var(--text-sub);
   text-align: left;
   font-weight: 400;
+  line-height: 1.8;
+  font-size: 15px;
 }
 
 /* =========================================
-   ★ フッター (ガイドライン専用調整)
+   6. Copy Box (依頼用テンプレート)
 ========================================= */
-.guideline-page-wrapper .footer-wrapper {
-  margin: 0 auto;
-  position: relative;
-  max-width: 840px;
-  padding: 0 !important; 
-  display: block;
-}
-
-.guideline-page-wrapper .footer {
-  position: relative;
-  background: transparent; 
-  padding-top: 40px !important;
-  padding-bottom: 60px !important;
-  text-align: center;
-  margin: 0;
-  border: none !important;
-  display: block;
-}
-
-/* =========================================
-   ★ 応援イラスト・コピーボックス
-========================================= */
-.copy-container {
-  margin-top: 40px;
-}
+.copy-container { margin-top: 40px; }
 .copy-box-wrapper {
   display: flex;
   background: var(--bg-surface);
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(224, 188, 168, 0.3);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: inset 2px 2px 5px rgba(0,0,0,0.02);
@@ -378,11 +305,12 @@ p { padding: 10px 10px 30px; }
   color: var(--text-sub);
   font-family: inherit;
   outline: none;
-  resize: none; 
-  height: 200px; 
+  resize: none;
+  height: 200px;
+  line-height: 1.6;
 }
 .copy-box-wrapper button {
-  background: var(--accent-gold); /* style.css のトーンに合わせる */
+  background: var(--grad-accent);
   color: var(--bg-white);
   border: none;
   padding: 0 25px;
@@ -390,22 +318,42 @@ p { padding: 10px 10px 30px; }
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  letter-spacing: 0.1em;
 }
-.copy-box-wrapper button:hover {
-  opacity: 0.8;
+.copy-box-wrapper button:hover { opacity: 0.8; }
+
+/* =========================================
+   7. Footer Adjustments
+========================================= */
+.guideline-page-wrapper .footer-wrapper {
+  margin: 0 auto;
+  position: relative;
+  max-width: 840px;
+  padding: 0 !important; 
+  display: block;
+}
+.guideline-page-wrapper .footer {
+  position: relative;
+  background: transparent; 
+  padding-top: 40px !important;
+  padding-bottom: 60px !important;
+  text-align: center;
+  margin: 0;
+  border: none !important;
+  display: block;
 }
 
 /* =========================================
-   ★ ポヨんアニメーション (消さないで維持)
+   8. Animations
 ========================================= */
 .scroll-pop {
   opacity: 0;
   transform: translateY(30px) scale(0.95);
+  transition: none;
 }
 .scroll-pop.show {
   animation: poyonPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
-
 @keyframes poyonPop {
   0% { opacity: 0; transform: translateY(30px) scale(0.95); }
   50% { opacity: 1; transform: translateY(-5px) scale(1.02); }
@@ -413,17 +361,15 @@ p { padding: 10px 10px 30px; }
 }
 
 /* =========================================
-   ★ レスポンシブ（スマートフォン用）
+   9. Responsive (SP)
 ========================================= */
 @media (max-width: 768px) {
   .guideline-page-wrapper {
     padding: 40px 4vw;
   }
-  
-  .guideline-page-wrapper .styled-card {
-    padding: 20px;
+  .styled-card {
+    padding: 30px 20px;
   }
-
   .section-box {
     margin-left: -20px;
     margin-right: -20px;
@@ -432,48 +378,40 @@ p { padding: 10px 10px 30px; }
     border-right: none;
     padding: 30px 20px;
   }
-
   .tags-list li {
-    flex-direction: row; 
+    flex-direction: row;
     gap: 12px;
     align-items: center;
   }
   .tags-list .lbl {
-    width: 100px; 
+    width: 100px;
     flex-shrink: 0;
     padding-top: 0;
+    font-size: 14px;
   }
+  .tags-list .desc { font-size: 14px; }
   .guide-item {
-    flex-direction: row !important; 
-    align-items: flex-start;       
-    gap: 12px;                     
+    flex-direction: row !important;
+    align-items: flex-start; /* ← flex-start から center に変更 */
+    gap: 12px;
     padding: 20px;
   }
-
   .guide-item svg {
-    flex-shrink: 0;                
-    width: 24px;                   
+    flex-shrink: 0;
+    width: 24px;
     height: 24px;
+    margin-top: 2px;
   }
-  .faq-label {
-    padding-right: 50px;
-  }
-  .faq-answer {
-    padding: 15px 15px 20px 15px;
-  }
-  .logo-gradient {
-    height: 80px; 
-  }
-
-  .copy-box-wrapper {
-    flex-direction: column;
-  }
+  .faq-label { padding-right: 50px; }
+  .faq-answer { padding: 15px 15px 20px 15px; }
+  .logo-gradient { height: 80px; }
+  .copy-box-wrapper { flex-direction: column; }
   .copy-box-wrapper button {
-    padding: 12px;
+    padding: 15px;
     width: 100%;
   }
   .copy-box-wrapper textarea {
     flex: none;
-    height: 250px; 
+    height: 250px;
   }
 }
