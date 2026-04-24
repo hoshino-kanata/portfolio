@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive ｜ 星乃かなた</title>
+  
+  <script>
+    (function(d) {
+      var config = { kitId: 'ghr8etq', scriptTimeout: 3000, async: true },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <style>
+    .archive-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 10px 30px;
+      background: transparent;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: inherit;
+      color: #555;
+      transition: all 0.3s ease;
+    }
+    .tab-btn:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    .tab-btn.active {
+      background: #333; /* アクセントカラーに合わせて調整してください */
+      color: #fff;
+      border-color: #333;
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-lineart-animation"></div>
+
+{% include menu.html %}
+
+<header class="page-header scroll-pop">
+    <span class="page-sub-title">Archive</span>
+    <h1 class="page-main-title">アーカイブ</h1>
+    <p class="page-desc">星乃かなたが紡ぐ、音楽や配信の記録。</p>
+</header>
+
+<main class="main-content">
+
+    <div class="archive-tabs scroll-pop">
+        <button class="tab-btn active" onclick="switchTab(event, 'tab-mv')">MV</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab-stream')">配信</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab-collab')">コラボ</button>
+    </div>
+
+    <div id="tab-mv" class="tab-content active">
+        <section class="component-section" id="original">
+            <p class="section-title scroll-pop">Original Song</p>
+            
+            <div class="refined-grid">
+            <article class="grid-item hero scroll-pop" style="grid-column: 1 / span 2;">
+                <a href="https://youtu.be/PRjdAfM70Ek" target="_blank" class="item-inner" style="text-decoration: none;">
+                    <div class="thumb-169">
+                        <img src="https://img.youtube.com/vi/PRjdAfM70Ek/maxresdefault.jpg" alt="抱擁">
+                        <div class="frosted-overlay">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <div class="tags-row">
+                            <span class="meta-tag original">Original</span>
+                            <span class="meta-date">2025.07.07 Release</span>
+                        </div>
+                        <p class="mv-name" style="font-size: 28px;">抱擁 / 星乃かなた</p>
+                        <p class="mv-caption">孤独な夜に寄り添う、魔教会の聖歌。あなたの心に届きますように。</p>
+                    </div>
+                </a>
+            </article>
+            </div>
+        </section>
+
+        <section class="component-section" id="vocaduo">
+            <p class="section-title scroll-pop">VocaDuo Project</p>
+            
+            <div class="grid-3col">
+                <article class="f-card scroll-pop">
+                    <a href="001_Serpent.html" onclick="openIframeModal('001_Serpent.html'); return false;" class="f-card-inner" style="text-decoration: none;">
+                        <div class="f-card-thumb">
+                            <img src="https://img.youtube.com/vi/tbTx3FrxL6g/maxresdefault.jpg" alt="毒蛇 - Serpent -">
+                            <div class="frosted-overlay">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                            </div>
+                        </div>
+                        <div class="f-card-info">
+                            <p class="f-card-title">毒蛇 - Serpent - / MAIDEN</p>
+                            <p class="f-card-meta">VocaDuo 2025 参加作品</p>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="f-card scroll-pop">
+                    <a href="002_Karakuri.html" onclick="openIframeModal('002_Karakuri.html'); return false;" class="f-card-inner" style="text-decoration: none;">
+                        <div class="f-card-thumb">
+                            <img src="https://img.youtube.com/vi/5TxFYeh_ONw/maxresdefault.jpg" alt="絡繰りのセレナーデ">
+                            <div class="frosted-overlay">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                            </div>
+                        </div>
+                        <div class="f-card-info">
+                            <p class="f-card-title">絡繰りのセレナーデ / Jane Does Bride</p>
+                            <p class="f-card-meta">VocaDuo 2025 参加作品</p>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="f-card scroll-pop">
+                    <a href="https://youtu.be/8J8F8MEcPJw" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                        <div class="f-card-thumb">
+                            <img src="https://img.youtube.com/vi/8J8F8MEcPJw/maxresdefault.jpg" alt="ガラスペンで書く魔法陣">
+                            <div class="frosted-overlay">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                            </div>
+                        </div>
+                        <div class="f-card-info">
+                            <p class="f-card-title">ガラスペンで書く魔法陣 / 午前2時のインク瓶</p>
+                            <p class="f-card-meta">VocaDuo 2025 参加作品</p>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="f-card scroll-pop">
+                    <a href="https://youtu.be/QhSofqDCjHU" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                        <div class="f-card-thumb">
+                            <img src="https://img.youtube.com/vi/QhSofqDCjHU/maxresdefault.jpg" alt="お菓子の夢">
+                            <div class="frosted-overlay">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                            </div>
+                        </div>
+                        <div class="f-card-info">
+                            <p class="f-card-title">お菓子の夢 / meli-melo</p>
+                            <p class="f-card-meta">VocaDuo 2023 参加作品</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section class="component-section" id="cover">
+            <p class="section-title scroll-pop">Cover Songs</p>
+            
+            <div class="grid-3col">
+                <article class="f-card scroll-pop">
+                    <a href="https://youtu.be/d7GTj7xRJ2U" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                        <div class="f-card-thumb">
+                            <img src="https://img.youtube.com/vi/d7GTj7xRJ2U/maxresdefault.jpg" alt="オンナのコ♡オトコのコ">
+                            <div class="frosted-overlay">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                            </div>
+                        </div>
+                        <div class="f-card-info">
+                            <p class="f-card-title">オンナのコ♡オトコのコ / 小倉優子</p>
+                            <p class="f-card-meta">Cover</p>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="f-card scroll-pop">
+                    <a href="https://youtu.be/nqYK0E-b2mY" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                        <div class="f-card-thumb">
+                            <img src="https://img.youtube.com/vi/nqYK0E-b2mY/maxresdefault.jpg" alt="くっきんどりーみんらんど">
+                            <div class="frosted-overlay">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                            </div>
+                        </div>
+                        <div class="f-card-info">
+                            <p class="f-card-title">くっきんどりーみんらんど / Speciale</p>
+                            <p class="f-card-meta">Cover & Illustrations</p>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="f-card scroll-pop">
+                    <a href="https://youtu.be/8TnS7Rckjwk" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                        <div class="f-card-thumb">
+                            <img src="https://img.youtube.com/vi/8TnS7Rckjwk/maxresdefault.jpg" alt="I♡">
+                            <div class="frosted-overlay">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                            </div>
+                        </div>
+                        <div class="f-card-info">
+                            <p class="f-card-title">I♡ / リリぴ</p>
+                            <p class="f-card-meta">Cover</p>
+                        </div>
+                    </a>
+                </article>
+                
+                <article class="f-card scroll-pop">
+                    <a href="https://youtu.be/Hy5ZOI0WQ9Y" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                        <div class="f-card-thumb">
+                            <img src="https://img.youtube.com/vi/Hy5ZOI0WQ9Y/maxresdefault.jpg" alt="モニタリング">
+                            <div class="frosted-overlay">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
+                            </div>
+                        </div>
+                        <div class="f-card-info">
+                            <p class="f-card-title">モニタリング / DECO*27</p>
+                            <p class="f-card-meta">Cover</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <div id="tab-stream" class="tab-content">
+        <section class="component-section">
+            <p class="section-title scroll-pop">Live Streams</p>
+            <p style="text-align: center; color: #666; margin-top: 40px;">ここに配信アーカイブを追加していきます。</p>
+            <div class="grid-3col">
+                </div>
+        </section>
+    </div>
+
+    <div id="tab-collab" class="tab-content">
+        <section class="component-section">
+            <p class="section-title scroll-pop">Collaborations</p>
+            <p style="text-align: center; color: #666; margin-top: 40px;">ここにコラボアーカイブを追加していきます。</p>
+            <div class="grid-3col">
+                </div>
+        </section>
+    </div>
+
+</main>
+
+  {% include footer.html %}
+  
+</div>
+
+<div class="modal-overlay" id="iframeModal">
+  <div class="modal-box" style="width: 95vw; max-width: 1200px; height: 90vh; padding: 0; overflow: hidden; border-radius: 0; background: #f5f5f5;">
+    <button class="modal-close" onclick="closeIframeModal()" style="position: absolute; top: 10px; right: 10px; z-index: 10000; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">✕</button>
+    <iframe id="modalIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+  </div>
+</div>
+
+<script>
+  // タブ切り替え関数
+  function switchTab(event, tabId) {
+    // すべてのタブボタンのアクティブ状態を解除
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => btn.classList.remove('active'));
+
+    // クリックされたボタンをアクティブにする
+    event.currentTarget.classList.add('active');
+
+    // すべてのタブコンテンツを非表示にする
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => {
+      content.classList.remove('active');
+    });
+
+    // 選択されたタブコンテンツを表示する
+    const activeContent = document.getElementById(tabId);
+    if (activeContent) {
+      activeContent.classList.add('active');
+    }
+  }
+
+  // モーダルを開く関数
+  function openIframeModal(url) {
+    const modal = document.getElementById('iframeModal');
+    const iframe = document.getElementById('modalIframe');
+    iframe.src = url; // リンク先のHTMLをiframeにセット
+    modal.classList.add('active'); // モーダルを表示
+    document.body.classList.add('no-scroll'); // 背景のスクロールを止める
+  }
+
+  // モーダルを閉じる関数
+  function closeIframeModal() {
+    const modal = document.getElementById('iframeModal');
+    const iframe = document.getElementById('modalIframe');
+    modal.classList.remove('active'); // モーダルを隠す
+    
+    // 中のYouTubeの音を止めるためにsrcを空にする（少し遅らせて実行）
+    setTimeout(() => {
+      iframe.src = ''; 
+    }, 400); 
+    
+    document.body.classList.remove('no-scroll'); // スクロールを再開
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="../assets/js/script.js"></script>
+</body>
+</html>

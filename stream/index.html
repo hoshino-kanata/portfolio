@@ -1,5 +1,3 @@
----
----
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -432,21 +430,59 @@
     </div>
   </div>
 
-  <div id="memo-modal" class="modal-overlay" onclick="closeMemo(event)">
+  <div id="memo-modal-0" class="modal-overlay" onclick="closeMemo(event)">
     <div class="modal-content">
       <div class="modal-handle"></div>
       <button class="modal-close" onclick="closeMemo()">×</button>
       <div class="modal-inner">
         <header class="modal-header">
-          <span class="eyebrow" id="modal-eyebrow">PROFILE</span>
-          <h3 id="modal-name">Name</h3>
+          <span class="eyebrow">PROFILE 01</span>
+          <h3>Hoshino Kanata</h3>
           <div class="divider-star"><span>✦</span></div>
         </header>
-        <div class="modal-body" id="modal-body"></div>
+        <div class="modal-body">
+          <p>悪魔のすまう魔教会で、聖歌隊をつとめている星乃かなたです。</p>
+          <p>静かな夜の時間、ローファイな音楽、そして映画のアーカイブを書き留めるのが好きです。</p>
+        </div>
       </div>
     </div>
   </div>
 
+  <div id="memo-modal-1" class="modal-overlay" onclick="closeMemo(event)">
+    <div class="modal-content">
+      <div class="modal-handle"></div>
+      <button class="modal-close" onclick="closeMemo()">×</button>
+      <div class="modal-inner">
+        <header class="modal-header">
+          <span class="eyebrow">PROFILE 02</span>
+          <h3>Hizuki Ren</h3>
+          <div class="divider-star"><span>✦</span></div>
+        </header>
+        <div class="modal-body">
+          <p>夕暮れ時になると現れる、ゲーム好きの親友。</p>
+          <p>少し怖がりな一面もあり、ホラーゲームをプレイする時は誰かの隣にいたがります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="memo-modal-2" class="modal-overlay" onclick="closeMemo(event)">
+    <div class="modal-content">
+      <div class="modal-handle"></div>
+      <button class="modal-close" onclick="closeMemo()">×</button>
+      <div class="modal-inner">
+        <header class="modal-header">
+          <span class="eyebrow">PROFILE 03</span>
+          <h3>Ciel</h3>
+          <div class="divider-star"><span>✦</span></div>
+        </header>
+        <div class="modal-body">
+          <p>魔教会の奥深くにある図書室の管理者。</p>
+          <p>古い書物と温かい紅茶の香りに包まれながら、訪れる人々に知識と安らぎを与えてくれます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="svg-container">
     <svg xmlns="http://www.w3.org/2000/svg">
       <filter id="liquid-filter" x="-20%" y="-20%" width="140%" height="140%">
@@ -461,24 +497,6 @@
   <script src="../assets/js/script.js"></script>
   <script type="module">
     import gsap from 'https://esm.sh/gsap@3.13.0';
-
-    const charData = [
-      {
-        name: "Hoshino Kanata",
-        eyebrow: "PROFILE 01",
-        desc: "<p>悪魔のすまう魔教会で、聖歌隊をつとめている星乃かなたです。</p><p>静かな夜の時間、ローファイな音楽、そして映画のアーカイブを書き留めるのが好きです。</p>"
-      },
-      {
-        name: "Hizuki Ren",
-        eyebrow: "PROFILE 02",
-        desc: "<p>夕暮れ時になると現れる、ゲーム好きの親友。</p><p>少し怖がりな一面もあり、ホラーゲームをプレイする時は誰かの隣にいたがります。</p>"
-      },
-      {
-        name: "Ciel",
-        eyebrow: "PROFILE 03",
-        desc: "<p>魔教会の奥深くにある図書室の管理者。</p><p>古い書物と温かい紅茶の香りに包まれながら、訪れる人々に知識と安らぎを与えてくれます。</p>"
-      }
-    ];
 
     let currentIndex = 0;
 
@@ -551,16 +569,17 @@
     window.scrollToNext = (idx) => document.getElementById(`panel-${idx + 1}`)?.scrollIntoView({ behavior: 'smooth' });
     window.scrollToTop = () => document.getElementById('panel-0').scrollIntoView({ behavior: 'smooth' });
 
+    // 修正部分：現在のスクロール位置（currentIndex）に合わせたモーダルを開く
     window.openMemo = () => {
-      document.getElementById('modal-eyebrow').innerText = charData[currentIndex].eyebrow;
-      document.getElementById('modal-name').innerText = charData[currentIndex].name;
-      document.getElementById('modal-body').innerHTML = charData[currentIndex].desc;
-      document.getElementById('memo-modal').classList.add('is-active');
+      document.getElementById(`memo-modal-${currentIndex}`).classList.add('is-active');
     };
 
+    // 修正部分：すべてのモーダルを閉じる
     window.closeMemo = (e) => {
-      if (!e || e.target === document.getElementById('memo-modal') || e.target.classList.contains('modal-close')) {
-        document.getElementById('memo-modal').classList.remove('is-active');
+      if (!e || e.target.classList.contains('modal-overlay') || e.target.classList.contains('modal-close')) {
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+          modal.classList.remove('is-active');
+        });
       }
     };
   </script>
