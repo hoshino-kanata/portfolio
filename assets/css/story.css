@@ -22,15 +22,11 @@ p, h1, h2, h3, span {
    Snap Scroll Container
 ========================================= */
 .snap-container {
-  height: 100dvh;
-  overflow-y: scroll; /* PC用 */
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .snap-container {
-    overflow-y: hidden;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -40,13 +36,15 @@ p, h1, h2, h3, span {
 }
 
 section {
-  height: 100dvh;
+  min-height: 100dvh; /* 最低でも1画面分の高さを確保 */
   width: 100%;
-  scroll-snap-align: start;
+  /* scroll-snap-align: start; を削除 */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 10vh 0; /* スクロール時に見やすいよう、上下に少し余白をとります */
+  box-sizing: border-box;
 }
 
 /* =========================================
@@ -82,16 +80,17 @@ section {
 }
 
 /* =========================================
-   Content & Typography (元のサイズ感に調整)
+   Content & Typography
 ========================================= */
 .content {
   max-width: 900px;
   width: 100%;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s;
   padding: 0 20px;
   box-sizing: border-box;
+  
+  /* スクロール仕様にするため、最初から表示させておきます */
+  opacity: 1;
+  transform: none;
 }
 
 .is-active .content {
@@ -253,7 +252,7 @@ section {
 
 .whisper-text {
   font-size: 1.5rem;
-  letter-spacing: 0.8em;
+  letter-spacing: 0.1em;
   color: rgba(142, 146, 179, 0.8);
 }
 
