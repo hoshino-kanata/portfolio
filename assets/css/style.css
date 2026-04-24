@@ -1042,7 +1042,7 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
 .menu-item:hover .mark { opacity: 1; }
 .menu-sub { width: 100%; border-top: 1px solid rgba(224, 188, 168, 0.3); padding-top: 40px; display: flex; flex-direction: column; gap: 20px; }
 .sub-row { display: flex; align-items: center; gap: 20px; }
-.sub-label { font-size: 14px; color: var(--text-muted); font-weight: 500; width: 100px; }
+.sub-label { font-size: 13px; letter-spacing: 0; color: var(--text-muted); font-weight: 500; width: 100px; }
 .sub-link { font-size: 14px; color: var(--text-main); text-decoration: none; letter-spacing: 0.05em; transition: 0.3s; }
 .sub-link:hover, .sub-link-main:hover { color: var(--accent-gold); }
 .sub-link-main { font-size: 14px; color: var(--accent-gold); font-weight: bold; letter-spacing: 0.05em; text-decoration: none; transition: 0.3s; }
