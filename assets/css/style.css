@@ -318,7 +318,7 @@ button, input, textarea, select {
 .floating-news { position: absolute; top: auto; bottom: calc(50vh - 384px); left: 0; transform: translateX(-120%); z-index: 20; animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards; }
 @keyframes popIn { to { transform: translateX(4vw); } }
 .news-content { display: flex; align-items: center; background: var(--bg-white); padding: 24px; border-radius: 20px; width: 500px; height: auto; box-sizing: border-box; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.05), 4px 4px 10px rgba(0, 0, 0, 0.02); }
-.news-banners { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.news-banners { display: flex; flex-direction: column; gap: 12px; width: 100%; flex: 1; min-width: 0; }
 .news-label-pc, .news-label-sp { writing-mode: vertical-rl; font-size: 14px; color: var(--text-muted); font-weight: bold; letter-spacing: 0.2em; }
 .news-label-pc { transform: rotate(180deg); margin-right: 20px; }
 .news-label-sp { display: none; }
