@@ -71,188 +71,510 @@
 
 <main class="main-content">
 
-    <div class="archive-tabs scroll-pop">
-        <button class="tab-btn active" onclick="switchTab(event, 'tab-mv')">MV</button>
-        <button class="tab-btn" onclick="switchTab(event, 'tab-stream')">配信</button>
-        <button class="tab-btn" onclick="switchTab(event, 'tab-collab')">コラボ</button>
-    </div>
+<div class="archive-tabs scroll-pop">
+    <button class="tab-btn active" onclick="switchTab(event, 'tab-mv')">MV</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-stream')">ゲーム</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-collab')">歌枠</button>
+</div>
 
-    <div id="tab-mv" class="tab-content active">
-        <section class="component-section" id="original">
-            <p class="section-title scroll-pop">Original Song</p>
-            
-            <div class="refined-grid">
-            <article class="grid-item hero scroll-pop" style="grid-column: 1 / span 2;">
-                <a href="https://youtu.be/PRjdAfM70Ek" target="_blank" class="item-inner" style="text-decoration: none;">
-                    <div class="thumb-169">
-                        <img src="https://img.youtube.com/vi/PRjdAfM70Ek/maxresdefault.jpg" alt="抱擁">
-                        <div class="frosted-overlay">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <div class="tags-row">
-                            <span class="meta-tag original">Original</span>
-                            <span class="meta-date">2025.07.07 Release</span>
-                        </div>
-                        <p class="mv-name" style="font-size: 28px;">抱擁 / 星乃かなた</p>
-                        <p class="mv-caption">孤独な夜に寄り添う、魔教会の聖歌。あなたの心に届きますように。</p>
-                    </div>
-                </a>
-            </article>
-            </div>
-        </section>
-
-        <section class="component-section" id="vocaduo">
-            <p class="section-title scroll-pop">VocaDuo Project</p>
-            
-            <div class="grid-3col">
-                <article class="f-card scroll-pop">
-                    <a href="001_Serpent.html" onclick="openIframeModal('001_Serpent.html'); return false;" class="f-card-inner" style="text-decoration: none;">
-                        <div class="f-card-thumb">
-                            <img src="https://img.youtube.com/vi/tbTx3FrxL6g/maxresdefault.jpg" alt="毒蛇 - Serpent -">
-                            <div class="frosted-overlay">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="f-card-info">
-                            <p class="f-card-title">毒蛇 - Serpent - / MAIDEN</p>
-                            <p class="f-card-meta">VocaDuo 2025 参加作品</p>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="f-card scroll-pop">
-                    <a href="002_Karakuri.html" onclick="openIframeModal('002_Karakuri.html'); return false;" class="f-card-inner" style="text-decoration: none;">
-                        <div class="f-card-thumb">
-                            <img src="https://img.youtube.com/vi/5TxFYeh_ONw/maxresdefault.jpg" alt="絡繰りのセレナーデ">
-                            <div class="frosted-overlay">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="f-card-info">
-                            <p class="f-card-title">絡繰りのセレナーデ / Jane Does Bride</p>
-                            <p class="f-card-meta">VocaDuo 2025 参加作品</p>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="f-card scroll-pop">
-                    <a href="https://youtu.be/8J8F8MEcPJw" target="_blank" class="f-card-inner" style="text-decoration: none;">
-                        <div class="f-card-thumb">
-                            <img src="https://img.youtube.com/vi/8J8F8MEcPJw/maxresdefault.jpg" alt="ガラスペンで書く魔法陣">
-                            <div class="frosted-overlay">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="f-card-info">
-                            <p class="f-card-title">ガラスペンで書く魔法陣 / 午前2時のインク瓶</p>
-                            <p class="f-card-meta">VocaDuo 2025 参加作品</p>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="f-card scroll-pop">
-                    <a href="https://youtu.be/QhSofqDCjHU" target="_blank" class="f-card-inner" style="text-decoration: none;">
-                        <div class="f-card-thumb">
-                            <img src="https://img.youtube.com/vi/QhSofqDCjHU/maxresdefault.jpg" alt="お菓子の夢">
-                            <div class="frosted-overlay">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="f-card-info">
-                            <p class="f-card-title">お菓子の夢 / meli-melo</p>
-                            <p class="f-card-meta">VocaDuo 2023 参加作品</p>
-                        </div>
-                    </a>
-                </article>
-            </div>
-        </section>
-
-        <section class="component-section" id="cover">
-            <p class="section-title scroll-pop">Cover Songs</p>
-            
-            <div class="grid-3col">
-                <article class="f-card scroll-pop">
-                    <a href="https://youtu.be/d7GTj7xRJ2U" target="_blank" class="f-card-inner" style="text-decoration: none;">
-                        <div class="f-card-thumb">
-                            <img src="https://img.youtube.com/vi/d7GTj7xRJ2U/maxresdefault.jpg" alt="オンナのコ♡オトコのコ">
-                            <div class="frosted-overlay">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="f-card-info">
-                            <p class="f-card-title">オンナのコ♡オトコのコ / 小倉優子</p>
-                            <p class="f-card-meta">Cover</p>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="f-card scroll-pop">
-                    <a href="https://youtu.be/nqYK0E-b2mY" target="_blank" class="f-card-inner" style="text-decoration: none;">
-                        <div class="f-card-thumb">
-                            <img src="https://img.youtube.com/vi/nqYK0E-b2mY/maxresdefault.jpg" alt="くっきんどりーみんらんど">
-                            <div class="frosted-overlay">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="f-card-info">
-                            <p class="f-card-title">くっきんどりーみんらんど / Speciale</p>
-                            <p class="f-card-meta">Cover & Illustrations</p>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="f-card scroll-pop">
-                    <a href="https://youtu.be/8TnS7Rckjwk" target="_blank" class="f-card-inner" style="text-decoration: none;">
-                        <div class="f-card-thumb">
-                            <img src="https://img.youtube.com/vi/8TnS7Rckjwk/maxresdefault.jpg" alt="I♡">
-                            <div class="frosted-overlay">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="f-card-info">
-                            <p class="f-card-title">I♡ / リリぴ</p>
-                            <p class="f-card-meta">Cover</p>
-                        </div>
-                    </a>
-                </article>
-                
-                <article class="f-card scroll-pop">
-                    <a href="https://youtu.be/Hy5ZOI0WQ9Y" target="_blank" class="f-card-inner" style="text-decoration: none;">
-                        <div class="f-card-thumb">
-                            <img src="https://img.youtube.com/vi/Hy5ZOI0WQ9Y/maxresdefault.jpg" alt="モニタリング">
-                            <div class="frosted-overlay">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="f-card-info">
-                            <p class="f-card-title">モニタリング / DECO*27</p>
-                            <p class="f-card-meta">Cover</p>
-                        </div>
-                    </a>
-                </article>
-            </div>
-        </section>
-    </div>
-
-    <div id="tab-stream" class="tab-content">
-        <section class="component-section">
-            <p class="section-title scroll-pop">Live Streams</p>
-            <p style="text-align: center; color: #666; margin-top: 40px;">ここに配信アーカイブを追加していきます。</p>
-            <div class="grid-3col">
+<div id="tab-mv" class="tab-content active">
+<section class="component-section" id="original">
+    <p class="section-title scroll-pop">オリジナル曲</p>
+    
+    <div class="refined-grid">
+    <article class="grid-item hero scroll-pop" style="grid-column: 1 / span 2;">
+        <a href="https://youtu.be/PRjdAfM70Ek" target="_blank" class="item-inner" style="text-decoration: none;">
+            <div class="thumb-169">
+                <img src="https://img.youtube.com/vi/PRjdAfM70Ek/maxresdefault.jpg" alt="抱擁">
+                <div class="frosted-overlay">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="star-node"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="white"></polygon></svg>
                 </div>
-        </section>
-    </div>
-
-    <div id="tab-collab" class="tab-content">
-        <section class="component-section">
-            <p class="section-title scroll-pop">Collaborations</p>
-            <p style="text-align: center; color: #666; margin-top: 40px;">ここにコラボアーカイブを追加していきます。</p>
-            <div class="grid-3col">
+            </div>
+            <div class="item-info">
+                <div class="tags-row">
+                    <span class="meta-tag original">ORIGINAL</span>
+                    <span class="meta-date">2025.07.07 Release</span>
                 </div>
-        </section>
+                <p class="mv-name" style="font-size: 28px;">抱擁 / 星乃かなた</p>
+                <p class="mv-caption">孤独な夜に寄り添う、魔教会の聖歌。あなたの心に届きますように。</p>
+            </div>
+        </a>
+    </article>
     </div>
+</section>
+
+<section class="component-section" id="vocaduo">
+    <p class="section-title scroll-pop">ボカデュオ作品</p>
+    
+    <div class="grid-3col">
+        <article class="f-card scroll-pop">
+            <a href="001_Serpent.html" onclick="openIframeModal('001_Serpent.html'); return false;" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/tbTx3FrxL6g/maxresdefault.jpg" alt="毒蛇 - Serpent -">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">毒蛇 - Serpent - / MAIDEN</p>
+                    <p class="f-card-meta">VocaDuo 2025 参加作品</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="002_Karakuri.html" onclick="openIframeModal('002_Karakuri.html'); return false;" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/5TxFYeh_ONw/maxresdefault.jpg" alt="絡繰りのセレナーデ">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">絡繰りのセレナーデ / Jane Does Bride</p>
+                    <p class="f-card-meta">VocaDuo 2025 参加作品</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://youtu.be/8J8F8MEcPJw" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/8J8F8MEcPJw/maxresdefault.jpg" alt="ガラスペンで書く魔法陣">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">ガラスペンで書く魔法陣 / 午前2時のインク瓶</p>
+                    <p class="f-card-meta">VocaDuo 2025 参加作品</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://youtu.be/QhSofqDCjHU" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/QhSofqDCjHU/maxresdefault.jpg" alt="お菓子の夢">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">お菓子の夢 / meli-melo</p>
+                    <p class="f-card-meta">VocaDuo 2023 参加作品</p>
+                </div>
+            </a>
+        </article>
+    </div>
+</section>
+
+<section class="component-section" id="cover">
+    <p class="section-title scroll-pop">Cover</p>
+    
+    <div class="grid-3col">
+        <article class="f-card scroll-pop">
+            <a href="https://youtu.be/d7GTj7xRJ2U" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/d7GTj7xRJ2U/maxresdefault.jpg" alt="オンナのコ♡オトコのコ">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">オンナのコ♡オトコのコ / 小倉優子</p>
+                    <p class="f-card-meta">Cover</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://youtu.be/nqYK0E-b2mY" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/nqYK0E-b2mY/maxresdefault.jpg" alt="くっきんどりーみんらんど">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">くっきんどりーみんらんど / Speciale</p>
+                    <p class="f-card-meta">Cover & Illustrations</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://youtu.be/8TnS7Rckjwk" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/8TnS7Rckjwk/maxresdefault.jpg" alt="I♡">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">I♡ / リリぴ</p>
+                    <p class="f-card-meta">Cover</p>
+                </div>
+            </a>
+        </article>
+        
+        <article class="f-card scroll-pop">
+            <a href="https://youtu.be/Hy5ZOI0WQ9Y" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/Hy5ZOI0WQ9Y/maxresdefault.jpg" alt="モニタリング">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">モニタリング / DECO*27</p>
+                    <p class="f-card-meta">Cover</p>
+                </div>
+            </a>
+        </article>
+    </div>
+</section>
+</div>
+
+<div id="tab-stream" class="tab-content">
+
+<section class="component-section">
+    <p class="section-title scroll-pop">参加型</p>
+    <div class="grid-3col">
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5sy_Cm98wQxwfa4Gog9ESX2" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/8o_X9A2evw4/maxresdefault.jpg" alt="原神 参加型">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">原神</p>
+                    <p class="f-card-meta">2026.04.04〜</p>
+                </div>
+            </a>
+        </article>
+    </div>
+</section>
+
+<section class="component-section">
+    <p class="section-title scroll-pop">ゲーム配信</p>
+    <div class="grid-3col">
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/watch?v=t-3iNqdi-tg&list=PLng-jKEPjz5tKsWUcrjV-A2qlS5whkAMl&index=11" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/t-3iNqdi-tg/maxresdefault.jpg" alt="ぽこ あ ぽけもん">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">ぽこ あ ぽけもん</p>
+                    <p class="f-card-meta">2026.03.25 / 甘傘けろり</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/live/7ZW6Qsp-zoM" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/7ZW6Qsp-zoM/maxresdefault.jpg" alt="呪文団">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">呪文団</p>
+                    <p class="f-card-meta">2026.03.16 / サンダ・V・ライゼ、緋月れん</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5tKsWUcrjV-A2qlS5whkAMl" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/ibBIv8lo1XE/maxresdefault.jpg" alt="ぽこ あ ぽけもん">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">ぽこ あ ぽけもん</p>
+                    <p class="f-card-meta">2026.03.08〜2026.03.21 / サンダ・V・ライゼ</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5ulvQyt0hpRH26iN6thbzce" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/RwtynTPf5A0/maxresdefault.jpg" alt="ときめきメモリアルGS2">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">ときめきメモリアルGS2</p>
+                    <p class="f-card-meta">2026.03.04〜</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5uU-Nn-bmzYTUJo9fm9DZkS" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/CPw4DMgCYO8/maxresdefault.jpg" alt="つぐのひ">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">つぐのひ</p>
+                    <p class="f-card-meta">2026.02.28〜</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/live/EAJRSxNiiEY" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/EAJRSxNiiEY/maxresdefault.jpg" alt="Who's at the Door?">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">Who's at the Door?</p>
+                    <p class="f-card-meta">2025.12.11</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5t6m39qKeUktF9rwvV05tyT" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/I_RNeNk0Vco/maxresdefault.jpg" alt="ときめきメモリアルGS1">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">ときめきメモリアルGS1</p>
+                    <p class="f-card-meta">2025.11.25〜2026.02.03</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/live/lcXJ8q1OtwM" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/lcXJ8q1OtwM/maxresdefault.jpg" alt="VtuberのQ">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">VtuberのQ</p>
+                    <p class="f-card-meta">2025.11.19</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5tFfCtclMmfZP6ghhHEfj2G" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/MJ0Efo-tMlI/maxresdefault.jpg" alt="Unrailed 2: Back on Track">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">Unrailed 2: Back on Track</p>
+                    <p class="f-card-meta">2025.11.05〜 / サンダ・V・ライゼ、緋月れん</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5tH-3q28e86ZyKelPJwHy4e" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/TDbiKKpDodg/maxresdefault.jpg" alt="POOLS">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">POOLS</p>
+                    <p class="f-card-meta">2025.10.19〜2025.11.04</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5sRXevf2aNCjr4aOIXHTzri" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/UTW-9PlpLuc/maxresdefault.jpg" alt="和階堂真の事件簿">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">和階堂真の事件簿</p>
+                    <p class="f-card-meta">2025.10.07〜2025.10.28</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5ucfh_dYys8_kPE3iQKfy2Q" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/ih2FvrbPZgU/maxresdefault.jpg" alt="真・三国無双ORIGINS">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">真・三国無双ORIGINS</p>
+                    <p class="f-card-meta">2025.08.29〜 / サンダ・V・ライゼ</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5sfEEmjR5iomRUIFSmDdAb3" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/C-RX0j_1jF0/maxresdefault.jpg" alt="零～濡鴉ノ巫女～">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">零～濡鴉ノ巫女～</p>
+                    <p class="f-card-meta">2025/08/04〜 / 緋月れん</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5vFy8puu3enM_i_QU_4KPBd" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/atCp4rSj2AU/maxresdefault.jpg" alt="都市伝説解体センター">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">都市伝説解体センター</p>
+                    <p class="f-card-meta">2025.07.16〜2025.09.23</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5vuECBBvtlQw7zNURwt2hwn" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/Vcnq4sQgG38/maxresdefault.jpg" alt="ウツロマユ -Hollow Cocoon-">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">ウツロマユ -Hollow Cocoon-</p>
+                    <p class="f-card-meta">2025.07.12〜2025.07.19 / サンダ・V・ライゼ</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5vFZVFFMx4Y2CZQnRd9ahza" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/yTwdYYFbRjk/maxresdefault.jpg" alt="Q REMASTERED">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">Q REMASTERED</p>
+                    <p class="f-card-meta">2023.05.11〜2023.06.08</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="f-card scroll-pop">
+            <a href="https://www.youtube.com/playlist?list=PLng-jKEPjz5seCVsin9iQG2vhrMk26OVA" target="_blank" class="f-card-inner" style="text-decoration: none;">
+                <div class="card-thumb f-card-thumb">
+                    <img src="https://img.youtube.com/vi/RV1hAL-hdLU/maxresdefault.jpg" alt="地獄銭湯">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">地獄銭湯</p>
+                    <p class="f-card-meta">2022.11.11〜2022.11.24 / 緋月れん</p>
+                </div>
+            </a>
+        </article>
+
+    </div>
+</section>
+
+</div>
+
+<div id="tab-collab" class="tab-content">
+
+<section class="component-section" id="original">
+    <p class="section-title scroll-pop">歌枠リレー</p>
+    
+    <div class="refined-grid">
+
+        <article class="grid-item hero scroll-pop" style="grid-column: 1 / span 2;">
+            <a href="https://www.youtube.com/live/KFigVW9vHeg" target="_blank" class="item-inner" style="text-decoration: none;">
+                <div class="thumb-169">
+                    <img src="https://img.youtube.com/vi/KFigVW9vHeg/maxresdefault.jpg" alt="七つ星の物語リレー">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="item-info">
+                    <div class="tags-row">
+                        <span class="meta-tag original">ORIGINAL</span>
+                        <span class="meta-date">2026.05.10</span>
+                    </div>
+                    <p class="mv-name" style="font-size: 28px;">七つ星の物語リレー</p>
+                    <p class="mv-caption">星の彼方の教会より、愛をきみに捧ぐ。</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="grid-item hero scroll-pop" style="grid-column: 1 / span 2;">
+            <a href="https://www.youtube.com/watch?v=IGg1LBdqwYE&t=1280s" target="_blank" class="item-inner" style="text-decoration: none;">
+                <div class="thumb-169">
+                    <img src="https://img.youtube.com/vi/IGg1LBdqwYE/maxresdefault.jpg" alt="第1回アダムスハウス歌枠リレー">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="item-info">
+                    <div class="tags-row">
+                        <span class="meta-tag original">ORIGINAL</span>
+                        <span class="meta-date">2023.06.21</span>
+                    </div>
+                    <p class="mv-name" style="font-size: 28px;">第1回アダムスハウス歌枠リレー</p>
+                    <p class="mv-caption">𝚃𝚑𝚎𝚖𝚎┊恋愛 or 夜 or Chill。キャンドルナイトの日です。ろうそくの灯と共にスローな夜を過ごしましょう。</p>
+                </div>
+            </a>
+        </article>
+
+    </div>
+</section>
+
+<section class="component-section">
+    <p class="section-title scroll-pop">歌枠</p>
+    <p class="page-desc">工事中</p>
+</section>
+</div>
 
 </main>
 
