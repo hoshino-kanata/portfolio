@@ -17,45 +17,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../assets/css/style.css">
 
-  <style>
-    .archive-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 60px;
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      padding: 10px 30px;
-      background: transparent;
-      border: 1px solid #ccc;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 16px;
-      font-family: inherit;
-      color: #555;
-      transition: all 0.3s ease;
-    }
-    .tab-btn:hover {
-      background: rgba(0,0,0,0.05);
-    }
-    .tab-btn.active {
-      background: #333; /* アクセントカラーに合わせて調整してください */
-      color: #fff;
-      border-color: #333;
-    }
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.4s ease-in-out;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
 </head>
 <body>
 
@@ -75,6 +36,7 @@
     <button class="tab-btn active" onclick="switchTab(event, 'tab-mv')">MV</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-stream')">ゲーム</button>
     <button class="tab-btn" onclick="switchTab(event, 'tab-collab')">歌枠</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-unit')">ユニット</button>
 </div>
 
 <div id="tab-mv" class="tab-content active">
@@ -107,6 +69,22 @@
     <p class="section-title scroll-pop">ボカデュオ作品</p>
     
     <div class="grid-3col">
+
+        <article class="f-card scroll-pop">
+            <a href="\archive\vocaduo2026\floating_fm\index.html" class="f-card-inner" style="text-decoration: none;" target="_blank">
+                <div class="card-thumb f-card-thumb">
+                    <img src="\archive\vocaduo2026\floating_fm\thumbnail.webp" alt="FLOATING FM">
+                    <div class="frosted-overlay">
+                        <span class="star-node">✦</span>
+                    </div>
+                </div>
+                <div class="f-card-info">
+                    <p class="f-card-title">FLOATING FM / FLOATING FM</p>
+                    <p class="f-card-meta">VocaDuo 2026 参加作品</p>
+                </div>
+            </a>
+        </article>
+
         <article class="f-card scroll-pop">
             <a href="001_Serpent.html" onclick="openIframeModal('001_Serpent.html'); return false;" class="f-card-inner" style="text-decoration: none;">
                 <div class="card-thumb f-card-thumb">
@@ -574,6 +552,128 @@
     <p class="section-title scroll-pop">歌枠</p>
     <p class="page-desc">工事中</p>
 </section>
+</div>
+
+<div id="tab-unit" class="tab-content">
+  
+  <section class="unit-section component-section scroll-pop">
+    <div class="section-header">
+      <div class="title-main-wrap">
+        <img src="../assets/img/star2.svg" class="header-star sub-star" alt="star">
+        <h2 class="title-en">MEMBER</h2>
+        <img src="../assets/img/star2.svg" class="header-star main-star" alt="star">
+      </div>
+      <p class="title-jp">ユニットメンバー</p>
+    </div>
+
+<div class="unit-staircase">
+  
+    <a href="#" class="unit-card">
+    <figure class="unit-thumb">
+        <img src="https://placehold.jp/dedede/ffffff/500x500.png?text=Member+1" alt="Kanata" class="unit-img">
+        
+        <div class="unit-cutout">
+        <span class="unit-btn">
+            <img src="../assets/img/star2.svg" class="unit-star" alt="star">
+        </span>
+        </div>
+    </figure>
+
+    <div class="unit-info">
+        <h3 class="unit-name">Kanata</h3>
+        <p class="unit-role">Vocal / Leader</p>
+    </div>
+    </a>
+
+    <a href="#" class="unit-card">
+    <figure class="unit-thumb">
+        <img src="https://placehold.jp/dedede/ffffff/500x500.png?text=Member+1" alt="Kanata" class="unit-img">
+        
+        <div class="unit-cutout">
+        <span class="unit-btn">
+            <img src="../assets/img/star2.svg" class="unit-star" alt="star">
+        </span>
+        </div>
+    </figure>
+
+    <div class="unit-info">
+        <h3 class="unit-name">Kanata</h3>
+        <p class="unit-role">Vocal / Leader</p>
+    </div>
+    </a>
+
+    <a href="#" class="unit-card">
+    <figure class="unit-thumb">
+        <img src="https://placehold.jp/dedede/ffffff/500x500.png?text=Member+1" alt="Kanata" class="unit-img">
+        
+        <div class="unit-cutout">
+        <span class="unit-btn">
+            <img src="../assets/img/star2.svg" class="unit-star" alt="star">
+        </span>
+        </div>
+    </figure>
+
+    <div class="unit-info">
+        <h3 class="unit-name">Kanata</h3>
+        <p class="unit-role">Vocal / Leader</p>
+    </div>
+    </a>
+
+    <a href="#" class="unit-card">
+    <figure class="unit-thumb">
+        <img src="https://placehold.jp/dedede/ffffff/500x500.png?text=Member+1" alt="Kanata" class="unit-img">
+        
+        <div class="unit-cutout">
+        <span class="unit-btn">
+            <img src="../assets/img/star2.svg" class="unit-star" alt="star">
+        </span>
+        </div>
+    </figure>
+
+    <div class="unit-info">
+        <h3 class="unit-name">Kanata</h3>
+        <p class="unit-role">Vocal / Leader</p>
+    </div>
+    </a>
+
+    </div>
+  </section>
+
+  <section class="component-section">
+      <p class="section-title scroll-pop">ユニット配信</p>
+      <p class="page-desc">仲良し4人組での企画やゲーム配信の記録です。</p>
+      <div class="grid-3col">
+          <article class="f-card scroll-pop">
+              <a href="#" class="f-card-inner" style="text-decoration: none;">
+                  <div class="card-thumb f-card-thumb">
+                      <img src="https://placehold.jp/dedede/ffffff/1280x720.png?text=Collab+Stream+1" alt="ユニット配信1">
+                      <div class="frosted-overlay">
+                          <span class="star-node">✦</span>
+                      </div>
+                  </div>
+                  <div class="f-card-info">
+                      <p class="f-card-title">【4人コラボ】絶対に笑ってはいけないゲーム</p>
+                      <p class="f-card-meta">2026.04.15</p>
+                  </div>
+              </a>
+          </article>
+          
+          <article class="f-card scroll-pop">
+              <a href="#" class="f-card-inner" style="text-decoration: none;">
+                  <div class="card-thumb f-card-thumb">
+                      <img src="https://placehold.jp/dedede/ffffff/1280x720.png?text=Collab+Stream+2" alt="ユニット配信2">
+                      <div class="frosted-overlay">
+                          <span class="star-node">✦</span>
+                      </div>
+                  </div>
+                  <div class="f-card-info">
+                      <p class="f-card-title">【企画】ユニット名決め会議！</p>
+                      <p class="f-card-meta">2026.03.10</p>
+                  </div>
+              </a>
+          </article>
+      </div>
+  </section>
 </div>
 
 </main>

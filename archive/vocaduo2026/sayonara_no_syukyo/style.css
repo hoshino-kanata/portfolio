@@ -1,0 +1,374 @@
+:root{
+  --paper:#edeae2;
+  --ink:#0c0b08;
+  --ink-soft:#39362e;
+  --silver:#9c978b;
+  --hair:rgba(22,20,15,.30);
+  --hair-soft:rgba(22,20,15,.13);
+  --w:rgba(237,234,226,1);
+  --w70:rgba(237,234,226,.7);
+  --w45:rgba(237,234,226,.45);
+  --w16:rgba(237,234,226,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--ink);
+  font-family:'Shippori Mincho B1','EB Garamond',serif;
+  overflow-x:hidden;
+}
+::selection{background:var(--silver);color:var(--ink)}
+.mono{font-family:'IBM Plex Mono',monospace}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offset:4px}
+img{display:block;max-width:100%}
+
+canvas#water{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+
+/* ─────────── nav ─────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 26px;
+  transition:color .5s ease;
+  color:var(--w);
+}
+body.on-paper nav{color:var(--ink)}
+nav .sig{font-size:13px;letter-spacing:.34em;font-weight:600}
+nav ul{display:flex;gap:24px;list-style:none}
+nav ul a{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;
+  opacity:.78;position:relative;padding:4px 0;
+}
+nav ul a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:currentColor;transition:width .3s ease;
+}
+nav ul a:hover{opacity:1}
+nav ul a:hover::after,nav ul a:focus-visible::after{width:100%}
+
+/* ─────────── ① hero ─────────── */
+.hero{
+  position:relative;z-index:1;min-height:100svh;
+  display:flex;align-items:center;
+  padding:0 7vw;color:var(--w);
+}
+.kv{
+  position:absolute;
+  right: -5vw;
+  top:50%;
+  /* ★scale(1.3)を追加して大幅に拡大 */
+  transform:translateY(-50%) rotate(-55deg) scale(1.3);
+  height:min(120svh,1000px);
+  width:auto;
+  max-width: none;
+  -webkit-mask-image:radial-gradient(72% 64% at 50% 48%, #000 58%, transparent 92%);
+          mask-image:radial-gradient(72% 64% at 50% 48%, #000 58%, transparent 92%);
+  animation:floaty 9s ease-in-out infinite;
+  pointer-events:none;user-select:none;
+}
+@keyframes floaty{
+  0%,100%{transform:translateY(-50%) rotate(-75deg) scale(1.3)}
+  50%{transform:translateY(calc(-50% - 14px)) rotate(-75deg) scale(1.3)}
+}
+
+.hero-inner{position:relative;z-index:2;max-width:560px}
+.eyebrow-line{
+  display:flex;align-items:center;gap:14px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.3em;
+  color:var(--w70);margin-bottom:30px;
+}
+.eyebrow-line::before{content:"";width:42px;height:1px;background:var(--w45)}
+.logo{width:min(82vw,500px);filter:invert(.93) sepia(.06)}
+.lede{
+  margin-top:34px;font-size:15px;line-height:2.3;letter-spacing:.16em;
+  color:var(--w70);
+}
+.ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:42px}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:15px 30px;border:1px solid var(--w45);
+  font-size:13px;letter-spacing:.3em;text-indent:.1em;color:var(--w);
+  transition:background .3s ease,color .3s ease,border-color .3s ease;
+}
+.btn .tri{font-size:9px;transform:translateY(-1px)}
+.btn:hover{background:var(--w);color:var(--ink);border-color:var(--w)}
+.btn.ghost{border-color:var(--w16);color:var(--w70)}
+.btn.ghost:hover{border-color:var(--w45);background:transparent;color:var(--w)}
+.hud{
+  position:absolute;font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:.2em;line-height:2.1;color:var(--w45);
+  user-select:none;pointer-events:none;
+}
+.hud-bl{left:26px;bottom:30px}
+.hud-br{right:26px;bottom:30px;text-align:right}
+.scrollcue{
+  position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.4em;text-indent:.4em;
+  color:var(--w45);
+}
+.scrollcue::after{
+  content:"";display:block;width:1px;height:40px;margin:10px auto 0;
+  background:linear-gradient(var(--w45),transparent);
+  animation:drop 2.4s ease-in-out infinite;
+}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ─────────── MV embed ─────────── */
+#mv{
+  position:relative;z-index:1;color:var(--w);
+  padding:60px 7vw 140px;text-align:center;
+}
+.arch{
+  position:relative;margin:0 auto;
+  width:min(920px,100%); /* ★ 90vwから100%に変更し、はみ出しを防止 */
+}
+
+.arch::before{ /* 聖堂のアーチ(動画の背後に立つ) */
+  content:"";position:absolute;left:50%;bottom:38px;transform:translateX(-50%);
+  width:min(520px,64vw);height:min(560px,72vw);
+  border:1px solid var(--w16);
+  border-radius:999px 999px 0 0;
+  pointer-events:none;
+}
+.player{
+  position:relative;aspect-ratio:16/9;
+  border:1px solid var(--w45);outline:1px solid var(--w16);outline-offset:8px;
+  background:#000;overflow:hidden;
+}
+.player .corner{position:absolute;font-size:11px;color:var(--w45);z-index:3}
+.player .corner.a{top:8px;left:12px}.player .corner.b{top:8px;right:12px}
+.player .corner.c{bottom:8px;left:12px}.player .corner.d{bottom:8px;right:12px}
+.player .cover{
+  position:absolute;inset:0;width:100%;height:100%;border:0;
+  background:#000 center/cover no-repeat;cursor:pointer;
+  display:grid;place-items:center;z-index:2;
+  transition:opacity .5s ease;
+}
+.player .cover .play{
+  width:84px;height:84px;border-radius:50%;
+  border:1px solid var(--w70);background:rgba(12,11,8,.45);
+  display:grid;place-items:center;color:var(--w);
+  font-size:20px;padding-left:5px;
+  backdrop-filter:blur(3px);
+  transition:transform .3s ease,background .3s ease;
+}
+.player .cover:hover .play{transform:scale(1.08);background:rgba(12,11,8,.7)}
+.player iframe,.player video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mv-caption{
+  margin-top:54px;font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;letter-spacing:.28em;color:var(--w45);
+}
+
+/* ─────────── section common ─────────── */
+main{position:relative;z-index:1}
+section.band{padding:110px 7vw 130px}
+.head{
+  display:flex;align-items:baseline;gap:18px;margin-bottom:60px;flex-wrap:wrap;
+}
+.head h2{font-size:clamp(26px,4vw,36px);font-weight:500;letter-spacing:.16em}
+.head .en{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.3em;
+  opacity:.55;
+}
+.head .rule{height:1px;background:currentColor;opacity:.14;flex:1;align-self:center}
+.head .no{font-family:'IBM Plex Mono',monospace;font-size:10.5px;opacity:.4;letter-spacing:.2em}
+
+/* ─────────── ② lyrics ─────────── */
+#lyrics{background:var(--paper);color:var(--ink)}
+.lyrics-note{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;
+  color:var(--ink-soft);opacity:.7;margin-bottom:34px;
+}
+.tate-wrap{position:relative}
+.tate{
+  width: 100%;
+  overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:thin;
+  direction: rtl; /* ★スクロールの初期位置を右端にする */
+}
+.tate-inner{
+  direction: ltr; /* ★テキストの方向は正常に戻す */
+  writing-mode:vertical-rl;
+  height:min(68vh,620px);
+  width: 100%;
+  padding:30px 6px 38px;
+  border-bottom:1px solid var(--hair-soft);
+  display: inline-block;
+}
+.tate-inner p{
+  font-size:16.5px;line-height:2.7;letter-spacing:.16em;
+  margin-left:3.2em;
+  color:var(--ink-soft);
+}
+.tate-inner p strong{font-weight:600;color:var(--ink)}
+.tate-inner p .paren{opacity:.5}
+.tate-hint{
+  margin-top:16px;text-align:right;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.25em;
+  color:var(--silver);
+}
+
+/* ─────────── ③ creators ─────────── */
+#creators{background:var(--paper);color:var(--ink);padding-top:30px}
+.duo{
+  display:grid;
+  /* ★強制的に3列（1frを3つ）にする */
+  grid-template-columns:repeat(3, 1fr);
+  gap:40px;
+  max-width:1100px; /* 3列が綺麗に収まるよう全体の幅を広げる */
+  margin: 0 auto;
+}
+.creator{
+  border:1px solid var(--hair);outline:1px solid var(--hair-soft);outline-offset:6px;
+  padding:46px 28px 36px; /* 画像のバランスに合わせて余白を再調整 */
+  text-align:center;position:relative;
+  background:rgba(255,255,255,.32);
+}
+.creator .role{
+  position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  background:var(--paper);padding:0 16px;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.34em;text-indent:.34em;
+  color:var(--ink-soft);
+  white-space: nowrap; /* 文字の折り返しを防ぐ */
+}
+.creator .icon{
+  width:100px;height:100px;border-radius:50%;margin:0 auto 20px;
+  border:1px solid var(--hair);
+  display:grid;place-items:center;
+  font-size:36px;font-weight:500;color:var(--ink-soft);
+  background:radial-gradient(circle at 38% 30%, rgba(255,255,255,.9), rgba(255,255,255,0) 70%);
+  overflow:hidden;
+}
+.creator .icon img{width:100%;height:100%;object-fit:cover}
+.creator h3{font-size:20px;font-weight:500;letter-spacing:.2em}
+.creator .yomi{
+  display:block;margin-top:6px;
+  font-family:'EB Garamond',serif;font-style:italic;font-size:11.5px;letter-spacing:.22em;
+  color:var(--silver);
+}
+.creator p.cmt{
+  margin-top:20px;font-size:13px;line-height:2.1;letter-spacing:.1em;
+  color:var(--ink-soft);text-align:left;
+}
+.creator .links{display:flex;justify-content:center;gap:20px;margin-top:24px;flex-wrap:wrap;}
+.creator .links a{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;
+  color:var(--ink-soft);border-bottom:1px solid var(--hair);padding-bottom:3px;
+  transition:color .3s,border-color .3s;
+}
+.creator .links a:hover{color:var(--ink);border-color:var(--ink)}
+.duo-x{
+  text-align:center;font-size:26px;color:var(--silver);
+  display:grid;place-items:center;
+}
+
+/* ─────────── ④ vocaduo ─────────── */
+#vocaduo{background:transparent;color:var(--w)}
+.vd-grid{
+  display:grid;grid-template-columns:minmax(240px,330px) 1fr;
+  gap:70px;align-items:center;max-width:1000px;
+}
+.vd-badge{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.vd-badge svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.vd-badge svg text{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:3.5px;
+  fill:var(--w45);
+}
+.vd-badge::before{content:"";position:absolute;inset:13%;border:1px solid var(--w16);border-radius:50%}
+.vd-core{text-align:center}
+.vd-core .y{font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(34px,5vw,48px);color:var(--w)}
+.vd-core .l{display:block;margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.4em;text-indent:.4em;color:var(--w45)}
+.vd-text p{font-size:14.5px;line-height:2.5;letter-spacing:.12em;color:var(--w70);max-width:36em}
+.vd-text p strong{color:var(--w);font-weight:500}
+.vd-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.chip{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;
+  border:1px solid var(--w16);padding:8px 16px;color:var(--w70);
+  transition:border-color .3s,color .3s;
+}
+a.chip:hover{border-color:var(--w70);color:var(--w)}
+
+/* ─────────── ⑤ footer ─────────── */
+footer{
+  position:relative;z-index:1;color:var(--w);
+  padding:100px 7vw 44px;text-align:center;
+  border-top:1px solid var(--w16);
+}
+footer .flogo{width:min(60vw,300px);margin:0 auto;filter:invert(.93) sepia(.06);opacity:.92}
+.credits{
+  margin-top:44px;display:inline-grid;grid-template-columns:auto auto;gap:12px 26px;
+  font-size:13px;letter-spacing:.18em;text-align:left;
+}
+.credits dt{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.3em;color:var(--w45);align-self:center}
+.credits dd{color:var(--w)}
+footer .sns{display:flex;justify-content:center;gap:30px;margin-top:48px}
+footer .sns a{
+  font-family:'EB Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.18em;
+  color:var(--w70);transition:color .3s;
+}
+footer .sns a:hover{color:var(--w)}
+footer .fine{
+  margin-top:64px;font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:.28em;color:var(--w45);line-height:2.2;
+}
+
+/* ─────────── responsive ─────────── */
+@media (max-width:860px){
+  .kv{
+    right:50%;
+    transform:translate(50%,-50%); /* スマホ版は傾きをリセットして中央に */
+    height:min(86svh,760px);
+    width:auto;
+    max-width: none; /* ★スマホでも比率崩れ防止 */
+    opacity:.5;
+    -webkit-mask-image:radial-gradient(64% 58% at 50% 48%, #000 50%, transparent 88%);
+            mask-image:radial-gradient(64% 58% at 50% 48%, #000 50%, transparent 88%);
+    animation: floaty_sp 9s ease-in-out infinite; /* スマホ用アニメーションを適用 */
+  }
+  /* 歌詞の横書き化 */
+  .tate {direction: ltr; /* スクロール方向をリセット */}
+  .tate-inner {
+    writing-mode: horizontal-tb; /* 横書きに変更 */
+    height: auto; display: block; padding: 20px;
+  }
+  .tate-inner p {
+    font-size: 14px; margin: 0;
+    margin-bottom: 2em; /* 段落ごとの余白 */
+  }
+  .tate-hint {
+    display: none; /* 横書き時は「横スクロール」の注意書きを隠す */
+  }
+  
+  /* クリエイター1列 */
+  .duo{grid-template-columns: 1fr; gap: 50px; }
+
+  /* スマホ用アニメーション（傾きなし）を追加 */
+  @keyframes floaty_sp{
+    0%,100%{transform:translate(50%,-50%)}
+    50%{transform:translate(50%,calc(-50% - 12px))}
+  }
+
+  @keyframes floaty{0%,100%{transform:translate(50%,-50%)}50%{transform:translate(50%,calc(-50% - 12px))}}
+  .hero{justify-content:center;text-align:center}
+  .hero-inner{max-width:none}
+  .eyebrow-line{justify-content:center}
+  .eyebrow-line::before{display:none}
+  .logo{margin:0 auto}
+  .ctas{justify-content:center}
+  .hud-bl,.hud-br{display:none}
+  nav{padding:14px 16px}
+  nav .sig{font-size:11px;letter-spacing:.22em}
+  nav ul{gap:14px}
+  nav ul a{font-size:9.5px;letter-spacing:.14em}
+  section.band{padding:84px 6vw 100px}
+  .vd-grid{grid-template-columns:1fr;gap:50px;justify-items:center;text-align:center}
+  .vd-badge{width:min(64vw,280px)}
+  .vd-text p{text-align:left}
+  .vd-meta{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .kv,.scrollcue::after,.vd-badge svg{animation:none}
+}

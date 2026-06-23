@@ -11,7 +11,7 @@
     background: transparent; 
     padding: 80px 20px 60px; 
     box-sizing: border-box;
-    background-color:  var(--bg-base);
+    background-color:  var(--gray-50);
 }
 
 .profile-content {
