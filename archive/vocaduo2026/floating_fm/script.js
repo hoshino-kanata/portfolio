@@ -1,7 +1,7 @@
 /* ================================================
    ▼ 設定：YouTube動画ID をここに入力（例 "dQw4w9WgXcQ"）
 ================================================ */
-const YOUTUBE_ID = "";
+const YOUTUBE_ID = "JvfMHjq3qAw";
 
 /* ▼ ニュースティッカー */
 const NEWS_ITEMS = [
