@@ -40,6 +40,17 @@ img{max-width:100%;display:block}
 button{font:inherit;color:inherit;background:none;border:0}
 :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 
+/* 歌詞など：テキストの選択（ハイライト）を禁止する */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none; /* Safari用 */
+}
+
+/* 画像など：ドラッグや右クリックメニューを防ぐ */
+.no-save {
+  pointer-events: none;
+}
+
 /* ===== ノイズ & 走査線 ===== */
 body::before{
   content:"";position:fixed;inset:0;z-index:96;pointer-events:none;opacity:.06;

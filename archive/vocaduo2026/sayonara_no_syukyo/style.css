@@ -16,6 +16,9 @@ body{
   background:var(--ink);color:var(--ink);
   font-family:'Shippori Mincho B1','EB Garamond',serif;
   overflow-x:hidden;
+  /* テキスト選択を防ぐ */
+  -webkit-user-select: none;
+  user-select: none;
 }
 ::selection{background:var(--silver);color:var(--ink)}
 .mono{font-family:'IBM Plex Mono',monospace}
@@ -47,42 +50,125 @@ nav ul a::after{
 nav ul a:hover{opacity:1}
 nav ul a:hover::after,nav ul a:focus-visible::after{width:100%}
 
-/* ─────────── ① hero ─────────── */
+/* ─────────── ① hero — 4レイヤーパララックス ─────────── */
+
+/* Hero全体: overflow:hiddenを外す
+   → canvas#water(fixed)が Hero下端でぱつんと切れなくなる
+   → Hero自体は透明なのでcanvasがそのまま透けて見える */
 .hero{
-  position:relative;z-index:1;min-height:100svh;
-  display:flex;align-items:center;
-  padding:0 7vw;color:var(--w);
-}
-.kv{
-  position:absolute;
-  right: -5vw;
-  top:50%;
-  /* ★scale(1.3)を追加して大幅に拡大 */
-  transform:translateY(-50%) rotate(-55deg) scale(1.3);
-  height:min(120svh,1000px);
-  width:auto;
-  max-width: none;
-  -webkit-mask-image:radial-gradient(72% 64% at 50% 48%, #000 58%, transparent 92%);
-          mask-image:radial-gradient(72% 64% at 50% 48%, #000 58%, transparent 92%);
-  animation:floaty 9s ease-in-out infinite;
-  pointer-events:none;user-select:none;
-}
-@keyframes floaty{
-  0%,100%{transform:translateY(-50%) rotate(-75deg) scale(1.3)}
-  50%{transform:translateY(calc(-50% - 14px)) rotate(-75deg) scale(1.3)}
+  position:relative;
+  z-index:1;
+  min-height:100svh;
+  /* overflow:hidden は削除 — canvas固定背景の継続表示のため */
+  color:var(--w);
+  background:transparent;
 }
 
-.hero-inner{position:relative;z-index:2;max-width:560px}
+/* ─── Layer 1: hero_bg.webp（背景画像 / 半透明でシェーダーを透かす） ─── */
+/* ② bg-layerをfixedにして背景画像自体を固定 → スマホで動かず黒枠も出ない */
+.hero-bg-layer{
+  position:fixed; /* ②fixedに変更：スマホで背景が動かなくなる */
+  inset:0;
+  z-index:0; /* canvasより前、heroコンテンツより後ろ */
+  overflow:hidden;
+  /* Heroセクションを過ぎたら非表示（次セクションに引きずらない） */
+  /* JSでhero通過後に隠す処理を追加予定。CSSでは見切れないようにする */
+}
+.hero-bg-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%; /* ②fixedにしたので100%で問題なし */
+  object-fit:cover;
+  object-position:center center;
+  will-change:transform;
+  pointer-events:none;
+  user-select:none;
+  opacity:0.72;
+}
+
+/* ─── Layer 2: hero_main.webp（キャラクター） ─── */
+.hero-char-layer{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  user-select:none;
+}
+.hero-char-img{
+  position:absolute;
+  left:50%;
+  bottom:-20svh;
+  transform:translateX(-44%);
+  height:min(200svh, 1520px);
+  width:auto;
+  max-width:none;
+  will-change:transform;
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+    left 0.4s ease-out, 
+    top 0.4s ease-out, 
+    bottom 0.4s ease-out;
+}
+
+/* ─── Layer 3: hero_logo.webp（ロゴ） ─── */
+.hero-ui{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+}
+.hero-logo-layer{
+  position:absolute;
+  bottom:12svh;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(88vw, 680px);
+  will-change:transform;
+}
+.hero-logo-img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* ─── Hero下部フェードマスク ─────────────────────────────
+   ① Hero自体のoverflowをなくしたので、このmaskはあくまで
+      「hero内コンテンツを暗くする演出」として機能する。
+   canvas(z-index:0)はHeroの外に自然に続くので段差ゼロ。
+   ──────────────────────────────────────────────────────── */
+.hero-fade-mask {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55svh;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ─── テキストコンテンツ（左寄せ） ─── */
+.hero-content{
+  position:relative;
+  z-index:5;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:100svh;
+  padding:0 7vw;
+  max-width:520px;
+}
+
 .eyebrow-line{
   display:flex;align-items:center;gap:14px;
   font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.3em;
-  color:var(--w70);margin-bottom:30px;
+  color:var(--ink-soft);margin-bottom:30px;
 }
-.eyebrow-line::before{content:"";width:42px;height:1px;background:var(--w45)}
+.eyebrow-line::before{content:"";width:42px;height:1px;background:var(--ink-soft)}
+
 .logo{width:min(82vw,500px);filter:invert(.93) sepia(.06)}
+
 .lede{
-  margin-top:34px;font-size:15px;line-height:2.3;letter-spacing:.16em;
-  color:var(--w70);
+  font-size:15px;line-height:2.3;letter-spacing:.16em;
+  color:var(--ink-soft);
 }
 .ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:42px}
 .btn{
@@ -95,17 +181,22 @@ nav ul a:hover::after,nav ul a:focus-visible::after{width:100%}
 .btn:hover{background:var(--w);color:var(--ink);border-color:var(--w)}
 .btn.ghost{border-color:var(--w16);color:var(--w70)}
 .btn.ghost:hover{border-color:var(--w45);background:transparent;color:var(--w)}
+
+/* HUD */
 .hud{
   position:absolute;font-family:'IBM Plex Mono',monospace;
   font-size:10px;letter-spacing:.2em;line-height:2.1;color:var(--w45);
   user-select:none;pointer-events:none;
+  z-index:6;
 }
 .hud-bl{left:26px;bottom:30px}
 .hud-br{right:26px;bottom:30px;text-align:right}
+
+/* スクロールキュー */
 .scrollcue{
   position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
   font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.4em;text-indent:.4em;
-  color:var(--w45);
+  color:var(--w45);z-index:6;
 }
 .scrollcue::after{
   content:"";display:block;width:1px;height:40px;margin:10px auto 0;
@@ -115,9 +206,12 @@ nav ul a:hover::after,nav ul a:focus-visible::after{width:100%}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ─────────── MV embed ─────────── */
-#mv{
-  position:relative;z-index:1;color:var(--w);
-  padding:60px 7vw 140px;text-align:center;
+#mv {
+  position: relative;
+  z-index: 1;
+  color: var(--w);
+  padding: 60px 7vw 140px;
+  text-align: center;
 }
 .arch{
   position:relative;margin:0 auto;
@@ -251,13 +345,35 @@ section.band{padding:110px 7vw 130px}
   margin-top:20px;font-size:13px;line-height:2.1;letter-spacing:.1em;
   color:var(--ink-soft);text-align:left;
 }
-.creator .links{display:flex;justify-content:center;gap:20px;margin-top:24px;flex-wrap:wrap;}
-.creator .links a{
-  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;
-  color:var(--ink-soft);border-bottom:1px solid var(--hair);padding-bottom:3px;
-  transition:color .3s,border-color .3s;
+.creator .links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
 }
-.creator .links a:hover{color:var(--ink);border-color:var(--ink)}
+.creator .links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--hair);
+  border-radius: 50%;
+  color: var(--ink-soft);
+  padding: 0;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.creator .links a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.icon-sns {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
 .duo-x{
   text-align:center;font-size:26px;color:var(--silver);
   display:grid;place-items:center;
@@ -316,48 +432,53 @@ footer .fine{
 
 /* ─────────── responsive ─────────── */
 @media (max-width:860px){
-  .kv{
-    right:50%;
-    transform:translate(50%,-50%); /* スマホ版は傾きをリセットして中央に */
-    height:min(86svh,760px);
-    width:auto;
-    max-width: none; /* ★スマホでも比率崩れ防止 */
-    opacity:.5;
-    -webkit-mask-image:radial-gradient(64% 58% at 50% 48%, #000 50%, transparent 88%);
-            mask-image:radial-gradient(64% 58% at 50% 48%, #000 50%, transparent 88%);
-    animation: floaty_sp 9s ease-in-out infinite; /* スマホ用アニメーションを適用 */
+  /* ⑤ Hero: モバイル — キャラを上から配置、コンテンツは下部 */
+  .hero-char-img{
+    /* bottom基準をやめてtop基準に切り替え → 上から見える */
+    left:50%;
+    bottom:auto;
+    top:10svh;
+    transform:translateX(-50%);
+    height:min(200svh, 880px);
   }
+  .hero-logo-layer{
+    bottom:8svh;
+    width:min(88vw, 440px);
+  }
+  .hero-content{
+    position:relative;
+    z-index:5;
+    max-width:none;
+    text-align:center;
+    align-items:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    min-height:100svh;
+    padding-bottom:22svh; /* ロゴの上に来るくらい */
+    padding-left:6vw;
+    padding-right:6vw;
+  }
+  .eyebrow-line{justify-content:center}
+  .eyebrow-line::before{display:none}
+  .hud-bl,.hud-br{display:none}
+  .hero-fade-mask{height:45svh}
+
   /* 歌詞の横書き化 */
-  .tate {direction: ltr; /* スクロール方向をリセット */}
+  .tate {direction: ltr;}
   .tate-inner {
-    writing-mode: horizontal-tb; /* 横書きに変更 */
+    writing-mode: horizontal-tb;
     height: auto; display: block; padding: 20px;
   }
   .tate-inner p {
     font-size: 14px; margin: 0;
-    margin-bottom: 2em; /* 段落ごとの余白 */
+    margin-bottom: 2em;
   }
-  .tate-hint {
-    display: none; /* 横書き時は「横スクロール」の注意書きを隠す */
-  }
-  
+  .tate-hint {display: none;}
+
   /* クリエイター1列 */
-  .duo{grid-template-columns: 1fr; gap: 50px; }
+  .duo{grid-template-columns: 1fr; gap: 50px;}
 
-  /* スマホ用アニメーション（傾きなし）を追加 */
-  @keyframes floaty_sp{
-    0%,100%{transform:translate(50%,-50%)}
-    50%{transform:translate(50%,calc(-50% - 12px))}
-  }
-
-  @keyframes floaty{0%,100%{transform:translate(50%,-50%)}50%{transform:translate(50%,calc(-50% - 12px))}}
-  .hero{justify-content:center;text-align:center}
-  .hero-inner{max-width:none}
-  .eyebrow-line{justify-content:center}
-  .eyebrow-line::before{display:none}
-  .logo{margin:0 auto}
-  .ctas{justify-content:center}
-  .hud-bl,.hud-br{display:none}
   nav{padding:14px 16px}
   nav .sig{font-size:11px;letter-spacing:.22em}
   nav ul{gap:14px}
@@ -368,7 +489,20 @@ footer .fine{
   .vd-text p{text-align:left}
   .vd-meta{justify-content:center}
 }
+
+/* タブレット（中間）向け微調整 */
+@media (min-width:861px) and (max-width:1200px){
+  .hero-logo-layer{
+    bottom:10svh;
+    width:min(76vw, 620px);
+  }
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .kv,.scrollcue::after,.vd-badge svg{animation:none}
+  .hero-bg-img,
+  .hero-char-img,
+  .hero-logo-layer,
+  .scrollcue::after,
+  .vd-badge svg{animation:none;transition:none}
 }

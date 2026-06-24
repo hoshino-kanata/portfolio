@@ -498,3 +498,13 @@ setTimeout(() => document.body.classList.add('loaded'), 1200);
     });
   });
 })();
+
+/* 右クリックメニュー（コンテキストメニュー）を禁止 */
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+});
+
+/* コピー操作（Ctrl+C / Cmd+C など）を禁止 */
+document.addEventListener('copy', (e) => {
+  e.preventDefault();
+});

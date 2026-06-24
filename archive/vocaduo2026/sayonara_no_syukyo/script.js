@@ -3,7 +3,7 @@
    ① 動画:YouTubeのIDをここに入れると埋め込みに切替。
       空のままなら assets/mv.mp4 をローカル再生します。
    ═══════════════════════════════════════════════════ */
-const YOUTUBE_ID = "";   // 例: "dQw4w9WgXcQ"
+const YOUTUBE_ID = "hBOS7-GmLOU";   // 例: "dQw4w9WgXcQ"
 const LOCAL_MP4  = "assets/mv.mp4";
 
 document.getElementById('playBtn').addEventListener('click', function(){
@@ -19,7 +19,7 @@ document.getElementById('playBtn').addEventListener('click', function(){
   } else {
     const v = document.createElement('video');
     v.src = LOCAL_MP4;
-    v.poster = "assets/poster.jpg";
+    v.poster = "assets/poster.webp";
     v.controls = true; v.autoplay = true; v.playsInline = true;
     player.appendChild(v);
   }
@@ -176,7 +176,7 @@ const toned = document.querySelectorAll('[data-tone]');
 let darkTarget = 1, darkNow = 1;
 function checkTone(){
   const midY = innerHeight*0.5;
-  for(const el of toned){
+    for(const el of toned){
     const r = el.getBoundingClientRect();
     if(r.top <= midY && r.bottom > midY){
       darkTarget = (el.dataset.tone === 'dark') ? 1 : 0;
@@ -214,3 +214,123 @@ function frame(){
 requestAnimationFrame(frame);
 
 } /* gl */
+
+/* ═══════════════════════════════════════════════════
+   Hero パララックス
+   bg-layer は position:fixed のため、スクロールtransform不要。
+   PCのみマウス追従。SPはbg完全固定（黒枠問題の解決）。
+   ═══════════════════════════════════════════════════ */
+(function(){
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  const heroBgLayer = document.querySelector('.hero-bg-layer');
+  const heroBg      = document.querySelector('.hero-bg-img');
+  const heroChar    = document.querySelector('.hero-char-img');
+  const heroLogo    = document.querySelector('.hero-logo-layer');
+
+  if (!heroBg || !heroChar || !heroLogo) return;
+
+  const hero = document.querySelector('.hero');
+
+  let scrollY = 0;
+  let mouseX = 0, mouseY = 0;
+  let targetMouseX = 0, targetMouseY = 0;
+  let charBaseX = innerWidth <= 860 ? -50 : -44;
+
+  addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+
+  addEventListener('mousemove', e => {
+    targetMouseX = (e.clientX / innerWidth  - 0.5) * 2;
+    targetMouseY = (e.clientY / innerHeight - 0.5) * 2;
+  }, { passive: true });
+
+  addEventListener('touchmove', e => {
+    if (e.touches.length === 0) return;
+    const t = e.touches[0];
+    targetMouseX = (t.clientX / innerWidth  - 0.5) * 2;
+    targetMouseY = (t.clientY / innerHeight - 0.5) * 2;
+  }, { passive: true });
+
+  function applyParallax() {
+    const heroH  = hero ? hero.offsetHeight : innerHeight;
+    const isMobile = innerWidth <= 860;
+    const vh = window.innerHeight;
+
+    // ① 背景画像のフェードアウト（スクロールに合わせて暗闇に溶ける）
+    if (heroBgLayer) {
+      let bgOpacity = 1 - (scrollY / (vh * 0.8));
+      bgOpacity = Math.max(0, Math.min(1, bgOpacity));
+      heroBgLayer.style.opacity = bgOpacity;
+      heroBgLayer.style.visibility = bgOpacity === 0 ? 'hidden' : 'visible';
+    }
+
+    // ② ロゴのフェードアウト（動画の段階で徐々に消える：元の動き）
+    if (heroLogo) {
+      let logoOpacity = 1 - (scrollY / (vh * 0.6));
+      logoOpacity = Math.max(0, Math.min(1, logoOpacity));
+      heroLogo.style.opacity = logoOpacity;
+      heroLogo.style.visibility = logoOpacity === 0 ? 'hidden' : 'visible';
+    }
+
+    // ③ キャラクターのフェードアウト（歌詞セクションに合わせて消える：元の動き）
+    const lyricsEl = document.getElementById('lyrics');
+    if (lyricsEl && heroChar) {
+      const lyricsRect = lyricsEl.getBoundingClientRect();
+      
+      let progress = (vh - lyricsRect.top) / (vh * 0.4);
+      progress = Math.max(0, Math.min(1, progress));
+      
+      heroChar.style.opacity = 1 - progress;
+      heroChar.style.visibility = progress === 1 ? 'hidden' : 'visible';
+    }
+
+    mouseX += (targetMouseX - mouseX) * 0.07;
+    mouseY += (targetMouseY - mouseY) * 0.07;
+
+    const s = scrollY;
+
+    /* ── 背景: fixedなのでスクロール分不要。PCのみマウス追従 */
+    heroBg.style.transform = isMobile
+      ? 'none'
+      : `translate3d(${mouseX * 5}px, ${mouseY * 6}px, 0)`;
+
+    /* ── キャラクター: スクロール + PCのみマウス（モバイル時は少し回転） */
+    if (isMobile) {
+      heroChar.style.transform =
+        `translateX(-50%) translateY(${s * 0.65}px) rotate(30deg)`;
+    } else {
+      heroChar.style.transform =
+        `translateX(calc(${charBaseX}% + ${mouseX * 10}px)) translateY(calc(${s * 0.65}px + ${mouseY * 14}px)) rotate(0deg)`; // 💡PCでは0度に戻す
+    }
+
+    /* ── ロゴ: スクロール + PCのみマウス */
+    const logoMx = isMobile ? 0 : mouseX * 14;
+    const logoMy = isMobile ? 0 : mouseY * 20;
+    heroLogo.style.transform =
+      `translate3d(calc(-50% + ${logoMx}px), calc(${s * 0.92}px + ${logoMy}px), 0)`;
+
+    requestAnimationFrame(applyParallax);
+  }
+
+  requestAnimationFrame(applyParallax);
+
+  addEventListener('resize', () => {
+    charBaseX = innerWidth <= 860 ? -50 : -44;
+  }, { passive: true });
+
+})();
+
+/* ═══════════════════════════════════════════════════
+   コピー＆保存防止対策
+   ═══════════════════════════════════════════════════ */
+// 右クリックメニューを禁止する
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// キーボードのショートカット(Ctrl+Cなど)でのコピー操作を禁止する
+document.addEventListener('copy', e => e.preventDefault());
+
+// 画像のドラッグ＆ドロップを禁止する
+document.querySelectorAll('img').forEach(img => {
+  img.draggable = false;
+});

@@ -6,7 +6,7 @@
 <title>さよならの宗教 — VocaDuo2026</title>
 <meta property="og:title" content="さよならの宗教">
 <meta property="og:description" content="VocaDuo2026 参加楽曲「さよならの宗教」特設サイト">
-<meta property="og:image" content="assets/poster.jpg">
+<meta property="og:image" content="poster.webp">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;700&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -27,39 +27,57 @@
   </ul>
 </nav>
 
-<!-- ════════ ① HERO ════════ -->
+<!-- ════════ HERO ════════ -->
 <header class="hero" id="top" data-tone="dark">
-  <img class="kv" src="futari.webp" alt="さよならの宗教 キービジュアル — 抱き合いながら踊る二人" fetchpriority="high">
-  <div class="hero-inner">
-    <p class="eyebrow-line">VOCADUO 2026 — ENTRY WORK</p>
-    <img class="logo" src="logo.svg" alt="さよならの宗教">
-    <p class="lede">（祈っても、叶っても。）<br>この世界からのさよならを、二人で。</p>
-    <div class="ctas">
-      <a class="btn" href="#mv"><span class="tri">▶</span>WATCH&nbsp;MV</a>
-      <a class="btn ghost" href="#lyrics">歌詞を読む</a>
+
+  <!-- Layer 1: 背景画像 -->
+  <div class="hero-bg-layer" aria-hidden="true">
+    <img class="hero-bg-img" src="hero_bg.webp" alt="" fetchpriority="high">
+  </div>
+
+  <!-- Layer 2: キャラクター -->
+  <div class="hero-char-layer" aria-hidden="true">
+    <img class="hero-char-img" src="hero_main.webp" alt="キービジュアル">
+  </div>
+
+  <!-- Hero下部フェードマスク -->
+  <div class="hero-fade-mask" aria-hidden="true"></div>
+
+  <!-- UI層（ロゴ・テキスト・ボタン） -->
+  <div class="hero-ui" aria-hidden="true">
+    <!-- Layer 3: ロゴ -->
+    <div class="hero-logo-layer">
+      <img class="hero-logo-img" src="hero_logo.webp" alt="ロゴ">
     </div>
   </div>
-  <div class="hud hud-bl">ARCHIVE_LOG // 260607<br>SURFACE: ACTIVE — POINTER / TOUCH</div>
-  <div class="hud hud-br">VARIANT 033<br>（この世界から）</div>
+
+  <!-- テキストコンテンツ（④ボタンなし） -->
+  <div class="hero-content">
+    <p class="eyebrow-line">VOCADUO 2026 — ENTRY WORK</p>
+    <p class="lede">（祈っても、叶っても。）<br>この世界からのさよならを、二人で。</p>
+  </div>
+
+  <div class="hud hud-bl">ARCHIVE // 260627<br>Chapel of the End</div>
+  <div class="hud hud-br">少女と悪魔の肖像</div>
   <div class="scrollcue">SCROLL</div>
 </header>
 
 <main>
-  <!-- ════════ ① MV ════════ -->
+  <!-- ════════ MV ════════ -->
   <section id="mv" data-tone="dark">
     <div class="arch">
       <div class="player" id="player">
         <span class="corner a">✦</span><span class="corner b">✦</span>
         <span class="corner c">✦</span><span class="corner d">✦</span>
-        <button class="cover" id="playBtn" style="background-image:url('assets/poster.jpg')" aria-label="ミュージックビデオを再生">
+        <button class="cover" id="playBtn" style="background-image:url('poster.webp')" aria-label="ミュージックビデオを再生">
           <span class="play">▶</span>
         </button>
       </div>
     </div>
-    <p class="mv-caption">「さよならの宗教」MUSIC&nbsp;VIDEO&nbsp;—&nbsp;3:25&nbsp;//&nbsp;4K</p>
+    <p class="mv-caption">「さよならの宗教」MUSIC&nbsp;VIDEO&nbsp;—&nbsp;3:25&nbsp;</p>
   </section>
 
-  <!-- ════════ ② LYRICS ════════ -->
+  <!-- ════════ LYRICS ════════ -->
   <section class="band" id="lyrics" data-tone="paper">
     <div class="head">
       <h2>（歌詞）</h2><span class="en">LYRICS</span>
@@ -116,90 +134,102 @@
     </div>
   </section>
 
-  <!-- ════════ ③ CREATORS ════════ -->
+  <!-- ════════ CREATORS ════════ -->
   <section class="band" id="creators" data-tone="paper">
     <div class="head">
       <h2>（クリエイター）</h2><span class="en">CREATORS</span>
       <div class="rule"></div><span class="no">03</span>
     </div>
-    <div class="duo">
-      <!-- 星乃 かなた -->
-      <article class="creator">
-        <span class="role">VOCAL</span>
-        <div class="icon">歌</div>
-        <h3>星乃 かなた</h3>
-        <span class="yomi">hoshino kanata</span>
-        <p class="cmt">メッセージを入力してください。</p>
-        <div class="links">
-          <a href="https://x.com/V_HoshinoKanata" target="_blank" rel="noopener">X / TWITTER</a>
-          <a href="https://www.youtube.com/@hoshino_kanata" target="_blank" rel="noopener">YOUTUBE</a>
-        </div>
-      </article>
 
-      <!-- 煤夜 -->
+    <div class="duo">
+
       <article class="creator">
         <span class="role">VOCALOID P</span>
         <div class="icon">曲</div>
         <h3>煤夜</h3>
         <span class="yomi">susuyo</span>
-        <p class="cmt">メッセージを入力してください。</p>
+        <p class="cmt">作詞・作曲を担当。祈りをテーマに、美しさと退廃が同居する世界観を構築した。</p>
         <div class="links">
-          <a href="https://x.com/susuyo_soot" target="_blank" rel="noopener">X / TWITTER</a>
-          <a href="https://www.youtube.com/@susuyo_soot" target="_blank" rel="noopener">YOUTUBE</a>
+          <a href="https://x.com/susuyo_soot" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg class="icon-sns" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@susuyo_soot" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg class="icon-sns" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93-.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
         </div>
       </article>
 
-      <!-- KANDUME -->
+      <article class="creator">
+        <span class="role">VOCAL</span>
+        <div class="icon">歌</div>
+        <h3>星乃 かなた</h3>
+        <span class="yomi">hoshino kanata</span>
+        <p class="cmt">本作のボーカルを担当。大切なものとの別れの記憶を思い出し、歌声に乗せ届けた。</p>
+        <div class="links">
+          <a href="https://x.com/V_HoshinoKanata" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg class="icon-sns" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@hoshino_kanata" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg class="icon-sns" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93-.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </article>
+
       <article class="creator">
         <span class="role">DESIGNER</span>
         <div class="icon">飾</div>
         <h3>KANDUME</h3>
         <span class="yomi">kandume</span>
-        <p class="cmt">メッセージを入力してください。</p>
+        <p class="cmt">デザインを担当。チームロゴやリリックデザイン、額縁の3Dモデリングなど、本作のビジュアル面を幅広く手掛けた。</p>
         <div class="links">
-          <a href="https://x.com/kandume04" target="_blank" rel="noopener">X / TWITTER</a>
+          <a href="https://x.com/kandume04" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg class="icon-sns" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </article>
 
-      <!-- 都築 -->
       <article class="creator">
         <span class="role">ILLUSTRATOR</span>
         <div class="icon">絵</div>
         <h3>都築</h3>
         <span class="yomi">tsuzuki</span>
-        <p class="cmt">メッセージを入力してください。</p>
+        <p class="cmt">キャラクターデザイン・衣装デザイン・メインビジュアルを担当。登場人物たちの関係性や空気感を一枚のイラストへ落とし込んでいる。</p>
         <div class="links">
-          <a href="https://x.com/tsuzuk_" target="_blank" rel="noopener">X / TWITTER</a>
+          <a href="https://x.com/tsuzuk_" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg class="icon-sns" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </article>
 
-      <!-- Q -->
       <article class="creator">
         <span class="role">MOVIE CREATOR</span>
         <div class="icon">映</div>
         <h3>Q</h3>
         <span class="yomi">cue</span>
-        <p class="cmt">メッセージを入力してください。</p>
+        <p class="cmt">映像制作を担当。楽曲とイラストを結び付け、物語として再構築した映像を制作した。</p>
         <div class="links">
-          <a href="https://x.com/cue_q_O9" target="_blank" rel="noopener">X / TWITTER</a>
+          <a href="https://x.com/cue_q_O9" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg class="icon-sns" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </article>
 
-      <!-- Azu -->
       <article class="creator">
         <span class="role">MIX</span>
         <div class="icon">響</div>
         <h3>Azu</h3>
         <span class="yomi">azu</span>
-        <p class="cmt">メッセージを入力してください。</p>
+        <p class="cmt">MIXを担当。ボーカルと楽曲の魅力を引き出しながら、作品全体の音響をまとめ上げた。</p>
         <div class="links">
-          <a href="https://x.com/Azu_f0monager" target="_blank" rel="noopener">X / TWITTER</a>
+          <a href="https://x.com/Azu_f0monager" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg class="icon-sns" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- ════════ ④ VOCADUO 2026 ════════ -->
+  <!-- ════════ VOCADUO 2026 ════════ -->
   <section class="band" id="vocaduo" data-tone="dark">
     <div class="head" style="color:var(--w)">
       <h2>（企画）</h2><span class="en">VOCADUO 2026</span>
@@ -209,7 +239,7 @@
       <div class="vd-badge" aria-hidden="true">
         <svg viewBox="0 0 200 200">
           <defs><path id="vdring" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
-          <text><textPath href="#vdring">VOCADUO 2026 ✦ ENTRY WORK ✦ さよならの宗教 ✦ VOCADUO 2026 ✦</textPath></text>
+          <text><textPath href="#vdring">VOCADUO 2026 ✦ ENTRY WORK ✦ さよならの宗教 ✦ TEAM ✦ 終焉礼拝堂 ✦</textPath></text>
         </svg>
         <div class="vd-core">
           <span class="y">VocaDuo</span>
@@ -217,8 +247,8 @@
         </div>
       </div>
       <div class="vd-text">
-        <p>本作「さよならの宗教」は、ボカロPとクリエイターがチームを組んで1つの作品を作り上げる合作企画 <strong>VocaDuo2026</strong> への参加作品です。</p>
-        <p style="margin-top:1.6em">音楽と絵、ふたつの祈りをひとつの作品に。ほかの参加作品もハッシュタグからご覧いただけます。</p>
+        <p>本作「さよならの宗教」は、クリエイターがチームを組んでひとつの作品を作り上げる合作企画 <strong>VocaDuo2026</strong> への参加作品です。</p>
+        <p style="margin-top:1.6em">それぞれの祈りの形を、感じていただけたら嬉しいです。<br>ほかの参加作品もハッシュタグからご覧いただけます。</p>
         <div class="vd-meta">
           <a class="chip" href="https://x.com/search?q=%23VocaDuo2026" target="_blank" rel="noopener">#VocaDuo2026</a>
           <a class="chip" href="https://vocaduo.com/" rel="noopener">企画公式サイト ↗</a>
@@ -228,14 +258,13 @@
   </section>
 </main>
 
-<!-- ════════ ⑤ FOOTER ════════ -->
+<!-- ════════ FOOTER ════════ -->
 <footer data-tone="dark">
   <img class="flogo" src="logo.svg" alt="さよならの宗教" loading="lazy">
   <div class="sns">
-    <a href="https://x.com/V_HoshinoKanata" rel="noopener">X / Twitter</a>
-    <a href="https://www.youtube.com/@hoshino_kanata" rel="noopener">YouTube</a>
+    終焉礼拝堂
   </div>
-  <p class="fine">「さよならの宗教」— VOCADUO 2026 ENTRY WORK<br>© 2026 ALL PRAYERS RESERVED // 260607</p>
+  <p class="fine">「さよならの宗教」— VOCADUO 2026 ENTRY WORK<br>© 2026 ALL PRAYERS RESERVED // 260627</p>
 </footer>
 
 <!-- JSファイルを読み込む -->
