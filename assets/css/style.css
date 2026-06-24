@@ -1399,6 +1399,10 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
    ※1400px版を廃止し、スマホ版の設計に一本化
 ========================================= */
 
+@media (min-width: 1025px) {
+  .more-link.sp-only {display: none;}
+}
+
 @media (max-width: 1024px) {
 
   /* 共通の余白・基本設定 */
@@ -1692,10 +1696,5 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .mark { display: inline-block; }
 
   /* スマホ用タイトル（固定表示の代わり） */
-  .fixed-section-title {
-    position: relative; top: 0; left: 0; width: 100%;
-    font-size: 2.8rem; margin-bottom: 30px; text-align: center;
-    opacity: 1 !important; transform: none !important;
-    pointer-events: auto; display: block;
-  }
+  .fixed-section-title {display: none;}
 }
