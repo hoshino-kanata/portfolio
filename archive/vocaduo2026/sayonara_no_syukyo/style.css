@@ -11,7 +11,7 @@
   --w16:rgba(237,234,226,.16);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   background:var(--ink);color:var(--ink);
   font-family:'Shippori Mincho B1','EB Garamond',serif;
@@ -307,15 +307,14 @@ section.band{padding:110px 7vw 130px}
 #creators{background:var(--paper);color:var(--ink);padding-top:30px}
 .duo{
   display:grid;
-  /* ★強制的に3列（1frを3つ）にする */
   grid-template-columns:repeat(3, 1fr);
   gap:40px;
-  max-width:1100px; /* 3列が綺麗に収まるよう全体の幅を広げる */
+  max-width:1100px;
   margin: 0 auto;
 }
 .creator{
   border:1px solid var(--hair);outline:1px solid var(--hair-soft);outline-offset:6px;
-  padding:46px 28px 36px; /* 画像のバランスに合わせて余白を再調整 */
+  padding:46px 28px 36px;
   text-align:center;position:relative;
   background:rgba(255,255,255,.32);
 }
@@ -324,7 +323,7 @@ section.band{padding:110px 7vw 130px}
   background:var(--paper);padding:0 16px;
   font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.34em;text-indent:.34em;
   color:var(--ink-soft);
-  white-space: nowrap; /* 文字の折り返しを防ぐ */
+  white-space: nowrap;
 }
 .creator .icon{
   width:100px;height:100px;border-radius:50%;margin:0 auto 20px;
@@ -380,26 +379,27 @@ section.band{padding:110px 7vw 130px}
 }
 
 /* =========================================
-   チーム紹介クリッカブルマップ
+   チーム紹介クリッカブルマップ + 周囲の浮遊額縁
 ========================================= */
 .team-map-wrapper {
-  margin-top: 80px; /* 上のクリエイター一覧との余白 */
+  margin-top: 80px;
   padding: 0 4vw;
   display: flex;
   justify-content: center;
+  /* 額縁の絶対配置基準をここに */
+  position: relative;
 }
 
 .image-map-container {
   position: relative;
   width: 100%;
-  max-width: 960px; /* サイト全体の幅に合わせて制限 */
+  max-width: 960px;
 }
 
 .image-map-container img {
   width: 100%;
   height: auto;
   display: block;
-  /* サイトの世界観に合わせた額縁風の装飾 */
   border: 1px solid var(--hair);
   outline: 1px solid var(--hair-soft);
   outline-offset: 6px;
@@ -410,7 +410,7 @@ section.band{padding:110px 7vw 130px}
   position: absolute;
   display: block;
   text-decoration: none;
-  border-radius: 6px; /* アイコンの枠に合わせた角丸 */
+  border-radius: 6px;
   transition: background-color 0.3s ease;
 }
 
@@ -421,10 +421,10 @@ section.band{padding:110px 7vw 130px}
 .type-tooltip .clickable-area::after {
   content: attr(data-desc);
   position: absolute;
-  bottom: 100%; /* アイコンの上に出す */
+  bottom: 100%;
   left: 50%;
   transform: translate(-50%, 10px);
-  width: 260px; /* 説明文の長さに合わせて少し広めに確保 */
+  width: 260px;
   background: rgba(12, 11, 8, 0.95);
   border: 1px solid var(--w45);
   color: var(--paper);
@@ -439,7 +439,7 @@ section.band{padding:110px 7vw 130px}
   pointer-events: none;
   z-index: 10;
   text-align: left;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* 少し影をつけて浮かせる */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .type-tooltip .clickable-area:hover::after {
@@ -448,14 +448,88 @@ section.band{padding:110px 7vw 130px}
   transform: translate(-50%, -10px);
 }
 
-/* 各アイコンの配置（画像サイズに対するパーセンテージ） */
+/* 各アイコンの配置 */
 .kanata  { top: 24.5%; left: 10.5%; width: 17.5%; height: 23.0%; }
 .sumiya  { top: 24.5%; left: 35.3%; width: 17.5%; height: 23.0%; }
 .azu     { top: 24.5%; left: 60.0%; width: 17.5%; height: 23.0%; }
-
 .tsuzuki { top: 58.0%; left: 21.0%; width: 17.5%; height: 23.0%; }
 .q       { top: 58.0%; left: 45.8%; width: 17.5%; height: 23.0%; }
 .kandume { top: 58.0%; left: 70.5%; width: 17.5%; height: 23.0%; }
+
+/* ═══════════════════════════════════════
+   浮遊ギャラリー額縁（PC専用）
+   .image-map-container の max-width:960px と同じ幅の
+   コンテナを中央配置し、そこを基準に額縁を置く
+═══════════════════════════════════════ */
+.creators-gallery-frames {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 960px;
+}
+.creators-gallery-frames .frame,
+.creators-gallery-frames .frame-inner,
+.creators-gallery-frames button {
+  pointer-events: auto;
+}
+
+.cgf {
+  position: absolute;
+  z-index: 2;
+}
+
+/* 16:9 シネマ比率 */
+.frame--cinema .frame-inner { aspect-ratio: 16/9; }
+
+/* 左上: 縦長 */
+.cgf--tl {
+  top: -30px;
+  left: -170px;
+  width: 160px;
+  transform: rotate(-20deg);
+}
+/* 右上: 横長16:9 */
+.cgf--tr {
+  top: -60px;
+  right: -160px;
+  width: 240px;
+}
+/* 左中: 楕円 */
+.cgf--ml {
+  top: 55%;
+  left: -280px;
+  width: 220px;
+  transform: translateY(-50%);
+}
+/* 右中: 正方形 */
+.cgf--mr {
+  top: 35%;
+  right: -220px;
+  width: 240px;
+  transform: translateY(-50%);
+}
+/* 左下: 横長 4:3 */
+.cgf--bl {
+  bottom: -60px;
+  left: -180px;
+  width: 240px;
+}
+/* 右下: 縦長 */
+.cgf--br {
+  bottom: -90px;
+  right: -200px;
+  width: 240px;
+  transform: rotate(20deg);
+}
+
+/* SP では非表示 */
+@media (max-width: 860px) {
+  .creators-gallery-frames { display: none; }
+}
 
 /* ─────────── ④ vocaduo ─────────── */
 #vocaduo{background:transparent;color:var(--w)}
@@ -511,6 +585,25 @@ footer .fine{
 /* ─────────── responsive ─────────── */
 @media (min-width: 861px) {
   .duo { display: none; }
+
+  /* id="mainGallery" の中にあるすべての額縁の比率を 1:1（正方形）に固定 */
+  #mainGallery .frame .frame-inner {
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 0 !important;
+  }
+  /* 楕円(oval)固有の丸い枠線の装飾を、PCでは四角い装飾にリセットする */
+  #mainGallery .frame--oval .frame-ornament {
+    border-radius: 0 !important;
+    outline: 2px solid var(--silver) !important;
+    box-shadow:
+      inset 0 0 0 4px rgba(237,234,226,.35),
+      inset 0 0 0 6px rgba(156,151,139,.20),
+      0 0 0 1px rgba(156,151,139,.35) !important;
+  }
+  #mainGallery .frame--oval .frame-overlay {
+    border-radius: 0 !important;
+    padding-bottom: 12% !important; /* 文字の高さも他の四角い額縁と統一します */
+  }
 }
 @media (max-width:860px){
   /* ⑤ Hero: モバイル — キャラを上から配置、コンテンツは下部 */
@@ -587,4 +680,351 @@ footer .fine{
   .hero-logo-layer,
   .scrollcue::after,
   .vd-badge svg{animation:none;transition:none}
+}
+/* ═══════════════════════════════════════
+   GALLERY — 絵画室
+═══════════════════════════════════════ */
+#gallery { background: var(--paper); color: var(--ink); }
+
+.gallery-caption {
+  font-size: 13px;
+  letter-spacing: .16em;
+  line-height: 2.2;
+  color: var(--ink-soft);
+  margin-bottom: 60px;
+  opacity: .75;
+}
+
+/* グリッドレイアウト */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px 36px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 額縁共通 */
+.frame {
+  position: relative;
+  filter: drop-shadow(0 8px 28px rgba(12,11,8,.18));
+  transition: filter .4s ease, transform .4s ease;
+}
+.frame:hover {
+  filter: drop-shadow(0 16px 40px rgba(12,11,8,.28));
+  transform: translateY(-4px);
+}
+
+/* 額縁装飾（CSSで重ね枠） */
+.frame-ornament {
+  position: absolute;
+  inset: -4px;
+  pointer-events: none;
+  z-index: 2;
+  background-image:
+    radial-gradient(circle 4px at 6px 6px, var(--silver) 80%, transparent 80%),
+    radial-gradient(circle 4px at calc(100% - 6px) 6px, var(--silver) 80%, transparent 80%),
+    radial-gradient(circle 4px at 6px calc(100% - 6px), var(--silver) 80%, transparent 80%),
+    radial-gradient(circle 4px at calc(100% - 6px) calc(100% - 6px), var(--silver) 80%, transparent 80%);
+  background-repeat: no-repeat;
+  outline: 2px solid var(--silver);
+  outline-offset: -2px;
+  border: 1.5px solid rgba(156,151,139,.45);
+  box-shadow:
+    inset 0 0 0 4px rgba(237,234,226,.35),
+    inset 0 0 0 6px rgba(156,151,139,.20),
+    0 0 0 1px rgba(156,151,139,.35);
+}
+.frame--oval .frame-ornament {
+  border-radius: 50%;
+  outline: none;
+  box-shadow:
+    inset 0 0 0 5px rgba(237,234,226,.3),
+    inset 0 0 0 7px rgba(156,151,139,.18),
+    0 0 0 1.5px var(--silver),
+    0 0 0 3px rgba(156,151,139,.3),
+    0 0 0 6px rgba(237,234,226,.12);
+}
+
+/* フレーム内ボタン */
+.frame-inner {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: #0c0b08;
+  outline: 1px solid rgba(156,151,139,.3);
+  outline-offset: -1px;
+}
+.frame--tall   .frame-inner { aspect-ratio: 3/4; }
+.frame--wide   .frame-inner { aspect-ratio: 4/3; }
+.frame--square .frame-inner { aspect-ratio: 1/1; }
+.frame--oval   .frame-inner { aspect-ratio: 3/4; border-radius: 50%; }
+
+.frame-inner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .6s cubic-bezier(.25,1,.5,1), filter .5s ease;
+  will-change: transform;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ホバー: 画像ズーム */
+.frame-inner:hover img { transform: scale(1.07); }
+
+/* ホバー: オーバーレイ */
+.frame-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12%;
+  background: linear-gradient(to top, rgba(12,11,8,.72) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+.frame--oval .frame-overlay { border-radius: 50%; padding-bottom: 22%; }
+.frame-inner:hover .frame-overlay { opacity: 1; }
+
+.frame-title {
+  font-family: 'Shippori Mincho B1', serif;
+  font-size: 12px;
+  letter-spacing: .3em;
+  color: var(--paper);
+  white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0,0,0,.6);
+}
+
+/* ホバー: 光沢スイープ
+   width:300% + left:-100% で左右をはみ出させ、
+   端がフレームで急にスパッと切れないようにする。
+   グラデーションの端もtransparentで十分フェードさせる。 */
+.frame-inner::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: -100%;          /* 左外側から始まる */
+  width: 300%;          /* フレームの3倍幅 */
+  background: linear-gradient(105deg,
+    transparent        0%,
+    transparent       30%,
+    rgba(237,234,226,.0)  38%,
+    rgba(237,234,226,.13) 48%,
+    rgba(237,234,226,.0)  58%,
+    transparent       70%,
+    transparent      100%
+  );
+  opacity: 0;
+  transition: opacity .3s ease, transform .7s cubic-bezier(.4,0,.2,1);
+  transform: translateX(-10%);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+}
+.frame-inner:hover::after {
+  opacity: 1;
+  transform: translateX(60%);  /* 右外側まで走り抜ける */
+}
+
+/* モーダル */
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.gallery-modal[hidden] { display: none; }
+
+.gallery-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12,11,8,.88);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.gallery-modal__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: min(90vw, 800px);
+  max-height: 90svh;
+  animation: modal-in .35s cubic-bezier(.25,1,.5,1) both;
+}
+@keyframes modal-in {
+  from { opacity:0; transform:scale(.92) translateY(12px); }
+  to   { opacity:1; transform:scale(1)  translateY(0); }
+}
+
+.gallery-modal__close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--w45);
+  border-radius: 50%;
+  background: rgba(12,11,8,.85);
+  color: var(--paper);
+  font-size: 14px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: background .3s, border-color .3s, transform .3s;
+  backdrop-filter: blur(4px);
+}
+.gallery-modal__close:hover {
+  background: var(--ink);
+  border-color: var(--w);
+  transform: rotate(90deg);
+}
+
+/* モーダル内の額縁 */
+.gallery-modal__frame-wrap {
+  position: relative;
+  max-height: 78svh;
+  outline: 2px solid var(--silver);
+  outline-offset: -2px;
+  border: 1.5px solid rgba(156,151,139,.45);
+  box-shadow:
+    inset 0 0 0 4px rgba(237,234,226,.2),
+    inset 0 0 0 6px rgba(156,151,139,.14),
+    0 0 0 1px rgba(156,151,139,.3),
+    0 20px 60px rgba(0,0,0,.5);
+}
+
+.gallery-modal__ornament-top,
+.gallery-modal__ornament-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 12px;
+  z-index: 2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, transparent, var(--silver) 20%, var(--silver) 80%, transparent),
+    radial-gradient(circle 3px at center, var(--silver) 80%, transparent 80%);
+  background-size: 100% 1px, 100% 100%;
+  background-position: center, center;
+  background-repeat: no-repeat;
+}
+.gallery-modal__ornament-top    { top: -6px; }
+.gallery-modal__ornament-bottom { bottom: -6px; }
+
+.gallery-modal__img {
+  display: block;
+  max-width: 100%;
+  max-height: 78svh;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.gallery-modal__caption {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: .22em;
+  color: var(--w70);
+  text-align: center;
+}
+
+/* 初期状態：8個目以降は非表示 */
+.frame.is-overflow {
+  display: none;
+}
+
+/* 展開時：フワッと表示させる */
+#mainGallery.is-expanded .frame.is-overflow {
+  display: block;
+  animation: fadeInFrame 0.6s ease forwards;
+}
+
+.btn.ghost-paper {
+  border-color: rgba(12, 11, 8, 0.2); /* インク色の薄い枠 */
+  color: var(--ink-soft); /* やさしいインク色 */
+}
+.btn.ghost-paper:hover {
+  border-color: rgba(12, 11, 8, 0.5);
+  background: transparent;
+  color: var(--ink);
+}
+
+@keyframes fadeInFrame {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ボタンの配置エリア */
+.gallery-more-action {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 60px;
+}
+
+/* ギャラリー レスポンシブ (モバイル)
+   JSで .gallery-col-left / .gallery-col-right に振り分け済み。
+   各列を flex-direction:column で縦積みにする。
+   額縁を追加しても JS側が自動で振り分ける。 */
+@media (max-width: 860px) {
+  /* gallery-grid 自体は2列のflexコンテナに */
+  .gallery-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  /* JS が生成する左右の列 */
+  .gallery-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+    min-width: 0;
+  }
+  /* 列内の額縁はwidth:100%で引き伸ばす */
+  .gallery-col .frame {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  /* PC用の nth-child align-self をリセット */
+  .frame:nth-child(1),
+  .frame:nth-child(2),
+  .frame:nth-child(3),
+  .frame:nth-child(4),
+  .frame:nth-child(5),
+  .frame:nth-child(6) {
+    grid-area: unset;
+    align-self: unset;
+  }
+
+  .gallery-modal__close {
+    top: -12px;
+    right: -8px;
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
 }

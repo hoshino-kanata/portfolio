@@ -334,3 +334,214 @@ document.addEventListener('copy', e => e.preventDefault());
 document.querySelectorAll('img').forEach(img => {
   img.draggable = false;
 });
+
+/* ═══════════════════════════════════════════════════
+   STEP 1: GALLERY DATA (ギャラリーのHTMLを作る)
+   ═══════════════════════════════════════════════════ */
+// ① チーム表周りの浮遊額縁データ
+const FLOATING_GALLERY = [
+  { pos: "cgf--tl", type: "tall",   src: "gallery/g2.webp", label: "表情" },
+  { pos: "cgf--tr", type: "cinema", src: "gallery/g8.webp", label: "少女と悪魔" },
+  { pos: "cgf--ml", type: "oval",   src: "gallery/g10.webp", label: "この世界から" },
+  { pos: "cgf--mr", type: "wide",   src: "gallery/g12.webp", label: "秘密にした" },
+  { pos: "cgf--bl", type: "cinema",   src: "gallery/g9.webp", label: "オープニング" },
+  { pos: "cgf--br", type: "tall",   src: "gallery/g14.webp", label: "エンディング" }
+];
+
+// ② 絵画室のギャラリーデータ
+const MAIN_GALLERY = [
+  { type: "wide",   src: "team.webp", label: "チーム表" },
+  { type: "oval",   src: "gallery/g10.webp", label: "この世界から" },
+  { type: "square",   src: "gallery/g9.webp", label: "オープニング" },
+  { type: "cinema",   src: "gallery/g11.webp", label: "もう、きっと" },
+  { type: "cinema",   src: "gallery/g12.webp", label: "秘密にした" },
+  { type: "square",   src: "gallery/g13.webp", label: "あと一手" },
+  { type: "oval",   src: "gallery/g14.webp", label: "エンディング" },
+  { type: "wide",   src: "gallery/g8.webp", label: "少女と悪魔" },
+  { type: "wide",   src: "gallery/g1.webp", label: "少女と悪魔 / 素描" },
+  { type: "tall",   src: "gallery/g6.webp", label: "悪魔 / 決定稿" },
+  { type: "oval",   src: "gallery/g5.webp", label: "少女 / 決定稿" },
+  { type: "square", src: "gallery/g3.webp", label: "少女衣装 / 製作段階" },
+  { type: "square", src: "gallery/g4.webp", label: "悪魔衣装 / 製作段階" },
+  { type: "oval",   src: "gallery/g2.webp", label: "表情 / 素描" },
+  { type: "cinema",   src: "gallery/g7.webp", label: "ロゴ / 決定稿" },
+  { type: "square",   src: "gallery/g15.webp", label: "ロゴ / 素描" },
+];
+
+// HTMLを生成する共通テンプレート関数
+function createFrameHTML(item, isFloating = false, index = 0) {
+  // メインギャラリーで8個目（インデックス8以上）の要素には非表示用のクラスを付与
+  const extraClass = (!isFloating && index >= 8) ? " is-overflow" : "";
+  const innerHTML = `
+    <div class="frame frame--${item.type}${extraClass}">
+      <div class="frame-ornament" aria-hidden="true"></div>
+      <button class="frame-inner" data-label="${item.label}" data-src="${item.src}" aria-label="${item.label} — 拡大して見る">
+        <img src="${item.src}" alt="${item.label}" loading="lazy">
+        <div class="frame-overlay"><span class="frame-title">${item.label}</span></div>
+      </button>
+    </div>
+  `;
+  return isFloating 
+    ? `<div class="cgf ${item.pos}">${innerHTML}</div>`
+    : innerHTML;
+}
+
+// ページにHTMLを流し込む
+const floatContainer = document.getElementById('floatingGallery');
+if (floatContainer) {
+  floatContainer.innerHTML = FLOATING_GALLERY.map(item => createFrameHTML(item, true)).join('');
+}
+
+const mainContainer = document.getElementById('mainGallery');
+if (mainContainer) {
+  // ここで index を渡すように変更しています
+  mainContainer.innerHTML = MAIN_GALLERY.map((item, index) => createFrameHTML(item, false, index)).join('');
+}
+
+/* ═══════════════════════════════════════════════════
+   STEP 2: GALLERY — モバイル2列振り分け
+   (HTMLが作られた後に実行して並べ替える)
+   ═══════════════════════════════════════════════════ */
+(function() {
+  const grid = document.querySelector('.gallery-grid');
+  if (!grid) return;
+
+  let colonized = false;
+  let leftCol, rightCol;
+
+  function mobilize() {
+    if (colonized) return;
+    colonized = true;
+
+    const frames = Array.from(grid.querySelectorAll(':scope > .frame'));
+
+    leftCol  = document.createElement('div');
+    rightCol = document.createElement('div');
+    leftCol.className  = 'gallery-col';
+    rightCol.className = 'gallery-col';
+
+    frames.forEach((frame, i) => {
+      (i % 2 === 0 ? leftCol : rightCol).appendChild(frame);
+    });
+
+    grid.appendChild(leftCol);
+    grid.appendChild(rightCol);
+  }
+
+  function desktopize() {
+    if (!colonized) return;
+    colonized = false;
+
+    const allFrames = [
+      ...Array.from(leftCol.children),
+      ...Array.from(rightCol.children),
+    ];
+    allFrames.sort((a, b) => (a.dataset.gi || 0) - (b.dataset.gi || 0));
+    allFrames.forEach(f => grid.appendChild(f));
+
+    leftCol.remove();
+    rightCol.remove();
+  }
+
+  Array.from(grid.querySelectorAll(':scope > .frame')).forEach((f, i) => {
+    f.dataset.gi = i;
+  });
+
+  function check() {
+    if (window.innerWidth <= 860) {
+      mobilize();
+    } else {
+      desktopize();
+    }
+  }
+
+  check();
+  window.addEventListener('resize', check, { passive: true });
+})();
+
+/* ═══════════════════════════════════════════════════
+   STEP 3: GALLERY MODAL
+   (HTMLが作られた後に実行してクリックできるようにする)
+   ═══════════════════════════════════════════════════ */
+(function() {
+  const modal    = document.getElementById('galleryModal');
+  if (!modal) return;
+
+  const backdrop = modal.querySelector('.gallery-modal__backdrop');
+  const closeBtn = modal.querySelector('.gallery-modal__close');
+  const modalImg = modal.querySelector('.gallery-modal__img');
+  const caption  = modal.querySelector('.gallery-modal__caption');
+  let scrollY    = 0;
+
+  function openModal(src, label) {
+    modalImg.src = src;
+    modalImg.alt = label;
+    caption.textContent = label;
+    modal.hidden = false;
+    scrollY = window.scrollY;
+    const sbw = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow     = 'hidden';
+    document.body.style.paddingRight = sbw + 'px';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow     = '';
+    document.body.style.paddingRight = '';
+  }
+
+  // 生成された額縁ボタンにクリックリスナーを追加
+  document.querySelectorAll('.frame-inner').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const src   = btn.dataset.src   || btn.querySelector('img')?.src || '';
+      const label = btn.dataset.label || btn.querySelector('img')?.alt || '';
+      openModal(src, label);
+    });
+  });
+
+  // 閉じるボタン
+  closeBtn.addEventListener('click', closeModal);
+
+  // 背景タップで閉じる
+  backdrop.addEventListener('click', closeModal);
+
+  // Escキーで閉じる
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+
+  // 画像の右クリック・ドラッグ防止
+  modalImg.addEventListener('contextmenu', e => e.preventDefault());
+  modalImg.draggable = false;
+})();
+
+/* ═══════════════════════════════════════════════════
+   STEP 4: GALLERY MORE BUTTON (もっと見る機能)
+   ═══════════════════════════════════════════════════ */
+(function() {
+  const btnMore = document.getElementById('btnGalleryMore');
+  const btnClose = document.getElementById('btnGalleryClose');
+  const mainGallery = document.getElementById('mainGallery');
+
+  if (!btnMore || !btnClose || !mainGallery) return;
+
+  // 更に記憶を辿る（開く）
+  btnMore.addEventListener('click', () => {
+    mainGallery.classList.add('is-expanded');
+    btnMore.style.display = 'none';
+    btnClose.style.display = 'inline-flex';
+  });
+
+  // 記憶の扉を閉ざす（閉じる）
+  btnClose.addEventListener('click', () => {
+    mainGallery.classList.remove('is-expanded');
+    btnClose.style.display = 'none';
+    btnMore.style.display = 'inline-flex';
+    
+    // 閉じた際、ギャラリーの先頭付近へスムーズにスクロールして戻す
+    const gallerySection = document.getElementById('gallery');
+    const offset = gallerySection.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  });
+})();
