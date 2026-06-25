@@ -154,21 +154,21 @@ nav ul a:hover::after,nav ul a:focus-visible::after{width:100%}
   justify-content:center;
   min-height:100svh;
   padding:0 7vw;
-  max-width:520px;
+  max-width:700px;
 }
 
 .eyebrow-line{
   display:flex;align-items:center;gap:14px;
   font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.3em;
-  color:var(--ink-soft);margin-bottom:30px;
+  color:var(--paper);margin-bottom:30px;
 }
-.eyebrow-line::before{content:"";width:42px;height:1px;background:var(--ink-soft)}
+.eyebrow-line::before{content:"";width:42px;height:1px;background:var(--paper)}
 
 .logo{width:min(82vw,500px);filter:invert(.93) sepia(.06)}
 
 .lede{
   font-size:15px;line-height:2.3;letter-spacing:.16em;
-  color:var(--ink-soft);
+  color:var(--paper);
 }
 .ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:42px}
 .btn{
@@ -379,6 +379,84 @@ section.band{padding:110px 7vw 130px}
   display:grid;place-items:center;
 }
 
+/* =========================================
+   チーム紹介クリッカブルマップ
+========================================= */
+.team-map-wrapper {
+  margin-top: 80px; /* 上のクリエイター一覧との余白 */
+  padding: 0 4vw;
+  display: flex;
+  justify-content: center;
+}
+
+.image-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 960px; /* サイト全体の幅に合わせて制限 */
+}
+
+.image-map-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* サイトの世界観に合わせた額縁風の装飾 */
+  border: 1px solid var(--hair);
+  outline: 1px solid var(--hair-soft);
+  outline-offset: 6px;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.clickable-area {
+  position: absolute;
+  display: block;
+  text-decoration: none;
+  border-radius: 6px; /* アイコンの枠に合わせた角丸 */
+  transition: background-color 0.3s ease;
+}
+
+.type-tooltip .clickable-area:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.type-tooltip .clickable-area::after {
+  content: attr(data-desc);
+  position: absolute;
+  bottom: 100%; /* アイコンの上に出す */
+  left: 50%;
+  transform: translate(-50%, 10px);
+  width: 260px; /* 説明文の長さに合わせて少し広めに確保 */
+  background: rgba(12, 11, 8, 0.95);
+  border: 1px solid var(--w45);
+  color: var(--paper);
+  padding: 16px 20px;
+  font-size: 12.5px;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  z-index: 10;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* 少し影をつけて浮かせる */
+}
+
+.type-tooltip .clickable-area:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -10px);
+}
+
+/* 各アイコンの配置（画像サイズに対するパーセンテージ） */
+.kanata  { top: 24.5%; left: 10.5%; width: 17.5%; height: 23.0%; }
+.sumiya  { top: 24.5%; left: 35.3%; width: 17.5%; height: 23.0%; }
+.azu     { top: 24.5%; left: 60.0%; width: 17.5%; height: 23.0%; }
+
+.tsuzuki { top: 58.0%; left: 21.0%; width: 17.5%; height: 23.0%; }
+.q       { top: 58.0%; left: 45.8%; width: 17.5%; height: 23.0%; }
+.kandume { top: 58.0%; left: 70.5%; width: 17.5%; height: 23.0%; }
+
 /* ─────────── ④ vocaduo ─────────── */
 #vocaduo{background:transparent;color:var(--w)}
 .vd-grid{
@@ -431,6 +509,9 @@ footer .fine{
 }
 
 /* ─────────── responsive ─────────── */
+@media (min-width: 861px) {
+  .duo { display: none; }
+}
 @media (max-width:860px){
   /* ⑤ Hero: モバイル — キャラを上から配置、コンテンツは下部 */
   .hero-char-img{
@@ -478,6 +559,7 @@ footer .fine{
 
   /* クリエイター1列 */
   .duo{grid-template-columns: 1fr; gap: 50px;}
+  .team-map-wrapper {display: none;}
 
   nav{padding:14px 16px}
   nav .sig{font-size:11px;letter-spacing:.22em}
