@@ -97,8 +97,8 @@ nav ul a:hover::after,nav ul a:focus-visible::after{width:100%}
 }
 .hero-char-img{
   position:absolute;
-  left:50%;
-  bottom:-20svh;
+  left:50%; top: -5svh;
+  bottom: clamp(-200px, -20svh, -60px);
   transform:translateX(-44%);
   height:min(200svh, 1520px);
   width:auto;
@@ -146,15 +146,16 @@ nav ul a:hover::after,nav ul a:focus-visible::after{width:100%}
 }
 
 /* ─── テキストコンテンツ（左寄せ） ─── */
-.hero-content{
-  position:relative;
-  z-index:5;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-height:100svh;
-  padding:0 7vw;
-  max-width:700px;
+.hero-content {
+  position: absolute;          /* flex子要素→絶対配置に変更 */
+  z-index: 5;
+  top: 50%;                    /* ビューポート中央より少し上 */
+  right: 7vw;                  /* 右寄せ */
+  left: auto;
+  transform: translateY(-50%);
+  max-width: 480px;
+  padding: 0;
+  /* min-height は不要になるので削除 */
 }
 
 .eyebrow-line{
@@ -608,32 +609,35 @@ footer .fine{
 @media (max-width:860px){
   /* ⑤ Hero: モバイル — キャラを上から配置、コンテンツは下部 */
   .hero-char-img{
-    /* bottom基準をやめてtop基準に切り替え → 上から見える */
-    left:50%;
+    left:52.5%;
     bottom:auto;
     top:10svh;
     transform:translateX(-50%);
     height:min(200svh, 880px);
   }
   .hero-logo-layer{
-    bottom:8svh;
+    bottom:14svh;
     width:min(88vw, 440px);
   }
-  .hero-content{
-    position:relative;
-    z-index:5;
-    max-width:none;
-    text-align:center;
-    align-items:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    min-height:100svh;
-    padding-bottom:22svh; /* ロゴの上に来るくらい */
-    padding-left:6vw;
-    padding-right:6vw;
+  .hero-content {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    transform: none;
+    max-width: none;
+    z-index: 5;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100svh;
+    padding-bottom: 33svh;
+    padding-left: 6vw;
+    padding-right: 6vw;
   }
-  .eyebrow-line{justify-content:center}
+  .eyebrow-line{justify-content:center;margin-bottom: 5px;}
   .eyebrow-line::before{display:none}
   .hud-bl,.hud-br{display:none}
   .hero-fade-mask{height:45svh}
