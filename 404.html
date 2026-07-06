@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 Not Found | 星乃かなた</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
 </head>
 <body>
 
@@ -37,7 +37,7 @@
 {% include footer.html %}
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
     const menuOpenBtn = document.querySelector('.js-menu-open');
     const menuCloseBtn = document.getElementById('menuClose');
     const menuWindow = document.getElementById('menuWindow');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             menuWindow.classList.remove('is-open');
         });
     }
-});
+})();
 </script>
 
 </body>
