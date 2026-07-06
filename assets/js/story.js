@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleEnd() {
     fronts.forEach(el => {
-      el.style.setProperty('--mask-size', `100%`);
-      el.style.setProperty('--mask-blur', `0%`);
+      el.style.setProperty('--mask-size', `0px`);
+      el.style.setProperty('--mask-blur', `0px`);
     });
   }
 

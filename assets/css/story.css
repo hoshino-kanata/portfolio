@@ -63,11 +63,12 @@ section {
 
 /* 表面：美しい嘘（目に優しいオフホワイト＋大理石） */
 .layer-front {
-  background-color: var(--bg-base);
+  background-color: var(--gray-200); /* 修正: 未定義だった var(--bg-base) から変更 */
   background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
   z-index: 2;
-  mask-image: radial-gradient(circle var(--mask-size, 100%) at var(--mask-x, 50%) var(--mask-y, 50%), transparent 0%, black var(--mask-blur, 0%));
-  -webkit-mask-image: radial-gradient(circle var(--mask-size, 100%) at var(--mask-x, 50%) var(--mask-y, 50%), transparent 0%, black var(--mask-blur, 0%));
+  /* 修正: var(--mask-size, 100%) を 0px に変更 */
+  mask-image: radial-gradient(circle var(--mask-size, 0px) at var(--mask-x, 50%) var(--mask-y, 50%), transparent 0%, black var(--mask-blur, 0px));
+  -webkit-mask-image: radial-gradient(circle var(--mask-size, 0px) at var(--mask-x, 50%) var(--mask-y, 50%), transparent 0%, black var(--mask-blur, 0px));
   transition: mask-image 0.5s ease, -webkit-mask-image 0.5s ease;
 }
 
