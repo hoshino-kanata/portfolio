@@ -63,7 +63,7 @@ section {
 
 /* 表面：美しい嘘（目に優しいオフホワイト＋大理石） */
 .layer-front {
-  background-color: var(--gray-200); /* 修正: 未定義だった var(--bg-base) から変更 */
+  background-color: var(--gray-50);
   background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
   z-index: 2;
   /* 修正: var(--mask-size, 100%) を 0px に変更 */
