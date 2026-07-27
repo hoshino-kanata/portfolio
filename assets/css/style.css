@@ -362,6 +362,18 @@ button, input, textarea, select {
 .nav-star { width: 14px; height: 14px; cursor: pointer; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); position: relative; -webkit-mask-image: url('../img/star.svg'); mask-image: url('../img/star.svg'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; background-color: #d0d0d0; }
 .nav-star.active { transform: scale(1.5); background: var(--grad-rainbow); background-size: 200% 200%; animation: gradientMove 3s ease infinite; filter: drop-shadow(0 0 4px rgba(232, 235, 255, 0.8)); }
 
+.youtube-wrapper {
+  display: block; /* ← これを追加。a タグでも div と同じ挙動になる */
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.05);
+  background: #000;
+}
+
 .hero-foreground { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
 .hero-foreground::before { content: ""; position: absolute; width: 600px; height: 600px; right: -150px; bottom: -120px; background: radial-gradient(circle, rgba(255,255,255,0.6), transparent 70%); filter: blur(60px); opacity: 0.6; }
 .hero-foreground::after { content: ""; position: absolute; inset: 0; backdrop-filter: blur(2px); mask-image: linear-gradient(to top, rgba(0,0,0,0.5), transparent 60%); }
@@ -1523,6 +1535,8 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
   .news-slide-desc { font-size: 15px; }
 
   /* プロフィール */
+  .profile-wrapper { flex-direction: column; } /* 縦積みを明示的に指定（min-widthの合算で強制折り返しさせる力技をやめる） */
+  .profile-char, .profile-details { min-width: 0; width: 100%; } /* PC版の min-width:320px/350px を解除（狭い端末での横はみ出し対策） */
   .profile-wrapper, .profile-details, .fanclub-banner, .fanclub-text { height: auto !important; min-height: min-content !important; }
   .fanclub-banner { flex-direction: column; align-items: flex-start; padding: 30px; }
   .profile-visual { height: auto; max-width: 100%; aspect-ratio: 3/4; }
@@ -1683,6 +1697,8 @@ body:has(.menu-window.open) .wave-hamburger { opacity: 0; pointer-events: none; 
 
   .menu-inner { 
     width: 100%; 
+    min-width: 0;      /* PC版の min-width:400px を解除（横スクロールの主因だったため必須） */
+    max-width: 100%;   /* PC版の max-width:600px も解除 */
     padding: 80px 8vw 60px; /* 左右の余白を8vwに増やし、下にもゆとりを */
     margin: 0; 
     align-items: center; 
