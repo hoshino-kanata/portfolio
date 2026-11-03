@@ -1,15 +1,15 @@
-# 教えて神父さま — ローカル確認用ZIP
+# 教えて神父さま — 本番反映用ZIP
 
-このブランチはダウンロードの受け渡し専用です。サイトのHTMLを公開先に配置するブランチではありません。
+このブランチはファイルの受け渡し専用です。公開サイトのmainへの反映は行っていません。
 
-[最新ZIPをダウンロード](https://github.com/hoshino-kanata/portfolio/raw/refs/heads/delivery/oshiete-shinpusama-20261103/downloads/oshiete-shinpusama-local.zip)
+[本番反映用ZIPをダウンロード](https://github.com/hoshino-kanata/portfolio/raw/refs/heads/delivery/oshiete-shinpusama-20261103/downloads/oshiete-shinpusama-production.zip)
 
-ZIPをすべて解凍してから、`oshiete-shinpusama/local-preview.html` をブラウザーで開いてください。画像・本文・CSS・ライブラリを内蔵しているため、オフラインで確認できます。VSCodeでの編集は同じフォルダの `index.html` をLive Serverで開いてください。
+ZIPをすべて解凍し、既存の `gallery/oshiete-shinpusama/` をZIP内の同名フォルダで置き換えてください。上書きコピーだけでは旧ファイルが残るため、必要なら古いフォルダを別の場所へバックアップしてから置き換えます。VSCodeのLive Serverで `index.html` を開き、確認後に普段の手順でコミット・プッシュできます。
 
-この版はユーザー提供の最新版を基準に、マルボロさんの投稿イラスト、保存・コピーの抑止、世界観の表示調整、Confessionの2段配置、漫画の最初の1ページ表示を反映しています。全画像と小説、編集用HTML・CSS・JavaScriptを同梱しています。
+直下は `index.html` と `assets/` のみです。CSSは `assets/shinpusama.css` の1本、編集用JavaScriptは `assets/shinpusama.js` と `assets/shinpusama-petal.js` の2本に統合しました。動作に必要なライブラリは `assets/lib/`、画像と小説は `assets/works/` にあります。
 
-保存抑止は右クリックやコピーなどの操作を制限するもので、公開ファイルの取得やスクリーンショットの完全な防止はできません。作品の権利は各作者に帰属します。
+作品管理用の `CONFIG` と `WORKS` は `assets/shinpusama.js` の先頭です。詳しい編集・公開手順は `assets/README.md` を参照してください。
 
-`main` への反映やGitHub Pagesへの公開操作は行っていません。受領後はこの受け渡しブランチを削除できます。
+仮原稿・サンプル画像・未参照のOTF・重複プレビューHTMLを削除し、使用している作品31ファイルは内容をそのまま保持しています。PC・スマホで、実際の公開先と同じサブディレクトリの構成を確認済みです。
 
-最新版では3D装飾をヒーロービュー内だけに表示し、Confession・About・作品ページには重ねません。
+この受け渡しブランチは受領後に削除できます。
