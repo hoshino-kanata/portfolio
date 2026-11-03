@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>教えて神父さま — 星乃かなた ファンアート企画</title>
+<meta name="description" content="『教えて神父さま』は、星乃かなたのファンアート投稿企画です。1つの問に、1人分の答えを。">
+<meta name="theme-color" content="#e2e0da">
+<meta property="og:title" content="教えて神父さま — 星乃かなた ファンアート企画">
+<meta property="og:description" content="1つの問に、1人分の答えを。イラスト・まんが・小説、かたちは問いません。">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Shippori+Mincho:wght@400;500;600&family=Bodoni+Moda:opsz,wght@6..96,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shinpusama.css">
+</head>
+
+<body>
+
+<!-- 描画前に配色を決めておく（切り替えのちらつき防止） -->
+<script>
+try{
+  var t = localStorage.getItem("oshiete.theme");
+  if(t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+}catch(e){}
+</script>
+
+<!-- 保険：何かの理由でスクリプトが動かなくても、
+     ローダーが出たまま固まらないようにします。 -->
+<script>
+setTimeout(function(){
+  if(window.__oshieteStarted) return;
+  var l = document.getElementById("loader");
+  if(l) l.remove();
+  document.body.classList.remove("is-locked");
+}, 6000);
+</script>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar" aria-hidden="true"></div>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__box">
+    <div class="loader__rule"></div>
+    <div class="loader__word"><span>FANART PROJECT 2026</span></div>
+    <div class="loader__rule"></div>
+  </div>
+  <div class="loader__sub">教えて神父さま · 星乃かなた</div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <a class="logo" href="#" id="logo">教えて神父さま</a>
+  <div class="header__tag">A QUESTION · AN ANSWER OF ONE</div>
+  <div class="header__right">
+    <a class="header__about" href="#about" id="aboutLink">ABOUT</a>
+    <button class="header__theme" id="themeBtn" type="button" aria-label="配色を切り替える" aria-pressed="false">
+      <span class="th-ico" aria-hidden="true">
+        <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M2.6 12H5M19 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M18.7 5.3L17 7M7 17l-1.7 1.7"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
+      </span>
+      <span class="th-txt"><b class="t-dark">DARK</b><b class="t-light">LIGHT</b></span>
+    </button>
+    <div class="header__tools">
+      <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<canvas id="petals"></canvas>
+<div class="cursor" id="cursor" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+</div>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="sky">
+      <div class="sky__layer a" id="skyA"></div>
+      <div class="sky__layer b" id="skyB"></div>
+    </div>
+    <div class="hero__grid" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="grain"></div>
+    <div class="grain grain--coarse"></div>
+
+    <div class="marquee" id="marquee" role="button" tabindex="0" aria-label="この作品を読む">
+      <div class="marquee__row a" id="rowA"></div>
+      <div class="marquee__row b" id="rowB"></div>
+    </div>
+
+    <div class="hero__meta">
+      <div class="ast">— NOW READING</div>
+      <div class="hero__word swap"><span id="metaWord"></span></div>
+      <div class="hero__by swap"><span id="metaBy"></span></div>
+      <div class="hero__ja swap"><span id="metaJa"></span></div>
+    </div>
+
+    <button class="discover" id="discover" aria-label="この作品のページを開く"><span>DISCOVER</span></button>
+
+    <nav class="hnav" id="hnav" aria-label="作品"></nav>
+  </section>
+
+  <!-- ============ CONFESSION（作品の棚） ============ -->
+  <section class="gallery" id="gallery">
+    <div class="gallery__paper"></div>
+    <div class="gallery__blinds" id="galBlinds" aria-hidden="true"></div>
+    <div class="grain"></div>
+    <div class="gallery__head">
+      <h2>Confession</h2>
+      <div class="metarow"><span>届いた告解</span><i>—</i><span id="galleryCount">00</span></div>
+    </div>
+    <div class="gallery__hint">scroll →</div>
+    <div class="deck-wrap"><div class="deck" id="deck"></div></div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="about__rule"><span class="blockttl">About the project</span></div>
+    <div class="about__inner">
+      <div>
+        <h2 class="about__title">About<em>教えて神父さま</em></h2>
+        <p class="about__copy">1つの問に、1人分の答えを。</p>
+        <p class="about__lead">『教えて神父さま』は、星乃かなたのファンアート投稿企画です。イラスト・まんが・小説・その他、かたちは問いません。あなたの目に映った星乃かなたを、あなたの手で一枚に。</p>
+        <p class="about__lead">投稿された作品は、このサイトの Confession に順次ならびます。お題や月ごとのテーマはありません。ただ一つの問に、あなた一人分の答えを。</p>
+      </div>
+      <div class="spec">
+        <dl><dt>DEADLINE</dt><dd><span class="big" id="deadlineBig">2026.11.02</span>締切まで <span id="countdown">--日 --:--:--</span></dd></dl>
+        <dl><dt>CATEGORY</dt><dd><div class="cats"><span>イラスト</span><span>まんが</span><span>小説</span><span>その他</span></div></dd></dl>
+        <dl><dt>SUBJECT</dt><dd>星乃かなた本人にまつわる作品。テーマ指定なし。縦横比の指定なし（トリミングしません）。</dd></dl>
+        <dl><dt>ENTRY</dt><dd>Googleフォームから投稿（ファイル添付あり）。フォームは新しいタブで開きます。</dd></dl>
+        <a class="btn-entry" id="entryBtn" href="#" target="_blank" rel="noopener">
+          <span>ENTRY</span>
+          <small>投稿フォームへ</small>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="logo">教えて神父さま</div>
+    <div>© HOSHINO KANATA · FAN ART PROJECT</div>
+  </footer>
+</main>
+
+<!-- ============ MENU ============ -->
+<nav class="menu" id="menu" aria-hidden="true">
+
+  <!-- 左：作品カードギャラリー（スクロール可） -->
+  <div class="menu__gal">
+    <div class="menu__galhead">
+      <b>Confession</b>
+      <span id="menuCount">00 WORKS</span>
+    </div>
+    <div class="menu__grid" id="menuGrid"></div>
+  </div>
+
+  <!-- 右：文字メニュー（スクロール不可） -->
+  <div class="menu__side">
+    <ul class="menu__nav">
+      <li><a href="#gallery" data-scroll="gallery"><small>01</small>Confession</a></li>
+      <li><a href="#about"   data-scroll="about"><small>02</small>About</a></li>
+    </ul>
+
+    <a class="menu__entry" id="menuEntry" href="#" target="_blank" rel="noopener" aria-label="作品を投稿する">
+      <span class="plane" aria-hidden="true">
+        <span class="plane__dot"></span>
+        <svg class="plane__ring" viewBox="0 0 120 120">
+          <defs><path id="entryRing" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs>
+          <text><textPath href="#entryRing" startOffset="0">· ENTRY · ENTRY · ENTRY · ENTRY · ENTRY · ENTRY </textPath></text>
+        </svg>
+        <span class="plane__icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21.6 2.4 2.9 10.2a.6.6 0 0 0 .05 1.11l4.65 1.74 1.74 4.65a.6.6 0 0 0 1.11.05L21.6 2.4Z"/>
+            <path d="M21.6 2.4 7.6 13.05"/>
+          </svg>
+        </span>
+      </span>
+      <span class="menu__entry__txt">
+        <b>Entry</b>
+        作品を投稿する<br>
+        <span class="js-days">—</span>
+      </span>
+    </a>
+
+    <div class="menu__catch">ひとつの問に、ひとり分の答えを。<small>OSHIETE SHINPU-SAMA</small></div>
+  </div>
+</nav>
+
+<!-- ============ ARTICLE ============ -->
+<div class="article" id="article" aria-hidden="true">
+
+  <!-- 導入：円に囲まれた背景がスクロールで閉じていく -->
+  <div class="article__stage" id="artStage">
+    <div class="article__ground"></div>
+    <div class="article__iris">
+      <div class="article__disc"></div>
+      <div class="article__marq" id="artMarq"></div>
+      <div class="article__irisin" id="artIris">
+        <div class="article__motif" id="artMotif"></div>
+      </div>
+      <div class="grain"></div>
+    </div>
+    <div class="article__ring" aria-hidden="true"></div>
+    <div class="article__scroll">SCROLL</div>
+  </div>
+  <div class="article__spacer" aria-hidden="true"></div>
+
+  <!-- 本文 -->
+  <div class="article__body" id="artBody">
+    <div class="article__wmpin" aria-hidden="true"><div class="article__wmclip"><div class="article__wm" id="artWm"></div></div></div>
+    <div class="article__chapter" id="artChapter"></div>
+
+    <div class="article__inner">
+      <h1 class="article__title" id="artTitle"></h1>
+      <p class="article__jatitle" id="artJaTitle"></p>
+      <p class="article__sub" id="artSub"></p>
+    </div>
+
+    <!-- 1枚絵 -->
+    <div class="article__pic" id="artPic" hidden></div>
+
+    <!-- 読み物（言葉・小説）。文字の大きさと組み方向は、
+         本文が現れてから右（スマホは下）に出るつまみで変えられます。 -->
+    <div class="reader" id="reader">
+      <div class="rdrule" aria-hidden="true"></div>
+      <div class="rdtext" id="rdText" tabindex="0"></div>
+      <p class="rdhint" id="rdHint">SCROLL / ← → で読みすすめられます</p>
+    </div>
+
+    <!-- 漫画ビューア -->
+    <div class="manga" id="manga">
+      <div class="mgwrap" id="mgWrap">
+        <div class="mgstage" id="mgStage">
+          <img class="mgpage" id="mgA" alt="">
+          <img class="mgpage" id="mgB" alt="" hidden>
+        </div>
+        <!-- スマホ：ナビなしの縦スクロール -->
+        <div class="mgflow" id="mgFlow"></div>
+        <button class="mgside mgside--fwd" id="mgFwd" type="button" aria-label="次のページ">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 6l-6 6 6 6"/></svg></span>
+        </button>
+        <button class="mgside mgside--back" id="mgBack" type="button" aria-label="前のページ">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+      </div>
+      <div class="mgbar" id="mgBar">
+        <span class="mgbar__no" id="mgNo">1 / 1</span>
+        <div class="mgbar__thumbs" id="mgThumbs"></div>
+        <button class="mgbar__zoom" id="mgZoom" type="button">はば優先</button>
+      </div>
+    </div>
+
+    <div class="article__foot">
+      <button id="artBack">← BACK TO CONFESSION</button>
+      <a href="#" class="article__next" id="artNext"><span>NEXT</span><b></b></a>
+    </div>
+  </div>
+
+  <!-- 文字の大きさと組み方向。本文が現れてから、ふわりと出てきます。 -->
+  <div class="rdfloat" id="rdFloat">
+    <div class="rdfloat__g" role="group" aria-label="文字の大きさ">
+      <button type="button" data-rd-size="s">小</button>
+      <button type="button" data-rd-size="m">中</button>
+      <button type="button" data-rd-size="l">大</button>
+    </div>
+    <div class="rdfloat__g" role="group" aria-label="組み方向">
+      <button type="button" data-rd-dir="v">縦</button>
+      <button type="button" data-rd-dir="h">横</button>
+    </div>
+  </div>
+
+  <button class="article__close" id="artClose">CLOSE ✕</button>
+</div>
+
+<!-- 外部の配信元には頼りません。lib/ ごとアップロードしてください。
+     （CDNが読めないと、サイトが真っ暗なまま止まってしまうため） -->
+<script src="lib/gsap.min.js"></script>
+<script src="lib/ScrollTrigger.min.js"></script>
+<script type="importmap">
+{ "imports": { "three": "./lib/three.module.min.js" } }
+</script>
+
+<script src="shinpusama.js"></script>
+
+<script type="module" src="shinpusama-petals.js"></script>
+</body>
+</html>
