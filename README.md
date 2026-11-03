@@ -1,18 +1,13 @@
-# 教えて神父さま：ダウンロード用
+# 教えて神父さま — ローカル確認用ZIP
 
-このブランチは完成データの受け渡し専用です。サイトの公開用ブランチへの変更は含みません。
+このブランチはダウンロードの受け渡し専用です。サイトのHTMLを公開先に配置するブランチではありません。
 
-## ダウンロード
+[最新ZIPをダウンロード](https://github.com/hoshino-kanata/portfolio/raw/refs/heads/delivery/oshiete-shinpusama-20261103/downloads/oshiete-shinpusama-local.zip)
 
-[全素材入りZIP](downloads/oshiete-shinpusama-local.zip)を開き、Download raw file（ダウンロード）で保存してください。
+ZIPをすべて解凍してから、`oshiete-shinpusama/local-preview.html` をブラウザーで開いてください。画像・本文・CSS・ライブラリを内蔵しているため、オフラインで確認できます。VSCodeでの編集は同じフォルダの `index.html` をLive Serverで開いてください。
 
-画像27枚・小説3本・HTML・CSS・JavaScript・ライブラリを含む48ファイルです。解凍後、START-HERE.txtを参照してください。
+この版はユーザー提供の最新版を基準に、マルボロさんの投稿イラスト、保存・コピーの抑止、世界観の表示調整、Confessionの2段配置、漫画の最初の1ページ表示を反映しています。全画像と小説、編集用HTML・CSS・JavaScriptを同梱しています。
 
-## 受け取り後の削除
+保存抑止は右クリックやコピーなどの操作を制限するもので、公開ファイルの取得やスクリーンショットの完全な防止はできません。作品の権利は各作者に帰属します。
 
-不要になったら、この delivery/oshiete-shinpusama-20261103 ブランチを削除できます。
-GitHubのブランチ一覧から対象のブランチを削除してください。mainを削除しないようにしてください。
-このチャットに削除を依頼することもできます（リポジトリへの接続が利用できる場合）。
-ファイル単体を削除するコミットでは、過去のコミットにファイルが残ります。ブランチ削除もGitHub側での即時・完全消去を保証するものではありません。
-
-ZIP SHA256: fac303e7ded34c3fc715150e735d69390e0591501769df7802a18f4200fe7695
+`main` への反映やGitHub Pagesへの公開操作は行っていません。受領後はこの受け渡しブランチを削除できます。
