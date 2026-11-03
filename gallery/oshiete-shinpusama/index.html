@@ -13,12 +13,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Shippori+Mincho:wght@400;500;600&family=Bodoni+Moda:opsz,wght@6..96,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shinpusama.css">
+<link rel="stylesheet" href="assets/shinpusama.css">
 </head>
 
 <body>
 
-<!-- 描画前に配色を決めておく（切り替えのちらつき防止） -->
 <script>
 try{
   var t = localStorage.getItem("oshiete.theme");
@@ -26,8 +25,6 @@ try{
 }catch(e){}
 </script>
 
-<!-- 保険：何かの理由でスクリプトが動かなくても、
-     ローダーが出たまま固まらないようにします。 -->
 <script>
 setTimeout(function(){
   if(window.__oshieteStarted) return;
@@ -44,7 +41,7 @@ setTimeout(function(){
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader__box">
     <div class="loader__rule"></div>
-    <div class="loader__word"><span>FANART PROJECT 2026</span></div>
+    <div class="loader__word"><span>FANART PROJECT <b data-project-year>2026</b></span></div>
     <div class="loader__rule"></div>
   </div>
   <div class="loader__sub">教えて神父さま · 星乃かなた</div>
@@ -69,7 +66,6 @@ setTimeout(function(){
   </div>
 </header>
 
-<canvas id="petals"></canvas>
 <div class="cursor" id="cursor" aria-hidden="true">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
 </div>
@@ -77,6 +73,7 @@ setTimeout(function(){
 <main>
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
+    <canvas id="petals" aria-hidden="true"></canvas>
     <div class="sky">
       <div class="sky__layer a" id="skyA"></div>
       <div class="sky__layer b" id="skyB"></div>
@@ -102,14 +99,14 @@ setTimeout(function(){
     <nav class="hnav" id="hnav" aria-label="作品"></nav>
   </section>
 
-  <!-- ============ CONFESSION（作品の棚） ============ -->
+  <!-- ============ CONFESSION ============ -->
   <section class="gallery" id="gallery">
     <div class="gallery__paper"></div>
     <div class="gallery__blinds" id="galBlinds" aria-hidden="true"></div>
     <div class="grain"></div>
     <div class="gallery__head">
       <h2>Confession</h2>
-      <div class="metarow"><span>届いた告解</span><i>—</i><span id="galleryCount">00</span></div>
+      <div class="metarow"><span>作品</span><i>—</i><span id="galleryCount">00</span></div>
     </div>
     <div class="gallery__hint">scroll →</div>
     <div class="deck-wrap"><div class="deck" id="deck"></div></div>
@@ -121,13 +118,11 @@ setTimeout(function(){
     <div class="about__inner">
       <div>
         <h2 class="about__title">About<em>教えて神父さま</em></h2>
-        <p class="about__copy">1つの問に、1人分の答えを。</p>
-        <p class="about__lead">『教えて神父さま』は、星乃かなたのファンアート投稿企画です。イラスト・まんが・小説・その他、かたちは問いません。あなたの目に映った星乃かなたを、あなたの手で一枚に。</p>
-        <p class="about__lead">投稿された作品は、このサイトの Confession に順次ならびます。お題や月ごとのテーマはありません。ただ一つの問に、あなた一人分の答えを。</p>
+        <p class="about__copy">ひとつの問に、ひとり分の答えを。</p>
+        <p class="about__lead">『教えて神父さま』は、星乃かなたのファンアート投稿企画です。イラスト・まんが・小説・その他、かたちは問いません。さまざまな表現で生まれた作品を、毎年、この場所に残していきます。</p>
       </div>
       <div class="spec">
-        <dl><dt>DEADLINE</dt><dd><span class="big" id="deadlineBig">2026.11.02</span>締切まで <span id="countdown">--日 --:--:--</span></dd></dl>
-        <dl><dt>CATEGORY</dt><dd><div class="cats"><span>イラスト</span><span>まんが</span><span>小説</span><span>その他</span></div></dd></dl>
+        <dl><dt>ENTRY STATUS</dt><dd><time class="big" id="entryDeadlineDate" datetime="2027-07-06">2027.07.06</time><span id="countdown" role="timer" aria-live="off">カウントダウンを読み込み中…</span><br>次回募集予定：<time id="nextRecruitmentDate" datetime="2027-07-07">2027.07.07</time><br>次の募集まで、引き続き作品を受け付けています。</dd></dl>
         <dl><dt>SUBJECT</dt><dd>星乃かなた本人にまつわる作品。テーマ指定なし。縦横比の指定なし（トリミングしません）。</dd></dl>
         <dl><dt>ENTRY</dt><dd>Googleフォームから投稿（ファイル添付あり）。フォームは新しいタブで開きます。</dd></dl>
         <a class="btn-entry" id="entryBtn" href="#" target="_blank" rel="noopener">
@@ -141,7 +136,7 @@ setTimeout(function(){
 
   <footer class="footer">
     <div class="logo">教えて神父さま</div>
-    <div>© HOSHINO KANATA · FAN ART PROJECT</div>
+    <div><span data-entry-status>作品募集中</span><br>© HOSHINO KANATA · FAN ART PROJECT<br><small class="work-rights">掲載作品の無断保存・複製・転載を禁じます。作品の権利は各作者に帰属します。</small></div>
   </footer>
 </main>
 
@@ -152,7 +147,7 @@ setTimeout(function(){
   <div class="menu__gal">
     <div class="menu__galhead">
       <b>Confession</b>
-      <span id="menuCount">00 WORKS</span>
+      <span id="menuCount">08 ENTRIES</span>
     </div>
     <div class="menu__grid" id="menuGrid"></div>
   </div>
@@ -181,7 +176,7 @@ setTimeout(function(){
       <span class="menu__entry__txt">
         <b>Entry</b>
         作品を投稿する<br>
-        <span class="js-days">—</span>
+        <span class="js-days">作品募集中</span>
       </span>
     </a>
 
@@ -192,7 +187,7 @@ setTimeout(function(){
 <!-- ============ ARTICLE ============ -->
 <div class="article" id="article" aria-hidden="true">
 
-  <!-- 導入：円に囲まれた背景がスクロールで閉じていく -->
+  <!-- 導入 -->
   <div class="article__stage" id="artStage">
     <div class="article__ground"></div>
     <div class="article__iris">
@@ -222,8 +217,10 @@ setTimeout(function(){
     <!-- 1枚絵 -->
     <div class="article__pic" id="artPic" hidden></div>
 
-    <!-- 読み物（言葉・小説）。文字の大きさと組み方向は、
-         本文が現れてから右（スマホは下）に出るつまみで変えられます。 -->
+    <!-- 00の案内 -->
+    <div class="guide" id="artGuide" hidden></div>
+
+    <!-- 読み物 -->
     <div class="reader" id="reader">
       <div class="rdrule" aria-hidden="true"></div>
       <div class="rdtext" id="rdText" tabindex="0"></div>
@@ -253,13 +250,14 @@ setTimeout(function(){
       </div>
     </div>
 
+    <p class="article__rights">掲載作品の無断保存・複製・転載を禁じます。作品の権利は各作者に帰属します。</p>
     <div class="article__foot">
       <button id="artBack">← BACK TO CONFESSION</button>
       <a href="#" class="article__next" id="artNext"><span>NEXT</span><b></b></a>
     </div>
   </div>
 
-  <!-- 文字の大きさと組み方向。本文が現れてから、ふわりと出てきます。 -->
+  <!-- 文字の大きさと組み方向 -->
   <div class="rdfloat" id="rdFloat">
     <div class="rdfloat__g" role="group" aria-label="文字の大きさ">
       <button type="button" data-rd-size="s">小</button>
@@ -275,16 +273,78 @@ setTimeout(function(){
   <button class="article__close" id="artClose">CLOSE ✕</button>
 </div>
 
-<!-- 外部の配信元には頼りません。lib/ ごとアップロードしてください。
-     （CDNが読めないと、サイトが真っ暗なまま止まってしまうため） -->
-<script src="lib/gsap.min.js"></script>
-<script src="lib/ScrollTrigger.min.js"></script>
-<script type="importmap">
-{ "imports": { "three": "./lib/three.module.min.js" } }
-</script>
+<!-- 00：世界観 -->
+<template id="guideTemplate">
+  <section class="guide__profile" aria-labelledby="guideKanataTitle">
+    <figure class="guide__portrait guide__portrait--kanata">
+      <div class="guide__kanata-crop">
+        <img data-guide-src="w02/013.webp" alt="『天使の法則』に登場する星乃かなたの、顔と襟元を中心にしたイラスト" width="868" height="1228" loading="lazy">
+      </div>
+      <figcaption>『天使の法則』より<br><a href="https://x.com/Raize_sanda" target="_blank" rel="noopener noreferrer">サンダ・Ｖ・ライゼ</a></figcaption>
+    </figure>
+    <div class="guide__copy">
+      <p class="guide__eyebrow">01 / THE CHOIR BOY</p>
+      <h2 id="guideKanataTitle">星乃かなた</h2>
+      <p class="guide__lead">魔教会に棲まう、インキュバスの少年。</p>
+      <p>魔教会の聖歌隊を務める少年です。臆病で、献身的で、ひかえめ。恋愛や争いごとは、あまり得意ではありません。</p>
+      <p>優等生でありながら、インキュバスとしては落ちこぼれ。人間を眷属にして奉仕させるよりも、自分が人間たちに尽くすことに喜びを感じています。</p>
+      <p>自らを悪魔だと思っているかなたですが、その根底には……？</p>
+    </div>
+  </section>
 
-<script src="shinpusama.js"></script>
+  <section class="guide__profile guide__profile--reverse" aria-labelledby="guidePriestTitle">
+    <figure class="guide__portrait guide__portrait--priest" id="guidePriestPortrait">
+      <div class="priest-lantern" tabindex="0" role="img" aria-label="神父さま。光を当てたところだけ、もうひとつの表情が現れるイラスト" aria-describedby="priestLanternHint">
+        <img class="priest-lantern__base" data-guide-src="guide/priest-default.webp" alt="" width="667" height="900" loading="lazy">
+        <div class="priest-lantern__beam" aria-hidden="true">
+          <img data-guide-src="guide/priest-reveal.webp" alt="" width="667" height="900" loading="lazy">
+          <span class="priest-lantern__glow"></span>
+          <span class="priest-lantern__grain"></span>
+        </div>
+      </div>
+    </figure>
+    <div class="guide__copy">
+      <p class="guide__eyebrow">02 / THE PRIEST</p>
+      <h2 id="guidePriestTitle">神父さま</h2>
+      <p class="guide__lead">慈しみ、律し、導く存在。</p>
+      <p>魔教会で暮らす子どもたちを見守る、美しい人間の男性。母親や父親のように、子どもたちを慈しみ、優しく律し、導く存在です。</p>
+      <p>けれど、かなたに向ける眼差しには、どこか特別なものがあります。それは慈愛か、執着か、それとも観察か。</p>
+      <p>神父さまの真意は、一つに決められてはいません。格子の向こうに何を見るかは、一人ひとりの描き手に委ねられています。</p>
+    </div>
+  </section>
 
-<script type="module" src="shinpusama-petals.js"></script>
+  <section class="guide__glossary" aria-labelledby="guideGlossaryTitle">
+    <div class="guide__glossaryhead">
+      <p class="guide__eyebrow">03 / GLOSSARY</p>
+      <h2 id="guideGlossaryTitle">用語集</h2>
+    </div>
+    <dl class="guide__terms">
+      <div>
+        <dt>魔教会</dt>
+        <dd>
+          <p>神父さまと、数名のインキュバスの少年たちが共同生活をしている教会です。</p>
+          <p>人間社会の至るところにこの教会へ通じる道があり、ときに、迷える人間がそこへ迷い込みます。</p>
+        </dd>
+      </div>
+      <div>
+        <dt>告解室</dt>
+        <dd>
+          <p>神父さまとかなたが、壁一枚を隔てて向かい合う小さな部屋です。夜には、互いの息遣いも聞こえるほどの静けさに包まれます。</p>
+          <p>格子は互いの顔を見えにくくしていますが、手元には少しだけ空間があり、相手の手が見えるつくりになっています。</p>
+        </dd>
+      </div>
+      <div>
+        <dt>魔教会の子どもたち</dt>
+        <dd>
+          <p>かなたとともに魔教会で暮らす、インキュバスの少年たちです。昼には聖歌隊として歌い、夜には人間たちへの奉仕活動をしています。</p>
+          <p>かなたと聖歌を歌い、あるいは彼を観察する、邪悪で無垢な存在です。</p>
+        </dd>
+      </div>
+    </dl>
+  </section>
+</template>
+
+<script src="assets/lib/animation.min.js"></script>
+<script src="assets/shinpusama.js"></script>
 </body>
 </html>
