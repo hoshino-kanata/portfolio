@@ -95,6 +95,12 @@ const WORKS = [
     word:"HEART", title:"", titleless:true, ja:"",
     author:"マルボロ", x:"https://x.com/marlboooro_rntm",
     c1:"#c38e8c", c2:"#8c6268", motif:"rose" },
+
+  { id:"w09", no:"09", hero:false, type:"image", src:"w09/obake.webp",
+    word:"SUMMER", title:"無題", ja:"",
+    author:"おばけ・へいわ",
+    credits:[{role:"線画、色塗り",name:"おばけ"},{role:"ラフ",name:"へいわ"}],
+    c1:"#b39a50", c2:"#846f31", motif:"halo" },
 ];
 
 /* ==========================================================
