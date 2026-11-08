@@ -452,6 +452,8 @@ modalTriggers.forEach(trigger => {
           });
         }
 
+        setupContractExport(modalContent);
+
         // --- アニメーション要素の監視 ---
         const newFades = modalContent.querySelectorAll(".fade");
         const modalObserver = new IntersectionObserver((entries) => {
@@ -872,3 +874,101 @@ const skillsSwiper = new Swiper('.skills-slider', {
     },
   },
 });
+/* Contract export: capture the complete paper, including the current signatures. */
+function setupContractExport(root) {
+  const button = root.querySelector('#saveContractPng');
+  if (!button) return;
+  button.addEventListener('click', async () => {
+    const status = root.querySelector('#contractSaveStatus');
+    button.disabled = true;
+    status.textContent = '画像を作成しています…';
+    try {
+      await document.fonts.ready;
+      const paper = root.querySelector('.contract-paper');
+      const clone = paper.cloneNode(true);
+      const originals = [paper, ...paper.querySelectorAll('*')];
+      const copies = [clone, ...clone.querySelectorAll('*')];
+      const copyStyle = (source, target) => {
+        for (const key of source) target.style.setProperty(key, source.getPropertyValue(key));
+      };
+      originals.forEach((element, i) => {
+        const copy = copies[i];
+        copyStyle(getComputedStyle(element), copy);
+        copy.style.animation = 'none';
+        copy.style.transition = 'none';
+        if (element.classList.contains('clause-name')) {
+          copy.style.width = 'auto';
+          copy.style.flexShrink = '0';
+          copy.style.whiteSpace = 'nowrap';
+        }
+        // Export the final drawn state even while the on-screen animation is running.
+        if (element.classList.contains('fade')) {
+          copy.style.opacity = '1';
+          copy.style.transform = 'none';
+        }
+        if (element.closest('.my-signature-svg') && element.tagName.toLowerCase() === 'path') {
+          copy.style.opacity = '1';
+          copy.style.strokeDashoffset = '0';
+          copy.style.strokeDasharray = 'none';
+        }
+        if (element.namespaceURI === 'http://www.w3.org/1999/xhtml') {
+          for (const pseudo of ['::before', '::after']) {
+            const style = getComputedStyle(element, pseudo);
+            if (style.content === 'none' || style.content === 'normal') continue;
+            const decoration = document.createElement('span');
+            copyStyle(style, decoration);
+            if (Number(style.flexGrow) > 0) decoration.style.width = 'auto';
+            decoration.textContent = style.content.replace(/^['"]|['"]$/g, '');
+            copy.appendChild(decoration);
+          }
+        }
+      });
+      const input = clone.querySelector('#userSignInput');
+      const signature = clone.querySelector('#userSignDisplay');
+      signature.textContent = root.querySelector('#userSignInput').value.trim();
+      signature.style.display = 'block';
+      input.remove();
+      const width = Math.ceil(paper.getBoundingClientRect().width);
+      const height = Math.ceil(paper.scrollHeight);
+      clone.style.margin = '0';
+      clone.style.width = `${width}px`;
+      clone.style.height = `${height}px`;
+      clone.style.boxSizing = 'border-box';
+      const padding = 24;
+      const wrapper = document.createElement('div');
+      wrapper.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+      wrapper.style.cssText = `padding:${padding}px;background:#f7f8fa;width:${width}px;`;
+      wrapper.appendChild(clone);
+      const w = width + padding * 2, h = height + padding * 2;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject width="100%" height="100%">${new XMLSerializer().serializeToString(wrapper)}</foreignObject></svg>`;
+      const image = new Image();
+      await new Promise((resolve, reject) => {
+        image.onload = resolve;
+        image.onerror = () => reject(new Error('Image rendering failed'));
+        image.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+      });
+      const canvas = document.createElement('canvas');
+      canvas.width = w * 2;
+      canvas.height = h * 2;
+      const context = canvas.getContext('2d');
+      context.scale(2, 2);
+      context.drawImage(image, 0, 0);
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) throw new Error('PNG encoding failed');
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `hoshino-kanata-contract-${root.querySelector('#contractDate').textContent.replace(/\D/g, '')}.png`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      status.textContent = 'PNGを保存しました。';
+    } catch (error) {
+      console.error('Contract export failed:', error);
+      status.textContent = '画像を保存できませんでした。もう一度お試しください。';
+    } finally {
+      button.disabled = false;
+    }
+  });
+}

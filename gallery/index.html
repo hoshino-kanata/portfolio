@@ -1,0 +1,54 @@
+---
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery ｜ 星乃かなた</title>
+  
+  <script>
+    (function(d) {
+      var config = { kitId: 'ghr8etq', scriptTimeout: 3000, async: true },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+<meta name="description" content="星乃かなたのギャラリー。ファンアート投稿企画『教えて神父さま』のイラスト・まんが・小説をご覧いただけます。">
+<link rel="stylesheet" href="../assets/css/gallery.css">
+</head>
+<body>
+
+<div class="bg-lineart-animation"></div>
+
+{% include menu.html %}
+
+<header class="page-header scroll-pop">
+    <span class="page-sub-title">Gallery</span>
+    <h1 class="page-main-title">ギャラリー</h1>
+    <p class="page-desc">創作企画の展示。</p>
+</header>
+
+<main class="main-content gallery-index">
+<section class="component-section" aria-labelledby="project-heading">
+<p class="section-title" id="project-heading">Fan Art Project</p>
+<article class="gallery-feature">
+<a class="gallery-feature__visual" href="oshiete-shinpusama/" aria-label="教えて神父さま 特設ページへ">
+<img class="gallery-feature__cover" src="oshiete-shinpusama/assets/works/w07/collaboration-02.webp" alt="REVERIE — おばけ・碌々・へいわの合作">
+</a>
+<div class="gallery-feature__body">
+<div class="tags-row"><span class="meta-tag">FAN ART</span><span class="meta-date">2026.11.03 公開</span></div>
+<h2>教えて神父さま</h2>
+<p>星乃かなたのファンアート投稿企画。<br>それぞれの解釈で描かれた「星乃かなた」の物語。</p>
+<p class="gallery-feature__note">ゲスト作品は「告解室」をモチーフに、信徒さまからの投稿作品は自由に制作されています。</p>
+<div class="gallery-feature__links"><a href="oshiete-shinpusama/">特設ページへ <span aria-hidden="true">↗</span></a></div>
+</div></article>
+</section>
+</main>
+{% include footer.html %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="../assets/js/script.js"></script>
+</body></html>

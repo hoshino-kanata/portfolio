@@ -454,3 +454,7 @@
     .signatures { align-items: center; }
     .sig-area { width: 180px; }
 }
+.contract-save-area{text-align:center;margin:28px 0 0}
+#saveContractPng{font:inherit;color:var(--text-main);background:var(--white);border:1px solid var(--text-muted);padding:12px 24px;border-radius:4px;cursor:pointer}
+#saveContractPng:disabled{cursor:wait;opacity:.6}
+#contractSaveStatus{font-size:13px;min-height:1.5em;margin-top:12px}

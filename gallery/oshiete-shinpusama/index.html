@@ -67,7 +67,7 @@ setTimeout(function(){
 </header>
 
 <div class="cursor" id="cursor" aria-hidden="true">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path class="cursor-arrow" d="M4 12h15M13 6l6 6-6 6"/><g class="cursor-search"><circle cx="10" cy="10" r="6"/><path d="m14.5 14.5 5 5"/></g></svg>
 </div>
 
 <main>
@@ -82,7 +82,7 @@ setTimeout(function(){
     <div class="grain"></div>
     <div class="grain grain--coarse"></div>
 
-    <div class="marquee" id="marquee" role="button" tabindex="0" aria-label="この作品を読む">
+    <div class="marquee" id="marquee" role="button" tabindex="0" aria-label="中央をクリックして作品を開く、左右をクリックして前後のコンテンツに移動">
       <div class="marquee__row a" id="rowA"></div>
       <div class="marquee__row b" id="rowB"></div>
     </div>
@@ -109,12 +109,13 @@ setTimeout(function(){
       <div class="metarow"><span>作品</span><i>—</i><span id="galleryCount">00</span></div>
     </div>
     <div class="gallery__hint">scroll →</div>
+    <div class="gallery-arrows" aria-label="Confessionの横送り"><button type="button" id="galleryPrev" aria-label="左の作品へ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button><button type="button" id="galleryNext" aria-label="右の作品へ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button></div>
     <div class="deck-wrap"><div class="deck" id="deck"></div></div>
   </section>
 
   <!-- ============ ABOUT ============ -->
   <section class="about" id="about">
-    <div class="about__rule"><span class="blockttl">About the project</span></div>
+    <div class="about__rule"><span class="blockttl">Invitation</span></div>
     <div class="about__inner">
       <div>
         <h2 class="about__title">About<em>教えて神父さま</em></h2>
@@ -122,7 +123,7 @@ setTimeout(function(){
         <p class="about__lead">『教えて神父さま』は、星乃かなたのファンアート投稿企画です。イラスト・まんが・小説・その他、かたちは問いません。さまざまな表現で生まれた作品を、毎年、この場所に残していきます。</p>
       </div>
       <div class="spec">
-        <dl><dt>ENTRY STATUS</dt><dd><time class="big" id="entryDeadlineDate" datetime="2027-07-06">2027.07.06</time><span id="countdown" role="timer" aria-live="off">カウントダウンを読み込み中…</span><br>次回募集予定：<time id="nextRecruitmentDate" datetime="2027-07-07">2027.07.07</time><br>次の募集まで、引き続き作品を受け付けています。</dd></dl>
+        <dl><dt>DEADLINE</dt><dd><time class="big" id="entryDeadlineDate" datetime="2027-07-06">2027.07.06</time><span id="countdown" role="timer" aria-live="off">カウントダウンを読み込み中…</span><br>次の募集まで、引き続き作品を受け付けています。</dd></dl>
         <dl><dt>SUBJECT</dt><dd>星乃かなた本人にまつわる作品。テーマ指定なし。縦横比の指定なし（トリミングしません）。</dd></dl>
         <dl><dt>ENTRY</dt><dd>Googleフォームから投稿（ファイル添付あり）。フォームは新しいタブで開きます。</dd></dl>
         <a class="btn-entry" id="entryBtn" href="#" target="_blank" rel="noopener">

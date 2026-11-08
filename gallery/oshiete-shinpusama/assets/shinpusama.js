@@ -409,6 +409,7 @@ function setWord(i, instant=false){
   if(index==null || index===current) return;
   const w = WORKS[index]; const dir = i>HERO_INDICES.indexOf(current) ? 1 : -1;
   current = index;
+
   applyAccent(w);
   hnav.querySelectorAll("button").forEach((b,k)=>b.classList.toggle("is-active",k===i));
 
@@ -464,29 +465,8 @@ function tickMarquee(){
 }
 
 let heroST;
-function setupHero(){
-  const step = () => Math.max(window.innerHeight*0.75, 420);
-
-  /* 広い画面：ヒーローを貼りつけて、縦スクロールで作品を巡ります。
-     スマホ：貼りつけません。横に払って作品を変え、下へスクロールすると
-             そのまま Confession へ進みます。 */
-  gsap.matchMedia().add("(min-width: 821px)", ()=>{
-    heroST = ScrollTrigger.create({
-      trigger:"#hero", start:"top top", end:()=>"+="+step()*(HERO_N-1), pin:true, scrub:true,
-      onUpdate(self){
-        scrollVel = self.getVelocity();
-        const idx = Math.round(self.progress*(HERO_N-1));
-        if(HERO_INDICES[idx]!==current) setWord(idx);
-      }
-    });
-    return ()=>{ heroST = null; };
-  });
-}
-function scrollToWord(i){
-  if(!heroST){ setWord(clamp(i,0,HERO_N-1)); return; }   /* スマホはその場で切り替え */
-  const step = (heroST.end - heroST.start)/Math.max(1,HERO_N-1);
-  window.scrollTo({top: heroST.start + step*i, behavior:"smooth"});
-}
+function setupHero(){}
+function scrollToWord(i){ if(HERO_N) setWord(((i % HERO_N) + HERO_N) % HERO_N); }
 
 /* スマホ：ヒーローを横に払って作品を変えます。
    縦に払ったときは何もせず、ページがそのまま下へ動きます。 */
@@ -507,7 +487,7 @@ let heroSwiped = false;
     const dy = e.changedTouches[0].clientY - sy;
     if(Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
     heroSwiped = true;                       /* このあとの click は作品を開かない */
-    const next = clamp(HERO_INDICES.indexOf(current) + (dx < 0 ? 1 : -1), 0, HERO_N - 1);
+    const next = (HERO_INDICES.indexOf(current) + (dx < 0 ? 1 : -1) + HERO_N) % HERO_N;
     if(HERO_INDICES[next] !== current) setWord(next);
   },{passive:true});
 })();
@@ -521,10 +501,26 @@ const cursorEl = document.getElementById("cursor");
 const marquee = document.getElementById("marquee");
 const cx = gsap.quickTo(cursorEl,"x",{duration:.35,ease:"power3"}), cy = gsap.quickTo(cursorEl,"y",{duration:.35,ease:"power3"});
 window.addEventListener("pointermove",e=>{ cx(e.clientX); cy(e.clientY); petalsMouse(e.clientX/innerWidth*2-1, -(e.clientY/innerHeight*2-1)); });
-marquee.addEventListener("pointerenter",()=>{ cursorEl.classList.add("is-on"); gsap.to(cursorEl,{scale:1,duration:.5,ease:"back.out(2)"}); });
-marquee.addEventListener("pointerleave",()=>{ cursorEl.classList.remove("is-on"); gsap.to(cursorEl,{scale:.6,duration:.4}); });
-marquee.addEventListener("click",e=>{ if(heroSwiped){ heroSwiped=false; return; } openArticle(current, e.clientX, e.clientY); });
-marquee.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openArticle(current); }});
+function showMoveCursor(direction){
+  cursorEl.classList.toggle("is-left",direction<0);
+  cursorEl.classList.toggle("is-open",direction===0);
+  cursorEl.classList.add("is-on");
+  gsap.to(cursorEl,{scale:1,duration:.5,ease:"back.out(2)"});
+}
+function hideMoveCursor(){ cursorEl.classList.remove("is-on"); gsap.to(cursorEl,{scale:.6,duration:.4}); }
+function heroDirection(x){ const r=marquee.getBoundingClientRect(); const ratio=(x-r.left)/r.width; return ratio<.33 ? -1 : ratio>.67 ? 1 : 0; }
+marquee.addEventListener("pointerenter",e=>showMoveCursor(heroDirection(e.clientX)));
+marquee.addEventListener("pointermove",e=>{ const direction=heroDirection(e.clientX); cursorEl.classList.toggle("is-left",direction<0); cursorEl.classList.toggle("is-open",direction===0); });
+marquee.addEventListener("pointerleave",hideMoveCursor);
+marquee.addEventListener("click",e=>{
+  if(heroSwiped){ heroSwiped=false; return; }
+  const direction=heroDirection(e.clientX);
+  if(direction===0){ hideMoveCursor(); openArticle(current,e.clientX,e.clientY); }
+  else scrollToWord(HERO_INDICES.indexOf(current)+direction);
+});
+marquee.addEventListener("keydown",e=>{
+  if(e.key==="Enter"||e.key===" "){ e.preventDefault(); hideMoveCursor(); const r=marquee.getBoundingClientRect(); openArticle(current,r.left+r.width/2,r.top+r.height/2); }
+});
 document.getElementById("discover").addEventListener("click",e=>{ if(heroSwiped){ heroSwiped=false; return; } const r=e.currentTarget.getBoundingClientRect(); openArticle(current, r.left+r.width/2, r.top+r.height/2); });
 
 /* ==========================================================
@@ -583,45 +579,41 @@ function buildBlinds(){
   box.innerHTML = out.join("");
 }
 
-function setupGallery(){
-  const getDist = ()=>Math.max(0,deck.scrollWidth-window.innerWidth);
-  const canPin = matchMedia("(min-width:821px) and (min-height:1080px)");
-  let movement = null, resizeTimer = 0;
-
-  const sync = ()=>{
-    const overflows = getDist()>1;
-    document.querySelector(".gallery__hint").hidden = !overflows;
-    const pinned = canPin.matches && overflows;
-    if(pinned === Boolean(movement)) return;
-    if(movement){
-      movement.scrollTrigger.kill();
-      movement.kill();
-      movement = null;
-      gsap.set(deck,{clearProps:"transform"});
-    }
-    if(pinned){
-      movement = gsap.to(deck,{
-        x:()=>-getDist(), ease:"none",
-        scrollTrigger:{
-          trigger:"#gallery", start:"top top", end:()=>"+="+getDist()*1.1,
-          pin:true, scrub:1, invalidateOnRefresh:true,
-          onUpdate(self){
-            const v = gsap.utils.clamp(-8,8,self.getVelocity()/220);
-            gsap.to(".card__paper",{skewX:-v,duration:.6,ease:"power2.out",overwrite:"auto"});
-          }
-        }
-      });
-    }
-    ScrollTrigger.refresh();
-  };
-  sync();
-  /* 画面が低いときは上下2段を縦に読み進め、列はCSSの横送りで確認します。
-     ヒーローの配列切り替えが終わってから、横送りの固定を切り替えます。 */
-  window.addEventListener("resize",()=>{
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(sync,120);
-  });
+function moveGallery(direction){
+  const wrap = document.querySelector(".deck-wrap");
+  const card = deck.querySelector(".card");
+  if(!card) return;
+  const gap = parseFloat(getComputedStyle(deck).columnGap) || 0;
+  wrap.scrollBy({left:direction*(card.offsetWidth+gap),behavior:reduce?"auto":"smooth"});
 }
+function setupGallery(){
+  const wrap = document.querySelector(".deck-wrap");
+  const prev = document.getElementById("galleryPrev"), next = document.getElementById("galleryNext");
+  function sync(){
+    prev.disabled = wrap.scrollLeft <= 1;
+    next.disabled = wrap.scrollLeft >= wrap.scrollWidth-wrap.clientWidth-1;
+  }
+  prev.addEventListener("click",()=>moveGallery(-1));
+  next.addEventListener("click",()=>moveGallery(1));
+  wrap.addEventListener("scroll",sync,{passive:true});
+  window.addEventListener("resize",sync);
+  sync();
+}
+// 左右キーは画面中央に表示されているセクションのみ操作。作品ビューアは既存処理を優先。
+window.addEventListener("keydown",e=>{
+  if(e.defaultPrevented || articleOpen || menuOpen || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  if(e.key!=="ArrowLeft" && e.key!=="ArrowRight") return;
+  if(e.target.closest && e.target.closest("input,textarea,select,[contenteditable=true]")) return;
+  const direction = e.key === "ArrowRight" ? 1 : -1;
+  const center = innerHeight/2;
+  const heroRect = document.getElementById("hero").getBoundingClientRect();
+  const galleryRect = document.getElementById("gallery").getBoundingClientRect();
+  if(heroRect.top <= center && heroRect.bottom > center){
+    e.preventDefault(); scrollToWord(HERO_INDICES.indexOf(current)+direction);
+  }else if(galleryRect.top <= center && galleryRect.bottom > center){
+    e.preventDefault(); moveGallery(direction);
+  }
+});
 
 /* ==========================================================
    MENU
